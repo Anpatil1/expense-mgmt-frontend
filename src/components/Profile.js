@@ -94,7 +94,7 @@ function Profile() {
     if (error) return <div className="profile-error">{error}</div>;
     if (!user) return <div className="profile-loading">Loading...</div>;
 
-    const imageUrl = photoUrl ? `http://localhost:8080/api/users/photos/${photoUrl}` : null;
+    const imageUrl = photoUrl ? `https://expense-mgmt-production.up.railway.app/api/users/photos/${photoUrl}` : null;
     console.log("Image URL:", imageUrl); // Log the image URL for debugging
 
     return (
