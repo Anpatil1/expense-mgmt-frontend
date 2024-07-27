@@ -2,12 +2,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 60px; /* Reduced navbar height */
-    padding: 0 20px; /* Adjusted padding for better spacing */
+    height: 60px;
+    padding: 0 20px;
     background-color: #6b73ff;
     color: white;
     font-family: 'Arial', sans-serif;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added subtle shadow for depth */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-logo {
@@ -16,9 +16,9 @@
 }
 
 .logo-image {
-    width: 30px; /* Adjusted size of logo */
-    height: auto; /* Maintain aspect ratio */
-    margin-right: 10px; /* Increased margin for better alignment */
+    width: 30px;
+    height: auto;
+    margin-right: 10px;
 }
 
 .navbar-logo a {
@@ -29,36 +29,27 @@
 }
 
 .navbar-links {
-    list-style: none;
     display: flex;
     align-items: center;
-    margin: 0;
-    padding: 0;
 }
 
-.navbar-links li {
-    margin-left: 20px; /* Increased margin between links */
-}
-
-.navbar-links a {
+.navbar-links a, .logout-button {
     color: white;
     text-decoration: none;
     font-size: 1rem;
+    margin-left: 20px;
 }
 
 .logout-button {
     background: none;
     border: none;
-    color: white;
-    font-size: 1rem;
     cursor: pointer;
-    padding: 0.5rem; /* Increased padding for better touch/click area */
-    margin: 0;
+    padding: 0.5rem;
 }
 
 .profile-circle {
-    width: 30px; /* Adjusted size of profile circle */
-    height: 30px; /* Maintain aspect ratio */
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     background-color: white;
     display: flex;
@@ -67,6 +58,7 @@
     color: #6b73ff;
     font-size: 0.9rem;
     font-weight: bold;
+    margin-left: 20px;
 }
 
 .profile-circle a {
@@ -74,32 +66,37 @@
     text-decoration: none;
 }
 
-/* Media query for responsiveness */
+.navbar-toggler {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
 @media (max-width: 768px) {
     .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px;
-        height: auto; /* Allow navbar to expand vertically */
-    }
-
-    .navbar-logo {
-        margin-bottom: 10px; /* Space between logo and links */
+        flex-wrap: wrap;
     }
 
     .navbar-links {
+        display: none;
+        width: 100%;
         flex-direction: column;
         align-items: flex-start;
-        margin-top: 10px; /* Space between links */
+        padding: 1rem 0;
     }
 
-    .navbar-links li {
-        margin-left: 0; /* Reset margin for links in column layout */
-        margin-bottom: 10px; /* Space between vertical links */
+    .navbar-links.active {
+        display: flex;
     }
 
-    .logout-button,
-    .profile-circle {
-        margin-top: 10px; /* Space between profile/logout and links */
+    .navbar-links a, .logout-button, .profile-circle {
+        margin: 10px 0;
+    }
+
+    .navbar-toggler {
+        display: block;
     }
 }

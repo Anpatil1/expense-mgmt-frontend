@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
+
 import authService from '../services/authService';
 import '../Styles/Login.css'; // Import the CSS file
 import SignupImage from '../assests/signup.png'; // Import the Signup image
@@ -69,11 +70,11 @@ function Signup() {
                             </button>
                         </form>
                         <div className="signup-link">
-                            Already have an account? <a href="/Login">Login</a>
+                            Don't have an account? <Link to="/Login">Login</Link>
                         </div>
                     </div>
                     <div className="signup-image">
-                        <img src={SignupImage} alt="Signup" />
+                        <img src={SignupImage} alt="Signup"/>
                     </div>
                 </div>
             </div>

@@ -1,10 +1,11 @@
 .home-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #f0f0f0;
-    background-image: url('../assests/img.svg'); /* Update with your image path */
+    background-image: url('../assests/img.svg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -16,11 +17,13 @@
 .home-content {
     text-align: center;
     max-width: 500px;
+    width: 90%;
     padding: 40px;
-    background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
+    background-color: rgba(255, 255, 255, 0.9);
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     z-index: 10;
+    margin: 20px 0;
 }
 
 .home-title {
@@ -79,35 +82,23 @@
 }
 
 .insight-cards, .feature-cards {
-    position: absolute;
     display: flex;
-    flex-direction: column;
     gap: 20px;
-}
-
-.insight-cards {
-    left: 5%;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.feature-cards {
-    right: 5%;
-    top: 50%;
-    transform: translateY(-50%);
+    margin: 20px 0;
 }
 
 .insight-card, .feature-card {
-    background-color: rgba(255, 255, 255, 0.8); /* Increased transparency */
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    flex: 1;
 }
 
 .insight-card:hover, .feature-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), 0 0 15px rgba(76, 175, 80, 0.5); /* RGB shadow */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), 0 0 15px rgba(76, 175, 80, 0.5);
 }
 
 .insight-icon {
@@ -117,8 +108,14 @@
 }
 
 @media (max-width: 1200px) {
+    .home-container {
+        flex-direction: column;
+    }
+
     .insight-cards, .feature-cards {
-        display: none;
+        flex-direction: row;
+        width: 90%;
+        max-width: 800px;
     }
 }
 
@@ -139,6 +136,10 @@
         font-size: 0.9rem;
         padding: 10px 20px;
     }
+
+    .insight-cards, .feature-cards {
+        flex-direction: column;
+    }
 }
 
 @media (max-width: 480px) {
@@ -156,5 +157,9 @@
 
     .home-buttons {
         flex-direction: column;
+    }
+
+    .insight-card, .feature-card {
+        padding: 15px;
     }
 }
