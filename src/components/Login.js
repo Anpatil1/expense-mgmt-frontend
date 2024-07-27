@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import authService from '../services/authService';
 import '../Styles/Login.css'; // Import the CSS file
 import LoginImage from '../assests/LogIn.png'; // Import the Login image
@@ -78,12 +78,10 @@ function Login({ setIsLoggedIn, updateAuthState }) {
                             </button>
                         </form>
                         <div className="forgot-password-link">
-                            <a href="#" onClick={handleForgotPassword}>
-                                Forgot Password?
-                            </a>
+                            <Link to="/resetPass">Forgot Password?</Link>
                         </div>
                         <div className="signup-link">
-                            Don't have an account? <a href="/signup">Sign up</a>
+                            Don't have an account? <Link to="/signup">Sign up</Link>
                         </div>
                     </div>
                 </div>
