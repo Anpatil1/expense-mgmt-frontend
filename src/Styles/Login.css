@@ -1,0 +1,135 @@
+/* Common styles for login and signup containers */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0; /* Light background color */
+}
+
+/* Styles for the login card */
+.login-card, .signup-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px; /* Adjusted maximum width for larger screens */
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center align content vertically */
+}
+
+/* Content wrapper within login and signup card */
+.login-content, .signup-content {
+    width: 100%; /* Ensure content spans full width */
+    display: flex;
+    justify-content: space-between; /* Space between image and form */
+    align-items: center; /* Center align content vertically */
+}
+
+/* Styles for the form section */
+.login-form-card, .signup-form {
+    flex: 1;
+    padding: 20px;
+    text-align: center; /* Center align form elements */
+    width: 100%; /* Full width */
+    max-width: 400px; /* Adjust as needed */
+}
+
+.login-form-card h2, .signup-form h2 {
+    margin-bottom: 20px;
+    font-size: 24px; /* Larger heading */
+    color: #333; /* Darker text color */
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left; /* Align label text to the left */
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555; /* Label color */
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px; /* Larger input text */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.error-message {
+    color: red;
+    margin-top: 5px;
+    text-align: left; /* Align error message text to the left */
+}
+
+.login-button, .signup-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 12px 24px; /* Larger button padding */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px; /* Larger button text */
+    width: 100%; /* Full width button */
+    margin-top: 10px; /* Space between button and form */
+}
+
+.login-button:disabled, .signup-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.login-button:hover, .signup-button:hover {
+    background-color: #0056b3;
+}
+
+.forgot-password-link {
+    margin-top: 10px;
+    font-size: 14px; /* Smaller font size */
+    color: #555; /* Link color */
+    text-align: left; /* Align link text to the left */
+}
+
+.signup-link {
+    margin-top: 20px;
+    font-size: 16px; /* Larger font size */
+    color: #007bff; /* Sign up link color */
+    text-align: center; /* Center align sign up link */
+}
+
+.signup-link a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+/* Styles for the image section */
+.login-image-card, .signup-image {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-image, .signup-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Animated border effect on hover */
+.login-card:hover .login-image-card,
+.signup-card:hover .signup-image {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+}

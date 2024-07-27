@@ -1,0 +1,105 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px; /* Reduced navbar height */
+    padding: 0 20px; /* Adjusted padding for better spacing */
+    background-color: #6b73ff;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added subtle shadow for depth */
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    width: 30px; /* Adjusted size of logo */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Increased margin for better alignment */
+}
+
+.navbar-logo a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.navbar-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links li {
+    margin-left: 20px; /* Increased margin between links */
+}
+
+.navbar-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.logout-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.5rem; /* Increased padding for better touch/click area */
+    margin: 0;
+}
+
+.profile-circle {
+    width: 30px; /* Adjusted size of profile circle */
+    height: 30px; /* Maintain aspect ratio */
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #6b73ff;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.profile-circle a {
+    color: #6b73ff;
+    text-decoration: none;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+        height: auto; /* Allow navbar to expand vertically */
+    }
+
+    .navbar-logo {
+        margin-bottom: 10px; /* Space between logo and links */
+    }
+
+    .navbar-links {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 10px; /* Space between links */
+    }
+
+    .navbar-links li {
+        margin-left: 0; /* Reset margin for links in column layout */
+        margin-bottom: 10px; /* Space between vertical links */
+    }
+
+    .logout-button,
+    .profile-circle {
+        margin-top: 10px; /* Space between profile/logout and links */
+    }
+}

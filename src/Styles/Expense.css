@@ -1,0 +1,196 @@
+/* Container for the expense form */
+.expense-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Header for the form */
+.expense-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Form group styles */
+.expense-container .form-group {
+    margin-bottom: 15px;
+}
+
+/* Label styles */
+.expense-container .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Input field styles */
+.expense-container .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Textarea styles */
+.expense-container .form-control[type="textarea"] {
+    resize: vertical;
+}
+
+/* Button styles */
+.expense-container .btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.expense-container .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Success message styles */
+.expense-container .success-message {
+    color: green;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    animation: fadeInOut 3s;
+}
+
+/* Keyframes for fade-in and fade-out animation */
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+/* Container for the expense list */
+/* Container for the expense list */
+.expense-list-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Header for the expense list */
+.expense-list-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Success message styles */
+.expense-list-container .success-message {
+    color: green;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    animation: fadeInOut 3s;
+}
+
+/* Error message styles */
+.expense-list-container .error-message {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Keyframes for fade-in and fade-out animation */
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Table styles */
+.expense-list-container .table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+.expense-list-container .table th,
+.expense-list-container .table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.expense-list-container .table th {
+    background-color: #f2f2f2;
+}
+
+.expense-list-container .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+
+/* Button styles */
+.expense-list-container .btn {
+    padding: 5px 10px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.expense-list-container .btn-edit {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+.expense-list-container .btn-edit:hover {
+    background-color: #45a049;
+}
+
+.expense-list-container .btn-delete {
+    background-color: #f44336; /* Red */
+    color: white;
+}
+
+.expense-list-container .btn-delete:hover {
+    background-color: #da190b;
+}
+
+/* Edit expense form styles */
+.edit-expense-form {
+    margin-bottom: 20px;
+}
+
+.edit-expense-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-expense-form .form-group {
+    margin-bottom: 15px;
+}
+
+.edit-expense-form .form-control {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+

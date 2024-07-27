@@ -1,7 +1,10 @@
+/* General styles for the entire application */
 .App {
   text-align: center;
+  position: relative; /* Ensure relative positioning for absolute elements */
 }
 
+/* Logo animation styles */
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -13,6 +16,7 @@
   }
 }
 
+/* Header styles */
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -22,12 +26,15 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  position: relative; /* Ensure relative positioning for absolute elements */
 }
 
+/* Link styles */
 .App-link {
   color: #61dafb;
 }
 
+/* Logo animation keyframes */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,4 +42,16 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Body padding and container max-width */
+body {
+  /*padding-top: 20px;*/
+  margin: 0;
+  overflow-x: hidden; /* Hide horizontal overflow */
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
 }

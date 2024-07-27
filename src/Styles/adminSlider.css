@@ -1,0 +1,110 @@
+/* src/Styles/adminSlider.css */
+.admin-slider {
+    position: fixed;
+    top: 50;
+    left: -250px;
+    height: 100%;
+    width: 250px;
+    background: linear-gradient(135deg, #1e2a38, #2c3e50);
+    color: #ecf0f1;
+    transition: all 0.5s ease;
+    overflow-x: hidden;
+    z-index: 1000;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.admin-slider.open {
+    left: 0;
+}
+
+.slider-toggle {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background-color: #34495e;
+    color: #ecf0f1;
+    padding: 12px;
+    cursor: pointer;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    z-index: 1001;
+    transition: all 0.5s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.slider-toggle.open {
+    left: 250px;
+}
+
+.admin-slider h3 {
+    padding: 20px;
+    margin: 0;
+    text-align: center;
+    background: #34495e;
+    border-bottom: 1px solid #2c3e50;
+}
+
+.admin-slider ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.admin-slider li {
+    padding: 15px 20px;
+    border-bottom: 1px solid #2c3e50;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.admin-slider li:hover {
+    background-color: #2c3e50;
+    transform: scale(1.05);
+}
+
+.admin-slider a {
+    color: #ecf0f1;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.admin-slider a:hover {
+    color: #f39c12;
+}
+
+.admin-slider a svg {
+    margin-right: 15px;
+    width: 22px;
+    transition: transform 0.3s ease;
+}
+
+.admin-slider a:hover svg {
+    transform: scale(1.2);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .admin-slider {
+        left: -100%;
+        width: 100%;
+    }
+
+    .admin-slider.open {
+        left: 0;
+    }
+
+    .slider-toggle {
+        top: auto;
+        bottom: 20px;
+        left: 20px;
+        transform: none;
+        border-radius: 50%;
+        padding: 15px;
+    }
+
+    .slider-toggle.open {
+        left: 20px;
+    }
+}

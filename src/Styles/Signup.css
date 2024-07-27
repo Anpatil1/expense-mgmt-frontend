@@ -1,0 +1,93 @@
+.signup-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; /* Adjusted maximum width for smaller screens */
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center;
+}
+
+.signup-content {
+    width: 100%; /* Ensure content spans full width */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.signup-form {
+    flex: 1;
+    padding: 20px;
+    width: 100%; /* Ensure form spans full width */
+    text-align: center; /* Center align form elements */
+}
+
+.signup-form h2 {
+    margin-bottom: 20px;
+    font-size: 24px; /* Larger heading */
+    color: #333; /* Darker text color */
+}
+
+.input-group {
+    margin-bottom: 15px;
+    width: 100%; /* Full width input group */
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555; /* Label color */
+    text-align: left; /* Align label text to the left */
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px; /* Larger input text */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.error-message {
+    color: red;
+    margin-top: 5px;
+    text-align: left; /* Align error message text to the left */
+}
+
+.login-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 12px 24px; /* Larger button padding */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px; /* Larger button text */
+    width: 100%; /* Full width button */
+    margin-top: 10px; /* Space between button and form */
+}
+
+.login-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+}
+
+.signup-image {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    border-left: 2px solid #333; /* Dark border on the left */
+}
+
+.signup-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
