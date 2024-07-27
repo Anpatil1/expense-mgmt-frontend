@@ -36,7 +36,7 @@ function NavBar({ setIsLoggedIn, username, photoUrl }) {
                     <Link to={`/profile/${username}`} onClick={toggleNavbar}>
                         {photoUrl ? (
                             <img
-                                src={`https://expense-mgmt-production.up.railway.app/api/users/photos/${photoUrl}`}
+                                src={`/api/users/photos/${photoUrl}`}
                                 alt="User Profile"
                                 className="profile-photo"
                             />
