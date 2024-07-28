@@ -6,7 +6,7 @@ function GenerateReport() {
 
     const generateCombinedReport = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/api/reports/combined', {
+            const response = await axios.get('https://expense-mgmt-production.up.railway.app/api/reports/combined', {
                 responseType: 'blob', // Treat response as binary data
             });
 
