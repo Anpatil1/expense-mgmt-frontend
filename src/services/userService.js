@@ -23,7 +23,7 @@ const getUserById = async (id) => {
 
 const createUser = async (userDTO) => {
     try {
-        const response = await axios.post(`${API_URL}/users`, userDTO);
+        const response = await axios.post(`${API_URL}/signup`, userDTO);
         return response.data;
     } catch (error) {
         throw error.response?.data || error.message;

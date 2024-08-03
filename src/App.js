@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { HashRouter  as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
+import AdminReportComponent from './components/AdminReportComponent';
 import AdminDashboard from './components/AdminDashboard';
 import ExpenseList from './components/ExpenseList';
 import IncomeList from './components/IncomeList';
@@ -20,6 +21,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Logout from './components/Logout';
 import AdminLogin from './components/AdminLogin';
+import AdminSignup from "./components/AdminSignup";
 import Dashboard from './components/Dashboard';
 import BulkImport from './components/BulkImport';
 import PasswordReset from './components/PasswordReset';
@@ -100,6 +102,7 @@ function App() {
                     <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} updateAuthState={updateAuthState} />} />
                     <Route path="/signup" element={<Signup setIsLoggedIn={setIsLoggedIn} updateAuthState={updateAuthState} />} />
                     <Route path="/adminlogin" element={<AdminLogin setIsLoggedIn={setIsLoggedIn} updateAuthState={updateAuthState} />} />
+                    <Route path="/adminsignup" element={<AdminSignup setIsLoggedIn={setIsLoggedIn} updateAuthState={updateAuthState} />} />
                     <Route path="/resetPass" element={<PasswordReset />} />
                     <Route path="/logout" element={<Logout setIsLoggedIn={setIsLoggedIn} updateAuthState={updateAuthState} />} />
 
@@ -177,7 +180,7 @@ function App() {
                     } />
                     <Route path="/admin/reports" element={
                         <PrivateRoute isLoggedIn={isLoggedIn} isAdmin={isAdmin}>
-                            <GenerateReport />
+                            <AdminReportComponent />
                         </PrivateRoute>
                     } />
                 </Routes>

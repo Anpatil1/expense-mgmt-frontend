@@ -33,7 +33,7 @@ function Income() {
     };
 
     return (
-        <div className="income-container">
+        <div className="income-container1">
             <h2>Add Income</h2>
             <div className="add-income-form">
                 <input
@@ -41,33 +41,34 @@ function Income() {
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                     placeholder="Title"
-                    className="form-control mb-2"
+                    className="form-control1"
                 />
                 <input
                     type="number"
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
                     placeholder="Amount"
-                    className="form-control mb-2"
+                    className="form-control1"
                 />
                 <input
                     type="date"
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
-                    className="form-control mb-2"
+                    className="form-control1"
                 />
                 <textarea
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     placeholder="Description"
                     rows="4"
-                    className="form-control mb-2"
+                    className="form-control1"
                 />
                 <button onClick={handleAddIncome} className="btn btn-primary">Add Income</button>
-                {success && <div className="alert alert-success mt-2">{success}</div>}
-                {error && <div className="alert alert-danger mt-2">{error}</div>}
+                {success && <div className="alert alert-success">{success}</div>}
+                {error && <div className="alert alert-danger">{error}</div>}
             </div>
         </div>
+
     );
 }
 

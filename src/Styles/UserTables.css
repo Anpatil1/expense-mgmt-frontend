@@ -1,0 +1,119 @@
+/* UserTables.css */
+
+.table-container {
+    overflow-x: auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 30px;
+}
+
+#incomeTable, #expenseTable {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+#incomeTable thead th, #expenseTable thead th {
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 15px;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    border: none;
+}
+
+#incomeTable tbody tr, #expenseTable tbody tr {
+    transition: all 0.3s ease;
+}
+
+#incomeTable tbody tr:hover, #expenseTable tbody tr:hover {
+    background-color: #f5f5f5;
+    transform: scale(1.01);
+}
+
+#incomeTable td, #expenseTable td {
+    padding: 12px 15px;
+    vertical-align: middle;
+    border-top: 1px solid #e0e0e0;
+}
+
+.amount-cell {
+    font-weight: 600;
+}
+
+.income-amount {
+    color: #2ecc71;
+}
+
+.expense-amount {
+    color: #e74c3c;
+}
+
+.table-icon {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+.table-title {
+    font-size: 28px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.table-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+/* DataTables specific styling */
+.dataTables_wrapper .dataTables_filter input {
+    border: 2px solid #3498db;
+    border-radius: 20px;
+    padding: 5px 15px;
+    margin-left: 10px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    border-radius: 20px;
+    padding: 5px 15px;
+    margin: 0 5px;
+    border: 1px solid #3498db;
+    color: #3498db !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    color: white !important;
+    border: none;
+}
+
+/* Ensure responsiveness without switching to cards */
+@media (max-width: 768px) {
+    #incomeTable, #expenseTable {
+        font-size: 12px;
+    }
+
+    #incomeTable th, #expenseTable th,
+    #incomeTable td, #expenseTable td {
+        padding: 8px 5px;
+    }
+
+    .table-icon {
+        font-size: 14px;
+    }
+
+    .table-title {
+        font-size: 22px;
+    }
+}

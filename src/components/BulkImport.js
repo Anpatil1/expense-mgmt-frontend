@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import incomeService from '../services/incomeService';
 import expenseService from '../services/expenseService';
+import { FaFileUpload, FaMoneyBillWave, FaReceipt } from 'react-icons/fa';
+import '../Styles/BulkImport.css';
 
 function BulkImport() {
     const [file, setFile] = useState(null);
@@ -22,29 +24,39 @@ function BulkImport() {
 
         try {
             if (type === 'income') {
-                await incomeService.bulkUploadIncomes(formData); // Calls incomeService to upload incomes
+                await incomeService.bulkUploadIncomes(formData);
             } else if (type === 'expense') {
-                await expenseService.bulkUploadExpenses(formData); // Calls expenseService to upload expenses
+                await expenseService.bulkUploadExpenses(formData);
             }
             setSuccess('File uploaded successfully!');
             setError(null);
         } catch (error) {
-            console.error('Error uploading file:', error); // Log the complete error object
+            console.error('Error uploading file:', error);
             setError('Error uploading file. Please try again later.');
             setSuccess(null);
         }
     };
 
     return (
-        <div className="container">
-            <h2>Bulk Import</h2>
-            <div className="mb-4">
-                <input type="file" onChange={handleFileChange} className="form-control mb-2" />
-                <button onClick={() => handleUpload('income')} className="btn btn-primary">Upload Incomes</button>
-                <button onClick={() => handleUpload('expense')} className="btn btn-primary ml-2">Upload Expenses</button>
-                {error && <div className="alert alert-danger mt-2">{error}</div>}
-                {success && <div className="alert alert-success mt-2">{success}</div>}
+        <div className="bulk-import-container">
+            <h2 className="title"><FaFileUpload className="icon" /> Bulk Import</h2>
+            <div className="upload-section">
+                <label htmlFor="file-upload" className="custom-file-upload">
+                    <FaFileUpload className="upload-icon" />
+                    {file ? file.name : 'Choose a file'}
+                </label>
+                <input id="file-upload" type="file" onChange={handleFileChange} />
+                <div className="button-group">
+                    <button onClick={() => handleUpload('income')} className="upload-btn income-btn">
+                        <FaMoneyBillWave className="btn-icon" /> Upload Incomes
+                    </button>
+                    <button onClick={() => handleUpload('expense')} className="upload-btn expense-btn">
+                        <FaReceipt className="btn-icon" /> Upload Expenses
+                    </button>
+                </div>
             </div>
+            {error && <div className="error-message">{error}</div>}
+            {success && <div className="success-message">{success}</div>}
         </div>
     );
 }

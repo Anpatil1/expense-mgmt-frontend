@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import authService from '../services/authService';
 import '../Styles/AdminLogin.css'; // Import the CSS file
 
@@ -44,6 +44,8 @@ const AdminLogin = ({ setIsLoggedIn, updateAuthState }) => {
                     </div>
                     <button type="submit">Login</button>
                 </form>
+                <Link to="/adminsignup" className="signup-link">New admin? Sign up here</Link>
+
             </div>
         </div>
     );

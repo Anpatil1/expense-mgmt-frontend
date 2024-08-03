@@ -5,80 +5,85 @@
     align-items: center;
     height: 100vh;
     background-color: #f0f0f0; /* Light background color */
+    padding: 20px; /* Add padding for smaller screens */
 }
 
-/* Styles for the login card */
+/* Styles for the login and signup cards */
 .login-card, .signup-card {
     background: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 800px; /* Adjusted maximum width for larger screens */
+    max-width: 800px;
     display: flex;
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center align content vertically */
+    flex-direction: column; /* Stack items vertically on smaller screens */
+    align-items: center;
+    box-sizing: border-box; /* Include padding in the element's total width and height */
 }
 
 /* Content wrapper within login and signup card */
 .login-content, .signup-content {
-    width: 100%; /* Ensure content spans full width */
+    width: 100%;
     display: flex;
-    justify-content: space-between; /* Space between image and form */
-    align-items: center; /* Center align content vertically */
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allow content to wrap on smaller screens */
 }
 
 /* Styles for the form section */
 .login-form-card, .signup-form {
     flex: 1;
     padding: 20px;
-    text-align: center; /* Center align form elements */
-    width: 100%; /* Full width */
-    max-width: 400px; /* Adjust as needed */
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box; /* Include padding in the element's total width and height */
 }
 
 .login-form-card h2, .signup-form h2 {
     margin-bottom: 20px;
-    font-size: 24px; /* Larger heading */
-    color: #333; /* Darker text color */
+    font-size: 24px;
+    color: #333;
 }
 
 .input-group {
     margin-bottom: 15px;
-    text-align: left; /* Align label text to the left */
+    text-align: left;
 }
 
 .input-group label {
     display: block;
     margin-bottom: 5px;
-    color: #555; /* Label color */
+    color: #555;
 }
 
 .input-group input {
     width: 100%;
     padding: 10px;
-    font-size: 16px; /* Larger input text */
+    font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    box-sizing: border-box; /* Include padding in the element's total width and height */
 }
 
 .error-message {
     color: red;
     margin-top: 5px;
-    text-align: left; /* Align error message text to the left */
+    text-align: left;
 }
 
 .login-button, .signup-button {
     background-color: #007bff;
     color: #fff;
     border: none;
-    padding: 12px 24px; /* Larger button padding */
+    padding: 12px 24px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-size: 16px; /* Larger button text */
-    width: 100%; /* Full width button */
-    margin-top: 10px; /* Space between button and form */
+    font-size: 16px;
+    width: 100%;
+    margin-top: 10px;
 }
 
 .login-button:disabled, .signup-button:disabled {
@@ -92,16 +97,16 @@
 
 .forgot-password-link {
     margin-top: 10px;
-    font-size: 14px; /* Smaller font size */
-    color: #555; /* Link color */
-    text-align: left; /* Align link text to the left */
+    font-size: 14px;
+    color: #555;
+    text-align: left;
 }
 
 .signup-link {
     margin-top: 20px;
-    font-size: 16px; /* Larger font size */
-    color: #007bff; /* Sign up link color */
-    text-align: center; /* Center align sign up link */
+    font-size: 16px;
+    color: #007bff;
+    text-align: center;
 }
 
 .signup-link a {
@@ -120,6 +125,7 @@
     text-align: center;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Include padding in the element's total width and height */
 }
 
 .login-image, .signup-image img {
@@ -132,4 +138,15 @@
 .login-card:hover .login-image-card,
 .signup-card:hover .signup-image {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    .login-content, .signup-content {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+        align-items: center;
+    }
+    .login-image-card, .signup-image {
+        margin-bottom: 20px; /* Add margin between image and form on smaller screens */
+    }
 }

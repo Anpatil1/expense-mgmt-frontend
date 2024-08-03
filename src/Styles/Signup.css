@@ -1,27 +1,45 @@
+/* Common styles for signup containers */
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0; /* Light background color */
+    padding: 20px; /* Add padding for better spacing */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+/* Styles for the signup card */
 .signup-card {
     background: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px; /* Adjusted maximum width for smaller screens */
+    max-width: 800px; /* Adjusted maximum width for larger screens */
     display: flex;
-    flex-direction: column; /* Stack elements vertically */
+    flex-direction: row; /* Align elements horizontally */
     align-items: center;
+    box-sizing: border-box; /* Include padding in the element's total width and height */
 }
 
+/* Content wrapper within signup card */
 .signup-content {
     width: 100%; /* Ensure content spans full width */
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap; /* Allow content to wrap on smaller screens */
 }
 
+/* Styles for the form section */
 .signup-form {
     flex: 1;
     padding: 20px;
-    width: 100%; /* Ensure form spans full width */
+    width: 100%;
+    max-width: 400px; /* Adjust as needed */
     text-align: center; /* Center align form elements */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
 }
 
 .signup-form h2 {
@@ -32,14 +50,14 @@
 
 .input-group {
     margin-bottom: 15px;
-    width: 100%; /* Full width input group */
+    width: 100%;
+    text-align: left; /* Align label text to the left */
 }
 
 .input-group label {
     display: block;
     margin-bottom: 5px;
     color: #555; /* Label color */
-    text-align: left; /* Align label text to the left */
 }
 
 .input-group input {
@@ -48,6 +66,7 @@
     font-size: 16px; /* Larger input text */
     border: 1px solid #ccc;
     border-radius: 4px;
+    box-sizing: border-box; /* Include padding in the element's total width and height */
 }
 
 .error-message {
@@ -56,7 +75,7 @@
     text-align: left; /* Align error message text to the left */
 }
 
-.login-button {
+.signup-button {
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -65,24 +84,26 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-size: 16px; /* Larger button text */
-    width: 100%; /* Full width button */
-    margin-top: 10px; /* Space between button and form */
+    width: 100%;
+    margin-top: 10px;
 }
 
-.login-button:disabled {
+.signup-button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
 }
 
-.login-button:hover {
+.signup-button:hover {
     background-color: #0056b3;
 }
 
+/* Styles for the image section */
 .signup-image {
     flex: 1;
     padding: 20px;
     text-align: center;
     border-left: 2px solid #333; /* Dark border on the left */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
 }
 
 .signup-image img {
@@ -90,4 +111,20 @@
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    .signup-card {
+        flex-direction: column; /* Stack elements vertically on smaller screens */
+    }
+    .signup-content {
+        flex-direction: column; /* Stack elements vertically within the card */
+        align-items: center;
+    }
+    .signup-image {
+        border-left: none; /* Remove border on smaller screens */
+        border-top: 2px solid #333; /* Add border on the top instead */
+        margin-top: 20px; /* Add margin between form and image */
+    }
 }

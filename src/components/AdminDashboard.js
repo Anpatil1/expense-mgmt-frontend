@@ -36,8 +36,8 @@ function AdminDashboard() {
                     AdminincomeService.getAllIncomes()
                 ]);
 
-                console.log('Expenses Data:', expensesResponse.data);
-                console.log('Incomes Data:', incomesResponse.data);
+                // console.log('Expenses Data:', expensesResponse.data);
+                // console.log('Incomes Data:', incomesResponse.data);
 
                 const preparedMonthlyData = prepareMonthlyData(expensesResponse.data, incomesResponse.data);
                 const preparedYearlyData = prepareYearlyData(expensesResponse.data, incomesResponse.data);
@@ -63,16 +63,24 @@ function AdminDashboard() {
 
     const fetchTotalUsers = async () => {
         try {
-            const token = localStorage.getItem('user'); // Assuming token stored in localStorage
+            const token = localStorage.getItem('user');
             if (!token) {
                 console.error('No token found in localStorage');
                 return;
             }
 
-            const response = await userService.getAllUsers(token); // Pass token if required
-            console.log('Fetched Users:', response.data); // Log the fetched data
+            const response = await userService.getAllUsers(token);
+            // console.log('Fetched Users:', response); // Log the full response for debugging
 
-            setTotalUsers(response.data.length); // Set the total users count
+            // Assuming response.data is the array of users
+            const users = response.data || response; // Adjust based on your actual API response structure
+
+            if (Array.isArray(users)) {
+                setTotalUsers(users.length);
+            } else {
+                console.error('Unexpected response format:', users);
+                setTotalUsers(0); // Set default value or handle accordingly
+            }
         } catch (error) {
             if (error.response && error.response.status === 403) {
                 console.error('Access denied. Insufficient permissions.');
@@ -80,8 +88,15 @@ function AdminDashboard() {
             } else {
                 console.error('Error fetching users:', error);
             }
+            setTotalUsers(0); // Set default value or handle error state
         }
     };
+
+
+
+
+
+
 
     const calculateTotal = (items) => {
         return items.reduce((total, item) => total + item.amount, 0);
@@ -143,74 +158,74 @@ function AdminDashboard() {
 
 
 
-        return (
-            <div className="admin-dashboard">
-                <h2 className="dashboard-title">Admin Dashboard</h2>
-                <div className="dashboard-stats">
-                    <div className="stat-card expenses">
-                        <FaMoneyBillWave className="stat-icon" />
-                        <div className="stat-content">
-                            <h3>Total Expenses</h3>
-                            <p>{totalExpenses} ₹</p>
-                        </div>
-                    </div>
-                    <div className="stat-card incomes">
-                        <FaMoneyBillWave className="stat-icon" />
-                        <div className="stat-content">
-                            <h3>Total Incomes</h3>
-                            <p>{totalIncomes} ₹</p>
-                        </div>
-                    </div>
-                    <div className="stat-card balance">
-                        <FaBalanceScale className="stat-icon" />
-                        <div className="stat-content">
-                            <h3>Balance</h3>
-                            <p>{balance} ₹</p>
-                        </div>
-                    </div>
-                    <div className="stat-card users">
-                        <FaUsers className="stat-icon" />
-                        <div className="stat-content">
-                            <h3>Total Users</h3>
-                            <p>{totalUsers}</p>
-                        </div>
+    return (
+        <div className="admin-dashboard">
+            <h2 className="dashboard-title">Admin Dashboard</h2>
+            <div className="dashboard-stats">
+                <div className="stat-card expenses">
+                    <FaMoneyBillWave className="stat-icon" />
+                    <div className="stat-content">
+                        <h3>Total Expenses</h3>
+                        <p>{totalExpenses} ₹</p>
                     </div>
                 </div>
-                <div className="dashboard-charts">
-                    <div className="chart-container">
-                        <h3 className="chart-title">Monthly Overview</h3>
-                        <ResponsiveContainer width="100%" height={300}>
-                            <LineChart data={monthlyData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="name" />
-                                <YAxis />
-                                <Tooltip />
-                                <Legend />
-                                <Line type="monotone" dataKey="expenses" stroke="#ff6b6b" />
-                                <Line type="monotone" dataKey="incomes" stroke="#4ecdc4" />
-                            </LineChart>
-                        </ResponsiveContainer>
-                    </div>
-                    <div className="chart-container">
-                        <h3 className="chart-title">Yearly Comparison</h3>
-                        <ResponsiveContainer width="100%" height={300}>
-                            <BarChart data={yearlyData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="name" />
-                                <YAxis />
-                                <Tooltip />
-                                <Legend />
-                                <Bar dataKey="expenses" fill="#ff6b6b" />
-                                <Bar dataKey="incomes" fill="#4ecdc4" />
-                            </BarChart>
-                        </ResponsiveContainer>
+                <div className="stat-card incomes">
+                    <FaMoneyBillWave className="stat-icon" />
+                    <div className="stat-content">
+                        <h3>Total Incomes</h3>
+                        <p>{totalIncomes} ₹</p>
                     </div>
                 </div>
-                <Link to="/admin/users" className="view-users-btn">
-                    <FaUsers /> View Users
-                </Link>
+                <div className="stat-card balance">
+                    <FaBalanceScale className="stat-icon" />
+                    <div className="stat-content">
+                        <h3>Balance</h3>
+                        <p>{balance} ₹</p>
+                    </div>
+                </div>
+                <div className="stat-card users">
+                    <FaUsers className="stat-icon" />
+                    <div className="stat-content">
+                        <h3>Total Users</h3>
+                        <p>{totalUsers}</p>
+                    </div>
+                </div>
             </div>
-        );
-    }
+            <div className="dashboard-charts">
+                <div className="chart-container">
+                    <h3 className="chart-title">Monthly Overview</h3>
+                    <ResponsiveContainer width="100%" height={300}>
+                        <LineChart data={monthlyData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="name" />
+                            <YAxis />
+                            <Tooltip />
+                            <Legend />
+                            <Line type="monotone" dataKey="expenses" stroke="#ff6b6b" />
+                            <Line type="monotone" dataKey="incomes" stroke="#4ecdc4" />
+                        </LineChart>
+                    </ResponsiveContainer>
+                </div>
+                <div className="chart-container">
+                    <h3 className="chart-title">Yearly Comparison</h3>
+                    <ResponsiveContainer width="100%" height={300}>
+                        <BarChart data={yearlyData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="name" />
+                            <YAxis />
+                            <Tooltip />
+                            <Legend />
+                            <Bar dataKey="expenses" fill="#ff6b6b" />
+                            <Bar dataKey="incomes" fill="#4ecdc4" />
+                        </BarChart>
+                    </ResponsiveContainer>
+                </div>
+            </div>
+            <Link to="/admin/users" className="view-users-btn">
+                <FaUsers /> View Users
+            </Link>
+        </div>
+    );
+}
 
 export default AdminDashboard;

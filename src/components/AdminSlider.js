@@ -12,37 +12,41 @@ const AdminSlider = () => {
         setIsOpen(!isOpen);
     };
 
+    const handleLinkClick = () => {
+        setIsOpen(false);
+    };
+
     return (
         <>
             <div className={`admin-slider ${isOpen ? 'open' : ''}`}>
                 <h3>Admin Menu</h3>
                 <ul>
                     <li>
-                        <Link to="/admin-dashboard">
+                        <Link to="/admin-dashboard" onClick={handleLinkClick}>
                             <FontAwesomeIcon icon={faTachometerAlt} />
                             <span>Dashboard</span>
                         </Link>
                     </li>
                     <li>
-                        <Link to="/admin/users">
+                        <Link to="/admin/users" onClick={handleLinkClick}>
                             <FontAwesomeIcon icon={faUsers} />
                             <span>Manage Users</span>
                         </Link>
                     </li>
                     <li>
-                        <Link to="/admin/expenses">
+                        <Link to="/admin/expenses" onClick={handleLinkClick}>
                             <FontAwesomeIcon icon={faMoneyBillWave} />
                             <span>Manage Expenses</span>
                         </Link>
                     </li>
                     <li>
-                        <Link to="/admin/incomes">
+                        <Link to="/admin/incomes" onClick={handleLinkClick}>
                             <FontAwesomeIcon icon={faMoneyBillWave} />
                             <span>Manage Incomes</span>
                         </Link>
                     </li>
                     <li>
-                        <Link to="/admin/reports">
+                        <Link to="/admin/reports" onClick={handleLinkClick}>
                             <FontAwesomeIcon icon={faChartBar} />
                             <span>Generate Reports</span>
                         </Link>

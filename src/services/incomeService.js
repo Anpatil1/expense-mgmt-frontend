@@ -25,9 +25,9 @@ const incomeService = {
             throw error;
         }
     },
-    updateIncome: async (income) => {
+    updateIncome: async (id, income) => { // Updated to include the ID parameter
         try {
-            const response = await axiosInstance.put('/api/incomes', income);
+            const response = await axiosInstance.put(`/api/incomes/${id}`, income); // Updated URL to include ID
             return response.data;
         } catch (error) {
             throw error;
@@ -53,6 +53,5 @@ const incomeService = {
         }
     }
 };
-
 
 export default incomeService;

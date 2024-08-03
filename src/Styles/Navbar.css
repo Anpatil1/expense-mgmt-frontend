@@ -1,102 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 60px;
-    padding: 0 20px;
-    background-color: #6b73ff;
-    color: white;
-    font-family: 'Arial', sans-serif;
+    padding: 0.5rem ;
+    background-color: #007bff; /* Blue background */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    z-index: 1000;
 }
 
 .navbar-logo {
     display: flex;
     align-items: center;
-}
-
-.logo-image {
-    width: 30px;
-    height: auto;
-    margin-right: 10px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #fff;
+    text-transform: uppercase;
+    animation: fadeIn 1s ease-in-out;
 }
 
 .navbar-logo a {
-    color: white;
+    display: flex;
+    align-items: center;
+    color: #fff;
     text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: bold;
+}
+
+.navbar-logo img {
+    height: 40px;
+    margin-right: 10px;
 }
 
 .navbar-links {
     display: flex;
     align-items: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.navbar-links a, .logout-button {
-    color: white;
-    text-decoration: none;
-    font-size: 1rem;
+.navbar-links a,
+.navbar-links button {
     margin-left: 20px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1rem;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    animation: fadeInUp 0.8s ease-in-out;
 }
 
-.logout-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
+.navbar-links a::after,
+.navbar-links button::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: #f39c12;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease-in-out;
+    z-index: -1;
+}
+
+.navbar-links a:hover::after,
+.navbar-links button:hover::after {
+    transform: translateX(0);
 }
 
 .profile-circle {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    background-color: white;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #6b73ff;
-    font-size: 0.9rem;
-    font-weight: bold;
+    background-color: #ddd;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
     margin-left: 20px;
 }
 
-.profile-circle a {
-    color: #6b73ff;
-    text-decoration: none;
+.profile-circle:hover {
+    transform: scale(1.1);
+}
+
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-placeholder {
+    font-size: 20px;
+    color: #666;
 }
 
 .navbar-toggler {
     display: none;
     background: none;
     border: none;
-    color: white;
-    font-size: 1.5rem;
+    font-size: 24px;
     cursor: pointer;
+    color: #fff;
+    transition: transform 0.3s ease-in-out;
+    position: absolute;
+    right: 20px;
+    z-index: 1001; /* Ensure it's above the sidebar */
+}
+
+.navbar-toggler:hover {
+    transform: rotate(90deg);
 }
 
 @media (max-width: 768px) {
-    .navbar {
-        flex-wrap: wrap;
-    }
-
     .navbar-links {
-        display: none;
-        width: 100%;
+        display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        padding: 1rem 0;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100%;
+        background-color: #007bff; /* Blue background */
+        width: 250px;
+        padding: 20px;
+        box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        transform: translateX(100%);
+        opacity: 0;
+        visibility: hidden;
     }
 
     .navbar-links.active {
-        display: flex;
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
     }
 
-    .navbar-links a, .logout-button, .profile-circle {
-        margin: 10px 0;
+    .navbar-links a,
+    .navbar-links button {
+        margin: 20px 0;
+        font-size: 1.2rem;
+        width: 100%;
+        text-align: center;
+        color: #fff; /* Ensure text color is white */
+    }
+
+    .navbar-logo {
+        font-size: 1.2rem;
     }
 
     .navbar-toggler {
         display: block;
+    }
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

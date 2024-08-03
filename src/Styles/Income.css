@@ -1,20 +1,23 @@
 /* Income.css */
-
-.income-container {
-    max-width: 600px;
-    margin: 0 auto;
+/* Scoped container for the income form */
+.income-container1 {
+    max-width: 600px; /* Set a maximum width to ensure it doesn't get too wide */
+    margin: 20px auto;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Add Income Form */
 .add-income-form {
     display: flex;
     flex-direction: column;
 }
 
-.form-control {
+/* Form control styles */
+.income-container1 .form-control1 {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -22,7 +25,8 @@
     border: 1px solid #ccc;
 }
 
-.btn {
+/* Button styles */
+.income-container1 .btn {
     padding: 10px 15px;
     color: #fff;
     background-color: #007bff;
@@ -30,31 +34,71 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-.btn-primary {
+.income-container1 .btn-primary {
     background-color: #007bff;
 }
 
-.alert {
-    padding: 10px;
-    border-radius: 4px;
+.income-container1 .btn:hover {
+    background-color: #0056b3;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-.alert-success {
+/* Alert styles */
+.income-container1 .alert {
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.income-container1 .alert-success {
     background-color: #d4edda;
     color: #155724;
 }
 
-.alert-danger {
+.income-container1 .alert-danger {
     background-color: #f8d7da;
     color: #721c24;
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .income-container1 {
+        padding: 15px;
+        max-width: 90%; /* Ensure the form is responsive on medium screens */
+    }
+
+    .income-container1 .btn {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .income-container1 {
+        padding: 10px;
+        max-width: 100%; /* Full width on very small screens */
+    }
+
+    .income-container1 .btn {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    .income-container1 .form-control1 {
+        padding: 8px;
+        font-size: 14px;
+    }
+}
+
+
 /* IncomeList.css */
 
 /* Container for the income list */
 .income-list-container {
-    max-width: 800px;
+    max-width: 90%;
     margin: 20px auto;
     padding: 20px;
     border: 1px solid #ddd;
@@ -125,7 +169,7 @@
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .income-list-container .btn-edit {
@@ -135,6 +179,7 @@
 
 .income-list-container .btn-edit:hover {
     background-color: #45a049;
+    transform: scale(1.05);
 }
 
 .income-list-container .btn-delete {
@@ -144,6 +189,7 @@
 
 .income-list-container .btn-delete:hover {
     background-color: #da190b;
+    transform: scale(1.05);
 }
 
 /* Edit income form styles */
@@ -163,4 +209,42 @@
 
 .edit-income-form .form-group {
     margin-bottom: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .income-container, .income-list-container {
+        padding: 15px;
+    }
+
+    .btn {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    .income-list-container .table th, .income-list-container .table td {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .income-container, .income-list-container {
+        padding: 10px;
+    }
+
+    .btn {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    .income-list-container .table th, .income-list-container .table td {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    .form-control {
+        padding: 8px;
+        font-size: 14px;
+    }
 }

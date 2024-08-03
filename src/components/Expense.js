@@ -59,12 +59,12 @@ function Expense() {
     };
 
     return (
-        <div className="container expense-container">
+        <div className="expense-container">
             <h2>Add Expense</h2>
             {successMessage && <div className="success-message">{successMessage}</div>}
             {errorMessage && <div className="error-message">{errorMessage}</div>}
             <form onSubmit={handleAddExpense}>
-                <div className="form-group">
+                <div className="form-group1">
                     <label htmlFor="title">Title:</label>
                     <input
                         type="text"
@@ -75,29 +75,29 @@ function Expense() {
                         required
                     />
                 </div>
-                <div className="form-group">
+                <div className="form-group1">
                     <label htmlFor="amount">Amount:</label>
                     <input
                         type="number"
                         id="amount"
                         value={amount}
                         onChange={(e) => setAmount(Number(e.target.value))}
-                        className="form-control"
+                        className="form-control1"
                         required
                     />
                 </div>
-                <div className="form-group">
+                <div className="form-group1">
                     <label htmlFor="date">Date:</label>
                     <input
                         type="date"
                         id="date"
                         value={date}
                         onChange={(e) => setDate(e.target.value)}
-                        className="form-control"
+                        className="form-control1"
                         required
                     />
                 </div>
-                <div className="form-group">
+                <div className="form-group1">
                     <label htmlFor="description">Description:</label>
                     <textarea
                         id="description"
@@ -107,20 +107,21 @@ function Expense() {
                         className="form-control"
                     />
                 </div>
-                <div className="form-group">
+                <div className="form-group1">
                     <label htmlFor="userId">User ID:</label>
                     <input
                         type="text"
                         id="userId"
                         value={userId}
                         onChange={(e) => setUserId(e.target.value)}
-                        className="form-control"
+                        className="form-control1"
                         required
                     />
                 </div>
-                <button type="submit" className="btn btn-primary">Add Expense</button>
+                <button type="submit" className="btn-primary">Add Expense</button>
             </form>
         </div>
+
     );
 }
 

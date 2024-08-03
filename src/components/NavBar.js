@@ -1,13 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import authService from '../services/authService';
 import '../Styles/Navbar.css';
 import logo from '../assests/logo.png';
-import { FaBars, FaTimes } from 'react-icons/fa'; // Import icons
+import { FaBars, FaTimes, FaUser } from 'react-icons/fa';
 
 function NavBar({ setIsLoggedIn, username, photoUrl }) {
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
+    const [profileImage, setProfileImage] = useState(null);
+
+    useEffect(() => {
+        if (photoUrl) {
+            fetch(`http://localhost:8080/api/users/photos/${photoUrl}`)
+                .then(response => response.blob())
+                .then(blob => {
+                    const objectURL = URL.createObjectURL(blob);
+                    setProfileImage(objectURL);
+                })
+                .catch(error => console.error('Error loading profile image:', error));
+        }
+    }, [photoUrl]);
 
     const handleLogout = () => {
         authService.logout();
@@ -24,7 +37,7 @@ function NavBar({ setIsLoggedIn, username, photoUrl }) {
             <div className="navbar-logo">
                 <Link to="/">
                     <img src={logo} alt="Expense Management Logo" className="logo-image" />
-                    Expense Management
+                    <span>Expense Management</span>
                 </Link>
             </div>
             <div className={`navbar-links ${isOpen ? 'active' : ''}`}>
@@ -34,14 +47,14 @@ function NavBar({ setIsLoggedIn, username, photoUrl }) {
                 </button>
                 <div className="profile-circle">
                     <Link to={`/profile/${username}`} onClick={toggleNavbar}>
-                        {photoUrl ? (
+                        {profileImage ? (
                             <img
-                                src={`/api/users/photos/${photoUrl}`}
+                                src={profileImage}
                                 alt="User Profile"
                                 className="profile-photo"
                             />
                         ) : (
-                            <span className="profile-placeholder">P</span>
+                            <FaUser className="profile-placeholder" />
                         )}
                     </Link>
                 </div>
