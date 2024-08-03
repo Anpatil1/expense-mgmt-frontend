@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../Styles/Home.css';
-import { FaChartLine, FaUserCog, FaUserTie, FaRegChartBar, FaWallet, FaFileAlt } from 'react-icons/fa';
+import { FaChartLine, FaUserCog, FaUserTie, FaRegChartBar, FaWallet, FaFileAlt, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 function Home() {
+    const [currentCard, setCurrentCard] = useState(0);
+    const cards = [
+        { icon: <FaChartLine />, title: "Track Expenses", description: "Easily monitor your spending habits and stay on top of your finances" },
+        { icon: <FaRegChartBar />, title: "Analyze Data", description: "Gain valuable insights into your financial patterns and make informed decisions" },
+        { icon: <FaWallet />, title: "Budget Planning", description: "Set and manage your budgets to achieve your financial goals effectively" },
+        { icon: <FaFileAlt />, title: "Report Generation", description: "Create detailed financial reports to visualize your progress and plan for the future" }
+    ];
+
+    const nextCard = () => {
+        setCurrentCard((prev) => (prev + 1) % cards.length);
+    };
+
+    const prevCard = () => {
+        setCurrentCard((prev) => (prev - 1 + cards.length) % cards.length);
+    };
+
     return (
         <div className="home-container">
             <div className="home-content">
@@ -23,26 +39,21 @@ function Home() {
             </div>
 
             <div className="cards-container">
-                <div className="card">
-                    <FaChartLine className="card-icon" />
-                    <h3>Track Expenses</h3>
-                    <p>Easily monitor your spending habits and stay on top of your finances</p>
+                <button className="slider-button slider-button-left" onClick={prevCard}>
+                    <FaChevronLeft />
+                </button>
+                <div className="cards-slider" style={{ transform: `translateX(-${currentCard * 330}px)` }}>
+                    {cards.map((card, index) => (
+                        <div key={index} className="card">
+                            <div className="card-icon">{card.icon}</div>
+                            <h3>{card.title}</h3>
+                            <p>{card.description}</p>
+                        </div>
+                    ))}
                 </div>
-                <div className="card">
-                    <FaRegChartBar className="card-icon" />
-                    <h3>Analyze Data</h3>
-                    <p>Gain valuable insights into your financial patterns and make informed decisions</p>
-                </div>
-                <div className="card">
-                    <FaWallet className="card-icon" />
-                    <h3>Budget Planning</h3>
-                    <p>Set and manage your budgets to achieve your financial goals effectively</p>
-                </div>
-                <div className="card">
-                    <FaFileAlt className="card-icon" />
-                    <h3>Report Generation</h3>
-                    <p>Create detailed financial reports to visualize your progress and plan for the future</p>
-                </div>
+                <button className="slider-button slider-button-right" onClick={nextCard}>
+                    <FaChevronRight />
+                </button>
             </div>
         </div>
     );

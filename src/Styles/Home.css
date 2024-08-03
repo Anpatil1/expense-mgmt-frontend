@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assests/img .png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assests/img .png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -90,13 +90,16 @@
 }
 
 .cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
-    margin: 40px 0;
+    position: relative;
     width: 100%;
     max-width: 1200px;
+    margin: 40px 0;
+    overflow: hidden;
+}
+
+.cards-slider {
+    display: flex;
+    transition: transform 0.3s ease;
 }
 
 .card {
@@ -105,8 +108,8 @@
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
-    flex: 1 1 250px;
-    max-width: 300px;
+    flex: 0 0 300px;
+    margin: 0 15px;
     text-align: center;
 }
 
@@ -121,7 +124,7 @@
     color: #4caf50;
 }
 
-.card h3, .card h4 {
+.card h3 {
     font-size: 1.5rem;
     margin-bottom: 15px;
     color: #1a237e;
@@ -132,6 +135,35 @@
     color: #37474f;
 }
 
+.slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 20;
+}
+
+.slider-button:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.slider-button-left {
+    left: 10px;
+}
+
+.slider-button-right {
+    right: 10px;
+}
 @media (max-width: 768px) {
     .home-title {
         font-size: 2.5rem;
@@ -144,16 +176,6 @@
     .home-button {
         font-size: 1rem;
         padding: 12px 25px;
-    }
-
-    .cards-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .card {
-        width: 100%;
-        max-width: 100%;
     }
 }
 
