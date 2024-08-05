@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://expense-backend-ts5x.onrender.com/admin/report/';
+const API_URL = 'https://expense-backend-1-hnul.onrender.com/admin/report/';
 
 class AdminReportService {
     getUsersReport(startDate, endDate) {
