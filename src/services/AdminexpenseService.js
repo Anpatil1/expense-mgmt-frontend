@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://expense-mgmt-production.up.railway.app/api/admin'; // Change to your API URL
+const API_URL = 'https://expense-backend-ts5x.onrender.com/api/admin'; // Change to your API URL
 
 const getAllExpenses = async () => {
     try {

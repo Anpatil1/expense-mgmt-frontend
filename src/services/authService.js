@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://expense-mgmt-production.up.railway.app/api/auth';
+const API_URL = 'https://expense-backend-ts5x.onrender.com/api/auth';
 
 const login = async (username, password, role) => {
     try {
