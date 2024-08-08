@@ -1,70 +1,138 @@
-# Getting Started with Create React App
+<div align="center">
+  <img src="prj_screenshots/logo.png" alt="Expense Management System" width="200">
+  <h1>Expense Management System</h1>
+</div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+  <a href="https://expense-management-app1.netlify.app/">
+    <img src="https://img.shields.io/website?url=https%3A%2F%2Fexpense-management-app1.netlify.app%2F" alt="Website Status">
+  </a>
+  <a href="https://github.com/your-username/expense-management-system/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/your-username/expense-management-system" alt="License">
+  </a>
+  <a href="https://github.com/your-username/expense-management-system/stargazers">
+    <img src="https://img.shields.io/github/stars/your-username/expense-management-system" alt="Stars">
+  </a>
+  <a href="https://github.com/your-username/expense-management-system/issues">
+    <img src="https://img.shields.io/github/issues/your-username/expense-management-system" alt="Issues">
+  </a>
+</div>
 
-## Available Scripts
+## 📋 Table of Contents
+- [About the Project](#about-the-project)
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Technologies Used](#technologies-used)
+- [Installation and Setup](#installation-and-setup)
+- [Contributing](#contributing)
+- [License](#license)
 
-In the project directory, you can run:
+## 💡 About the Project
+The **Expense Management System** is a comprehensive web application that helps users and administrators manage their expenses and incomes efficiently. Built using React.js for the frontend, Spring Boot for the backend, and MySQL as the database, it provides a seamless experience for financial management.
 
-### `npm start`
+## ✨ Features
+The Expense Management System offers the following features:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **🔒 User Authentication**: Users can sign up, log in, and log out of the system.
+- **📊 Dashboard**: Users and administrators can view their expenses, incomes, and overall financial status on their respective dashboards.
+- **💸 Expense Management**: Users can add, edit, and view their expenses.
+- **💰 Income Management**: Users can add, edit, and view their incomes.
+- **📂 Bulk Import**: Administrators can import expenses and incomes in bulk using a CSV file.
+- **👥 User Management**: Administrators can view, edit, and manage user accounts.
+- **📑 Reporting**: Administrators can generate detailed reports on expenses, incomes, and user activities.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📷 Screenshots
+Here are the screenshots of the various pages in the Expense Management System:
 
-### `npm test`
+1. **Admin Dashboard Page**:
+   ![Admin Dashboard Page](prj_screenshots/admin_dashboard_page.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. **Bulk Import Page**:
+   ![Bulk Import Page](prj_screenshots/bulk_import_page.png)
 
-### `npm run build`
+3. **Edit User Profile Page**:
+   ![Edit User Profile Page](prj_screenshots/edit_user_profile_page.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. **Expense Add Page**:
+   ![Expense Add Page](prj_screenshots/expense_add_page.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+5. **Expense List Page**:
+   ![Expense List Page](prj_screenshots/expense_list_page.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+6. **Income Add Page**:
+   ![Income Add Page](prj_screenshots/income_add_page.png)
 
-### `npm run eject`
+7. **Login Page**:
+   ![Login Page](prj_screenshots/login_page.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+8. **Main Page**:
+   ![Main Page](prj_screenshots/main_page.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+9. **Admin Reports Page**:
+   ![Admin Reports Page](prj_screenshots/admin_reports_page.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+10. **Signup Page**:
+    ![Signup Page](prj_screenshots/signup_page.png)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+11. **User Dashboard Page**:
+    ![User Dashboard Page](prj_screenshots/user_dashboard_page.png)
 
-## Learn More
+12. **User Expense List Page**:
+    ![User Expense List Page](prj_screenshots/user_expense_list_page.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+13. **User Income List Page**:
+    ![User Income List Page](prj_screenshots/user_income_list_page.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+14. **User List Page**:
+    ![User List Page](prj_screenshots/user_list_page.png)
 
-### Code Splitting
+15. **User Expense List Page (Admin)**:
+    ![User Expense List Page (Admin)](prj_screenshots/userexpense_list_page.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+16. **User Profile Page**:
+    ![User Profile Page](prj_screenshots/userprofile_page.png)
 
-### Analyzing the Bundle Size
+17. **User Reports Page**:
+    ![User Reports Page](prj_screenshots/userreport_page.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🛠 Technologies Used
+The Expense Management System is built using the following technologies:
 
-### Making a Progressive Web App
+- **Frontend**:
+    - ![React.js](https://img.shields.io/badge/-React.js-61DAFB?logo=react&logoColor=white)
+    - ![React Router](https://img.shields.io/badge/-React%20Router-CA4245?logo=react-router&logoColor=white)
+    - ![Bootstrap](https://img.shields.io/badge/-Bootstrap-7952B3?logo=bootstrap&logoColor=white)
+- **Backend**:
+    - ![Spring Boot](https://img.shields.io/badge/-Spring%20Boot-6DB33F?logo=spring&logoColor=white)
+    - ![Spring Security](https://img.shields.io/badge/-Spring%20Security-6DB33F?logo=spring&logoColor=white)
+    - ![MySQL](https://img.shields.io/badge/-MySQL-4479A1?logo=mysql&logoColor=white)
+- **Database**:
+    - ![MySQL](https://img.shields.io/badge/-MySQL-4479A1?logo=mysql&logoColor=white)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## ⚙️ Installation and Setup
+To set up the Expense Management System, follow these steps:
 
-### Advanced Configuration
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/expense-management-system.git
+2. **Set up the backend (Spring Boot):**
+- Install Java and Maven.
+- Update the application.properties file with your MySQL database credentials.
+- Run the Spring Boot application.
+- Set up the frontend (React.js):
+- Install Node.js and npm.
+- Navigate to the frontend directory and run npm install to install the dependencies.
+- Run npm start to start the development server.
+- Once the setup is complete, you can access the Expense Management System at http://localhost:3000.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🤝 Contributing
+- If you'd like to contribute to the Expense Management System, please follow these guidelines:
 
-### Deployment
+- Fork the repository.
+ - Create a new branch for your feature or bug fix.
+- Make your changes and commit them.
+- Push your changes to your forked repository.
+- Create a pull request to the main repository.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📜 License
+The Expense Management System is licensed under the MIT License.
