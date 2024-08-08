@@ -114,7 +114,7 @@ To set up the Expense Management System, follow these steps:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/expense-management-system.git
+   git clone [https://github.com/Anpatil1/expense-mgmt-frontend.git]
 2. **Set up the backend (Spring Boot):**
 - Install Java and Maven.
 - Update the application.properties file with your MySQL database credentials.
