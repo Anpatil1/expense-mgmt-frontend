@@ -45,55 +45,55 @@ The Expense Management System offers the following features:
 Here are the screenshots of the various pages in the Expense Management System:
 
 1. **Admin Dashboard Page**:
-   ![Admin Dashboard Page](prj_screenshots/Admin_Dashboard_page.png)
+   ![Admin Dashboard Page](prj_screenshots/admin_dashboard_page.png)
 
 2. **Bulk Import Page**:
-   ![Bulk Import Page](prj_screenshots/Bulk_import_page.png)
+   ![Bulk Import Page](prj_screenshots/bulk_import_page.png)
 
 3. **Edit User Profile Page**:
-   ![Edit User Profile Page](prj_screenshots/Edit_User_profile_page.png)
+   ![Edit User Profile Page](prj_screenshots/edit_user_profile_page.png)
 
 4. **Expense Add Page**:
-   ![Expense Add Page](prj_screenshots/Expense_add_page.png)
+   ![Expense Add Page](prj_screenshots/expense_add_page.png)
 
 5. **Expense List Page**:
-   ![Expense List Page](prj_screenshots/Expense_List_Page.png)
+   ![Expense List Page](prj_screenshots/expense_list_page.png)
 
 6. **Income Add Page**:
-   ![Income Add Page](prj_screenshots/Income_add_page.png)
+   ![Income Add Page](prj_screenshots/income_add_page.png)
 
 7. **Login Page**:
-   ![Login Page](prj_screenshots/Login_page.png)
+   ![Login Page](prj_screenshots/login_page.png)
 
 8. **Main Page**:
-   ![Main Page](prj_screenshots/Main_Page.png)
+   ![Main Page](prj_screenshots/main_page.png)
 
 9. **Admin Reports Page**:
-   ![Admin Reports Page](prj_screenshots/Admin_Reports_Page.png)
+   ![Admin Reports Page](prj_screenshots/admin_reports_page.png)
 
 10. **Signup Page**:
-    ![Signup Page](prj_screenshots/Signup_page.png)
+    ![Signup Page](prj_screenshots/signup_page.png)
 
 11. **User Dashboard Page**:
-    ![User Dashboard Page](prj_screenshots/User_Dashboard_page.png)
+    ![User Dashboard Page](prj_screenshots/user_dashboard_page.png)
 
 12. **User Expense List Page**:
-    ![User Expense List Page](prj_screenshots/User_ExpenseList_page.png)
+    ![User Expense List Page](prj_screenshots/user_expense_list_page.png)
 
 13. **User Income List Page**:
-    ![User Income List Page](prj_screenshots/User_income-List_page.png)
+    ![User Income List Page](prj_screenshots/user_income_list_page.png)
 
 14. **User List Page**:
-    ![User List Page](prj_screenshots/User_list_Page.png)
+    ![User List Page](prj_screenshots/user_list_page.png)
 
 15. **User Expense List Page (Admin)**:
-    ![User Expense List Page (Admin)](prj_screenshots/UserExpense_list_page.png)
+    ![User Expense List Page (Admin)](prj_screenshots/userexpense_list_page.png)
 
 16. **User Profile Page**:
-    ![User Profile Page](prj_screenshots/UserProfile_page.png)
+    ![User Profile Page](prj_screenshots/userprofile_page.png)
 
 17. **User Reports Page**:
-    ![User Reports Page](prj_screenshots/UserReport_page.png)
+    ![User Reports Page](prj_screenshots/userreport_page.png)
 
 ## 🛠 Technologies Used
 The Expense Management System is built using the following technologies:
@@ -116,28 +116,23 @@ To set up the Expense Management System, follow these steps:
    ```bash
    git clone https://github.com/your-username/expense-management-system.git
 2. **Set up the backend (Spring Boot):**
-
 - Install Java and Maven.
 - Update the application.properties file with your MySQL database credentials.
 - Run the Spring Boot application.
-- 
-3. **Set up the frontend (React.js):**
-
+- Set up the frontend (React.js):
 - Install Node.js and npm.
 - Navigate to the frontend directory and run npm install to install the dependencies.
 - Run npm start to start the development server.
-
-4.**Access the application:**
-
 - Once the setup is complete, you can access the Expense Management System at http://localhost:3000.
 
 ## 🤝 Contributing
-
-If you'd like to contribute to the Expense Management System, please follow these guidelines:
+- If you'd like to contribute to the Expense Management System, please follow these guidelines:
 
 - Fork the repository.
-- Create a new branch for your feature or bug fix.
+ - Create a new branch for your feature or bug fix.
 - Make your changes and commit them.
 - Push your changes to your forked repository.
 - Create a pull request to the main repository.
-- Your pull request will be reviewed and merged.
+
+## 📜 License
+The Expense Management System is licensed under the MIT License.
