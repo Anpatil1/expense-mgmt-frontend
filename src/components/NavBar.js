@@ -12,7 +12,7 @@ function NavBar({ setIsLoggedIn, username, photoUrl }) {
 
     useEffect(() => {
         if (photoUrl) {
-            fetch(`https://expense-backend-1-hnul.onrender.com/api/users/photos/${photoUrl}`)
+            fetch(`https://expensemanagementapplication-7izlsyxp.b4a.run/api/users/photos/${photoUrl}`)
                 .then(response => response.blob())
                 .then(blob => {
                     const objectURL = URL.createObjectURL(blob);
