@@ -1,5 +1,5 @@
 import axios from 'axios';
-import jwt_decode from 'jwt-decode';
+import * as jwt_decode from 'jwt-decode';
 
 const API_URL = 'https://expensemanagementapplication-7izlsyxp.b4a.run/api/auth';
 
