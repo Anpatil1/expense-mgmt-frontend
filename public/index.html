@@ -3,23 +3,39 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  <meta name="theme-color" content="#000000">
-  <title>Expense Management</title>
-  <link rel="icon" href="%PUBLIC_URL%/logo192.png">
+  <meta name="theme-color" content="#007bff">
+  <title>Smart Expense Management</title>
   <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png">
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <link rel="stylesheet" href="%PUBLIC_URL%/index.css">
 </head>
 <body>
 <noscript>
-  You need to enable JavaScript to run this app.
+  <div class="alert alert-danger text-center">
+    <i class="fas fa-exclamation-triangle"></i> You need to enable JavaScript to run this app.
+  </div>
 </noscript>
 <div id="root"></div>
+<div id="loader" class="full-page-loader">
+  <div class="spinner-border text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.1/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.1/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router-dom/5.2.0/react-router-dom.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+<script>
+  window.addEventListener('load', function() {
+    document.getElementById('loader').style.display = 'none';
+    gsap.from('#root', {duration: 1, opacity: 0, ease: 'power2.out'});
+  });
+</script>
 </body>
 </html>
