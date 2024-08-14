@@ -18,7 +18,6 @@ function Expense() {
         setUser(currentUser);
     }, []);
 
-
     const handleAddExpense = async (e) => {
         e.preventDefault();
         try {
@@ -28,7 +27,7 @@ function Expense() {
                 throw new Error('User not authenticated');
             }
 
-            if (!user.id) {
+            if (!user.userId) { // Ensure user ID is present
                 throw new Error('User ID is missing');
             }
 
@@ -37,7 +36,7 @@ function Expense() {
                 amount,
                 date: new Date(date).toISOString(),
                 description,
-                userId: user.id // Use userId instead of username
+                userId: user.userId // Use userId instead of username
             };
 
             console.log('New expense object:', newExpense);
@@ -66,7 +65,6 @@ function Expense() {
             setErrorMessage(`Failed to add expense: ${error.message}`);
         }
     };
-
 
     if (!user) {
         return <div>Loading user information... If this persists, please log in again.</div>;
