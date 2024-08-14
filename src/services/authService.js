@@ -12,7 +12,9 @@ const login = async (username, password, role) => {
 
         if (response.data.token) {
             const userData = {
-                ...response.data,
+                token: response.data.token,
+                username: response.data.username,
+                userId: response.data.userId, // Extract user ID from response
                 role: role
             };
             localStorage.setItem('user', JSON.stringify(userData));
@@ -23,6 +25,7 @@ const login = async (username, password, role) => {
         throw error.response?.data || error.message;
     }
 };
+
 
 const signup = async (username, email, password) => {
     try {
