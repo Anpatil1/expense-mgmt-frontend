@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import expenseService from '../services/expenseService';
-import authService from '../services/authService'; // Import the auth service
+import authService from '../services/authService';
 import '../Styles/Expense.css';
 
 function Expense() {
@@ -14,14 +14,21 @@ function Expense() {
 
     useEffect(() => {
         const currentUser = authService.getCurrentUser();
+        console.log('Current user:', currentUser); // Log the current user
         setUser(currentUser);
     }, []);
 
     const handleAddExpense = async (e) => {
         e.preventDefault();
         try {
-            if (!user || !user.id) {
+            console.log('User state:', user); // Log the user state
+
+            if (!user) {
                 throw new Error('User not authenticated');
+            }
+
+            if (!user.id) {
+                throw new Error('User ID is missing');
             }
 
             const newExpense = {
@@ -29,8 +36,10 @@ function Expense() {
                 amount,
                 date: new Date(date).toISOString(),
                 description,
-                userId: user.id // Use the user ID from the authenticated user
+                userId: user.id.toString() // Ensure userId is a string
             };
+
+            console.log('New expense object:', newExpense); // Log the new expense object
 
             const response = await expenseService.addExpense(newExpense);
             console.log('Expense added successfully:', response);
@@ -53,12 +62,12 @@ function Expense() {
 
         } catch (error) {
             console.error('Error adding expense:', error);
-            setErrorMessage(`Failed to add expense: ${error.response?.data || error.message}`);
+            setErrorMessage(`Failed to add expense: ${error.message}`);
         }
     };
 
     if (!user) {
-        return <div>Please log in to add expenses.</div>;
+        return <div>Loading user information... If this persists, please log in again.</div>;
     }
 
     return (
