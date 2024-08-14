@@ -14,21 +14,21 @@ function Expense() {
 
     useEffect(() => {
         const currentUser = authService.getCurrentUser();
-        console.log('Current user:', currentUser); // Log the current user
+        console.log('Current user:', currentUser);
         setUser(currentUser);
     }, []);
 
     const handleAddExpense = async (e) => {
         e.preventDefault();
         try {
-            console.log('User state:', user); // Log the user state
+            console.log('User state:', user);
 
             if (!user) {
                 throw new Error('User not authenticated');
             }
 
-            if (!user.id) {
-                throw new Error('User ID is missing');
+            if (!user.username) {
+                throw new Error('Username is missing');
             }
 
             const newExpense = {
@@ -36,10 +36,10 @@ function Expense() {
                 amount,
                 date: new Date(date).toISOString(),
                 description,
-                userId: user.id.toString() // Ensure userId is a string
+                userId: user.username // Use username instead of id
             };
 
-            console.log('New expense object:', newExpense); // Log the new expense object
+            console.log('New expense object:', newExpense);
 
             const response = await expenseService.addExpense(newExpense);
             console.log('Expense added successfully:', response);
@@ -76,6 +76,7 @@ function Expense() {
             {successMessage && <div className="success-message">{successMessage}</div>}
             {errorMessage && <div className="error-message">{errorMessage}</div>}
             <form onSubmit={handleAddExpense}>
+                {/* Form fields remain the same */}
                 <div className="form-group1">
                     <label htmlFor="title">Title:</label>
                     <input
