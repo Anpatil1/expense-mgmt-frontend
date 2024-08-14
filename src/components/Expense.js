@@ -1,37 +1,40 @@
-import React, { useState } from 'react';
-import expenseService from '../services/expenseService'; // Ensure the path is correct
-import '../Styles/Expense.css'; // Import the CSS file for styling
+import React, { useState, useEffect } from 'react';
+import expenseService from '../services/expenseService';
+import authService from '../services/authService'; // Import the auth service
+import '../Styles/Expense.css';
 
 function Expense() {
     const [title, setTitle] = useState('');
     const [amount, setAmount] = useState(0);
     const [date, setDate] = useState('');
     const [description, setDescription] = useState('');
-    const [userId, setUserId] = useState(''); // Ensure this matches the format expected by your backend
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const currentUser = authService.getCurrentUser();
+        setUser(currentUser);
+    }, []);
 
     const handleAddExpense = async (e) => {
         e.preventDefault();
         try {
-            // Ensure userId is valid
-            if (!userId || isNaN(userId)) {
-                throw new Error('Invalid userId format');
+            if (!user || !user.id) {
+                throw new Error('User not authenticated');
             }
 
             const newExpense = {
                 title,
                 amount,
-                date: new Date(date).toISOString(), // Ensure date format is consistent
+                date: new Date(date).toISOString(),
                 description,
-                userId: parseInt(userId, 10) // Ensure userId is in the expected format (e.g., number)
+                userId: user.id // Use the user ID from the authenticated user
             };
 
-            // Add the expense
             const response = await expenseService.addExpense(newExpense);
             console.log('Expense added successfully:', response);
 
-            // Set success message
             setSuccessMessage('Expense added successfully!');
 
             // Clear the form fields
@@ -39,14 +42,10 @@ function Expense() {
             setAmount(0);
             setDate('');
             setDescription('');
-            setUserId(''); // Clear userId field
 
-            // Hide the success message after a few seconds
             setTimeout(() => setSuccessMessage(''), 3000);
 
-            // Ensure the response has the required data
             if (response && response.data && response.data.id) {
-                // Send confirmation email
                 await expenseService.sendConfirmationEmail(response.data.id);
             } else {
                 console.error('Error: Response does not contain required data.');
@@ -57,6 +56,10 @@ function Expense() {
             setErrorMessage(`Failed to add expense: ${error.response?.data || error.message}`);
         }
     };
+
+    if (!user) {
+        return <div>Please log in to add expenses.</div>;
+    }
 
     return (
         <div className="expense-container">
@@ -107,21 +110,9 @@ function Expense() {
                         className="form-control"
                     />
                 </div>
-                <div className="form-group1">
-                    <label htmlFor="userId">User ID:</label>
-                    <input
-                        type="text"
-                        id="userId"
-                        value={userId}
-                        onChange={(e) => setUserId(e.target.value)}
-                        className="form-control1"
-                        required
-                    />
-                </div>
                 <button type="submit" className="btn-primary">Add Expense</button>
             </form>
         </div>
-
     );
 }
 
