@@ -46,6 +46,7 @@ function Slider() {
                     </ul>
                 </nav>
             </div>
+            {/* This div should be moved to your navbar component */}
             <div className="slider-toggle" onClick={toggleSlider}>
                 <div className={`toggle-button ${isOpen ? 'open' : ''}`}>
                     <span></span>
