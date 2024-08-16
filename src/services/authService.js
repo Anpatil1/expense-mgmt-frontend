@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://expensemanagementapplication-7izlsyxp.b4a.run/api/auth';
+const API_URL = 'https://expense-backend-1-hnul.onrender.com/api/auth';
 
 const login = async (username, password, role) => {
     try {

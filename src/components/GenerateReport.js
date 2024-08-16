@@ -10,7 +10,7 @@ function GenerateReport() {
 
     const generateReport = async () => {
         try {
-            const response = await axios.get('https://expensemanagementapplication-7izlsyxp.b4a.run/api/reports/generate', {
+            const response = await axios.get('https://expense-backend-1-hnul.onrender.com/api/reports/generate', {
                 params: {
                     startDate: startDate,
                     endDate: endDate
