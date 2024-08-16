@@ -83,7 +83,9 @@ function Login({ setIsLoggedIn, updateAuthState }) {
                         <div className="signup-link">
                             Don't have an account? <Link to="/signup">Sign up</Link>
                         </div>
-
+                        <div className="signup-link">
+                            Click and Go to Home page! <Link to="/Home">Home</Link>
+                        </div>
                     </div>
                 </div>
             </div>
