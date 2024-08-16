@@ -32,36 +32,26 @@ const AdminReportComponent = () => {
 
     return (
         <div className="admin-report-container">
-            <div className="report-card">
-                <h2 className="report-title">Admin Reports</h2>
-                <div className="date-inputs">
-                    <div className="input-group">
-                        <label htmlFor="startDate">Start Date</label>
-                        <input
-                            type="date"
-                            id="startDate"
-                            value={startDate}
-                            onChange={(e) => setStartDate(e.target.value)}
-                        />
-                    </div>
-                    <div className="input-group">
-                        <label htmlFor="endDate">End Date</label>
-                        <input
-                            type="date"
-                            id="endDate"
-                            value={endDate}
-                            onChange={(e) => setEndDate(e.target.value)}
-                        />
-                    </div>
-                </div>
-                <button
-                    className={`generate-btn ${loading || !startDate || !endDate ? 'disabled' : ''}`}
-                    onClick={generateUsersReport}
-                    disabled={loading || !startDate || !endDate}
-                >
+            <h2>Admin Reports</h2>
+            <div className="report-form">
+                <label htmlFor="startDate">Start Date</label>
+                <input
+                    type="date"
+                    id="startDate"
+                    value={startDate}
+                    onChange={(e) => setStartDate(e.target.value)}
+                />
+                <label htmlFor="endDate">End Date</label>
+                <input
+                    type="date"
+                    id="endDate"
+                    value={endDate}
+                    onChange={(e) => setEndDate(e.target.value)}
+                />
+                <button onClick={generateUsersReport}>
                     {loading ? 'Generating...' : 'Generate Users Report'}
                 </button>
-                {error && <p className="error-message">{error}</p>}
+                {error && <div className="error-message">{error}</div>}
             </div>
         </div>
     );
