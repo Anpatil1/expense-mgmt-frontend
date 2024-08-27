@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="prj_screenshots/logo.png" alt="Expense Management System" width="200">
+  <img src="prj_screenshots/Main_Page.png" alt="Expense Management System" width="200">
   <h1>Expense Management System</h1>
 </div>
 
