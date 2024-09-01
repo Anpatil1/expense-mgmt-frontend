@@ -20,29 +20,14 @@ const AdminReportComponent = () => {
         try {
             const response = await AdminReportService.getUsersReport(startDate, endDate);
 
-            // Check if the response is valid before creating the blob
-            if (response.data instanceof ArrayBuffer) {
-                const blob = new Blob([response.data], { type: 'application/pdf' });
-                const link = document.createElement('a');
-                link.href = window.URL.createObjectURL(blob);
-                link.download = 'UsersReport.pdf';
-                link.click();
-            } else {
-                throw new Error('Invalid response format');
-            }
+            const blob = new Blob([response.data], { type: 'application/pdf' });
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = 'UsersReport.pdf';
+            link.click();
         } catch (err) {
             console.error('Error details:', err);
-            if (err.response) {
-                // The request was made and the server responded with a status code
-                // that falls out of the range of 2xx
-                setError(`Server error: ${err.response.status} - ${err.response.data}`);
-            } else if (err.request) {
-                // The request was made but no response was received
-                setError('No response received from server. Please try again later.');
-            } else {
-                // Something happened in setting up the request that triggered an Error
-                setError(`Error generating report: ${err.message}`);
-            }
+            setError(err.message);
         } finally {
             setLoading(false);
         }
