@@ -5,7 +5,7 @@ const API_URL = 'https://expense-backend-1-hnul.onrender.com/admin/report/';
 class AdminReportService {
     async getUsersReport(startDate, endDate) {
         try {
-            const response = await axios.get(`${API_URL}generate`, {
+            const response = await axios.get(`https://expense-backend-1-hnul.onrender.com/admin/report/generate`, {
                 params: { startDate, endDate },
                 responseType: 'blob'  // Change this from 'arraybuffer' to 'blob'
             });
