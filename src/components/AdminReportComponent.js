@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import AdminReportService from '../services/AdminReportService';
-import '../Styles/AdminReportComponent.css'; // Make sure to create this CSS file
+import '../Styles/AdminReportComponent.css';
 
 const AdminReportComponent = () => {
     const [loading, setLoading] = useState(false);
@@ -13,18 +13,36 @@ const AdminReportComponent = () => {
             setError('Please enter both start and end dates');
             return;
         }
+
         setLoading(true);
         setError(null);
+
         try {
             const response = await AdminReportService.getUsersReport(startDate, endDate);
-            const blob = new Blob([response.data], { type: 'application/pdf' });
-            const link = document.createElement('a');
-            link.href = window.URL.createObjectURL(blob);
-            link.download = 'UsersReport.pdf';
-            link.click();
+
+            // Check if the response is valid before creating the blob
+            if (response.data instanceof ArrayBuffer) {
+                const blob = new Blob([response.data], { type: 'application/pdf' });
+                const link = document.createElement('a');
+                link.href = window.URL.createObjectURL(blob);
+                link.download = 'UsersReport.pdf';
+                link.click();
+            } else {
+                throw new Error('Invalid response format');
+            }
         } catch (err) {
-            setError('Error generating users report');
-            console.error(err);
+            console.error('Error details:', err);
+            if (err.response) {
+                // The request was made and the server responded with a status code
+                // that falls out of the range of 2xx
+                setError(`Server error: ${err.response.status} - ${err.response.data}`);
+            } else if (err.request) {
+                // The request was made but no response was received
+                setError('No response received from server. Please try again later.');
+            } else {
+                // Something happened in setting up the request that triggered an Error
+                setError(`Error generating report: ${err.message}`);
+            }
         } finally {
             setLoading(false);
         }
