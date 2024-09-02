@@ -114,7 +114,7 @@ function Profile() {
     if (error) return <div className="profile-error">{error}</div>;
     if (!user) return <div className="profile-loading">Loading...</div>;
 
-    const imageUrl = photoUrl ? `https://expensemanagementapplication-7izlsyxp.b4a.run/api/users/photos/${photoUrl}` : null;
+    const imageUrl = photoUrl ? `https://expense-backend-1-hnul.onrender.com/api/users/photos/${photoUrl}` : null;
 
     return (
         <div className="profile-container">
