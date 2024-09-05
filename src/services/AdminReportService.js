@@ -5,35 +5,42 @@ const API_URL = 'https://expense-backend-1-hnul.onrender.com/admin/report/';
 class AdminReportService {
     async getUsersReport(startDate, endDate) {
         try {
-            const response = await axios.get(`https://expense-backend-1-hnul.onrender.com/admin/report/generate`, {
+            const response = await axios.get(`${API_URL}generate`, {
                 params: { startDate, endDate },
-                responseType: 'blob'  // Change this from 'arraybuffer' to 'blob'
+                responseType: 'blob'
             });
-            return response.data;
+
+            const contentType = response.headers['content-type'];
+            if (contentType === 'application/pdf') {
+                const blob = new Blob([response.data], { type: 'application/pdf' });
+                return blob;
+            } else {
+                // If the response is not a PDF, it's likely an error message
+                const text = await new Response(response.data).text();
+                throw new Error(text);
+            }
         } catch (error) {
             if (error.response) {
-                // The request was made and the server responded with a status code
-                // that falls out of the range of 2xx
-                if (error.response.data instanceof Blob) {
-                    // If the error response is a Blob, it might contain error details
-                    const text = await error.response.data.text();
-                    try {
-                        const jsonError = JSON.parse(text);
-                        throw new Error(`Server Error: ${jsonError.error}`);
-                    } catch {
-                        throw new Error(`Server Error: ${text}`);
-                    }
-                } else {
-                    throw new Error(`Server Error: ${error.response.status} - ${error.response.statusText}`);
-                }
+                const errorMessage = await this.parseErrorResponse(error.response);
+                throw new Error(`Server Error: ${errorMessage}`);
             } else if (error.request) {
-                // The request was made but no response was received
                 throw new Error('No response received from server. Please try again later.');
             } else {
-                // Something happened in setting up the request that triggered an Error
                 throw new Error(`Error: ${error.message}`);
             }
         }
+    }
+
+    async parseErrorResponse(response) {
+        if (response.data instanceof Blob) {
+            try {
+                const text = await response.data.text();
+                return text;
+            } catch {
+                return 'Unable to parse error response';
+            }
+        }
+        return response.data || response.statusText;
     }
 }
 

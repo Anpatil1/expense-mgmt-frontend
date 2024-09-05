@@ -19,15 +19,12 @@ const AdminReportComponent = () => {
 
         try {
             const blob = await AdminReportService.getUsersReport(startDate, endDate);
-
-            if (blob instanceof Blob) {
-                const link = document.createElement('a');
-                link.href = window.URL.createObjectURL(blob);
-                link.download = 'UsersReport.pdf';
-                link.click();
-            } else {
-                throw new Error('Unexpected response from server');
-            }
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'UsersReport.pdf';
+            link.click();
+            window.URL.revokeObjectURL(url);
         } catch (err) {
             console.error('Error details:', err);
             setError(err.message);
