@@ -11,10 +11,12 @@ function NavBar({ setIsLoggedIn, username, photoUrl }) {
     const [profileImage, setProfileImage] = useState(null);
     const [imageLoadError, setImageLoadError] = useState(false);
 
+    // Since this component is only rendered when logged in (from App.js), no need to check here
+
     useEffect(() => {
         if (photoUrl) {
             setImageLoadError(false);
-            fetch(`https://expense-backend-1-hnul.onrender.com/api/users/photos/${photoUrl}`)
+            fetch(`https://expensemanagementapplication-7izlsyxp.b4a.run/api/users/photos/${photoUrl}`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Failed to load image');
@@ -36,7 +38,24 @@ function NavBar({ setIsLoggedIn, username, photoUrl }) {
         }
     }, [photoUrl]);
 
+    // Separate useEffect for cleanup to avoid dependency issues
+    useEffect(() => {
+        return () => {
+            if (profileImage) {
+                URL.revokeObjectURL(profileImage);
+            }
+        };
+    }, [profileImage]);
+
     const handleLogout = () => {
+        // Close mobile menu if open
+        setIsOpen(false);
+
+        // Clean up profile image URL
+        if (profileImage) {
+            URL.revokeObjectURL(profileImage);
+        }
+
         authService.logout();
         setIsLoggedIn(false);
         navigate('/login');
@@ -62,8 +81,13 @@ function NavBar({ setIsLoggedIn, username, photoUrl }) {
                 />
             );
         } else {
-            // Return default user icon with enhanced styling
-            return <FaUser className="profile-placeholder" />;
+            // Show user's first letter as default or FaUser icon
+            const firstLetter = username ? username.charAt(0).toUpperCase() : '';
+            return firstLetter ? (
+                <span className="profile-letter">{firstLetter}</span>
+            ) : (
+                <FaUser className="profile-placeholder" />
+            );
         }
     };
 
@@ -80,7 +104,7 @@ function NavBar({ setIsLoggedIn, username, photoUrl }) {
                 <button onClick={handleLogout} className="logout-button">
                     Logout
                 </button>
-                <div className={`profile-circle ${(!profileImage || imageLoadError) ? 'default-profile' : ''}`}>
+                <div className="profile-circle">
                     <Link to={`/profile/${username}`} onClick={toggleNavbar}>
                         {renderProfileContent()}
                     </Link>
