@@ -70,7 +70,7 @@ function Signup() {
                             </button>
                         </form>
                         <div className="signup-link">
-                            Don't have an account? <Link to="/Login">Login</Link>
+                            Already have an account? <Link to="/Login">Login</Link>
                         </div>
                     </div>
                     <div className="signup-image">
