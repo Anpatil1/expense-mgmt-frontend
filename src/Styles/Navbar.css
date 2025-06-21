@@ -38,8 +38,7 @@
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.navbar-links a,
-.navbar-links button {
+.navbar-links a {
     margin-left: 20px;
     text-decoration: none;
     color: #fff;
@@ -49,10 +48,17 @@
     overflow: hidden;
     z-index: 1;
     animation: fadeInUp 0.8s ease-in-out;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
 }
 
-.navbar-links a::after,
-.navbar-links button::after {
+.navbar-links a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.navbar-links a::after {
     content: '';
     position: absolute;
     width: 100%;
@@ -65,38 +71,140 @@
     z-index: -1;
 }
 
-.navbar-links a:hover::after,
-.navbar-links button:hover::after {
+.navbar-links a:hover::after {
     transform: translateX(0);
 }
 
+/* Updated Button Styles */
+.navbar-links button,
+.logout-button {
+    margin-left: 20px;
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.8s ease-in-out;
+}
+
+.navbar-links button:hover,
+.logout-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+    background: linear-gradient(135deg, #c0392b, #a93226);
+}
+
+.navbar-links button:active,
+.logout-button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(231, 76, 60, 0.3);
+}
+
+/* Enhanced Profile Circle */
 .profile-circle {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ddd;
-    transition: transform 0.3s ease-in-out;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    transition: all 0.3s ease;
     cursor: pointer;
     margin-left: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
 }
 
 .profile-circle:hover {
-    transform: scale(1.1);
+    transform: scale(1.1) rotate(5deg);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.profile-circle::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #f39c12, #e74c3c, #9b59b6, #3498db);
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.profile-circle:hover::before {
+    opacity: 1;
 }
 
 .profile-photo {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 50%;
 }
 
+/* Enhanced Profile Placeholder */
 .profile-placeholder {
     font-size: 20px;
-    color: #666;
+    color: #fff;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.profile-circle:hover .profile-placeholder {
+    transform: scale(1.1);
+    color: #f39c12;
+}
+
+/* Default Profile Image - CSS Generated */
+.profile-circle.default-profile {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    position: relative;
+}
+
+.profile-circle.default-profile::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.profile-circle.default-profile::before {
+    content: '';
+    position: absolute;
+    width: 28px;
+    height: 18px;
+    background: #fff;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .navbar-toggler {
@@ -140,13 +248,28 @@
         visibility: visible;
     }
 
-    .navbar-links a,
-    .navbar-links button {
+    .navbar-links a {
         margin: 20px 0;
         font-size: 1.2rem;
         width: 100%;
         text-align: center;
         color: #fff; /* Ensure text color is white */
+        padding: 12px 20px;
+    }
+
+    .navbar-links button,
+    .logout-button {
+        margin: 20px 0;
+        width: 80%;
+        align-self: center;
+        padding: 12px 20px;
+        font-size: 1.1rem;
+    }
+
+    .profile-circle {
+        margin: 20px auto;
+        width: 60px;
+        height: 60px;
     }
 
     .navbar-logo {

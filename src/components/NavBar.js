@@ -9,16 +9,30 @@ function NavBar({ setIsLoggedIn, username, photoUrl }) {
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
     const [profileImage, setProfileImage] = useState(null);
+    const [imageLoadError, setImageLoadError] = useState(false);
 
     useEffect(() => {
         if (photoUrl) {
-            fetch(`https://expensemanagementapplication-7izlsyxp.b4a.run/api/users/photos/${photoUrl}`)
-                .then(response => response.blob())
+            setImageLoadError(false);
+            fetch(`https://expense-backend-1-hnul.onrender.com/api/users/photos/${photoUrl}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to load image');
+                    }
+                    return response.blob();
+                })
                 .then(blob => {
                     const objectURL = URL.createObjectURL(blob);
                     setProfileImage(objectURL);
                 })
-                .catch(error => console.error('Error loading profile image:', error));
+                .catch(error => {
+                    console.error('Error loading profile image:', error);
+                    setImageLoadError(true);
+                    setProfileImage(null);
+                });
+        } else {
+            setProfileImage(null);
+            setImageLoadError(false);
         }
     }, [photoUrl]);
 
@@ -30,6 +44,27 @@ function NavBar({ setIsLoggedIn, username, photoUrl }) {
 
     const toggleNavbar = () => {
         setIsOpen(!isOpen);
+    };
+
+    const handleImageError = () => {
+        setImageLoadError(true);
+        setProfileImage(null);
+    };
+
+    const renderProfileContent = () => {
+        if (profileImage && !imageLoadError) {
+            return (
+                <img
+                    src={profileImage}
+                    alt="User Profile"
+                    className="profile-photo"
+                    onError={handleImageError}
+                />
+            );
+        } else {
+            // Return default user icon with enhanced styling
+            return <FaUser className="profile-placeholder" />;
+        }
     };
 
     return (
@@ -45,17 +80,9 @@ function NavBar({ setIsLoggedIn, username, photoUrl }) {
                 <button onClick={handleLogout} className="logout-button">
                     Logout
                 </button>
-                <div className="profile-circle">
+                <div className={`profile-circle ${(!profileImage || imageLoadError) ? 'default-profile' : ''}`}>
                     <Link to={`/profile/${username}`} onClick={toggleNavbar}>
-                        {profileImage ? (
-                            <img
-                                src={profileImage}
-                                alt="User Profile"
-                                className="profile-photo"
-                            />
-                        ) : (
-                            <FaUser className="profile-placeholder" />
-                        )}
+                        {renderProfileContent()}
                     </Link>
                 </div>
             </div>
