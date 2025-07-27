@@ -508,29 +508,29 @@
 
 .carousel-track {
     display: flex;
-    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 0.5s ease;
 }
 
 .feature-card {
-    flex: 0 0 100%;
+    min-width: 100%;
     background: white;
     padding: 40px;
     text-align: center;
     border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
 }
 
 .card-icon {
     width: 80px;
     height: 80px;
+    margin: 0 auto 24px;
     background: linear-gradient(135deg, #3b82f6, #8b5cf6);
     border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 2rem;
-    margin: 0 auto 24px;
+    font-size: 32px;
 }
 
 .feature-card h3 {
@@ -554,18 +554,13 @@
     color: #3b82f6;
     font-weight: 600;
     cursor: pointer;
-    transition: gap 0.3s ease;
-}
-
-.card-footer:hover {
-    gap: 12px;
 }
 
 .carousel-indicators {
     display: flex;
     justify-content: center;
     gap: 12px;
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
 .indicator {
@@ -573,7 +568,7 @@
     height: 12px;
     border-radius: 50%;
     border: none;
-    background: #d1d5db;
+    background: rgba(59, 130, 246, 0.3);
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -590,56 +585,48 @@
 }
 
 .trust-content {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 60px;
+    display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 60px;
 }
 
 .trust-text h3 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     color: #1f2937;
     margin-bottom: 16px;
-    line-height: 1.2;
 }
 
 .trust-text p {
-    font-size: 1.125rem;
     color: #6b7280;
+    font-size: 1.1rem;
 }
 
 .trust-stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
+    gap: 40px;
 }
 
 .trust-stat {
     text-align: center;
-    padding: 30px 20px;
-    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-    border-radius: 16px;
-    transition: transform 0.3s ease;
-}
-
-.trust-stat:hover {
-    transform: translateY(-5px);
 }
 
 .trust-number {
     font-size: 2.5rem;
     font-weight: 800;
-    color: #1f2937;
+    color: #3b82f6;
     margin-bottom: 8px;
 }
 
 .trust-label {
     color: #6b7280;
+    font-size: 14px;
     font-weight: 500;
 }
 
-/* Animations */
+/* Animation Keyframes */
 @keyframes slideInLeft {
     from {
         opacity: 0;
@@ -662,67 +649,496 @@
     }
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
+/* ========================================
+   RESPONSIVE DESIGN - MOBILE FIRST
+======================================== */
+
+/* Extra Large Screens */
+@media (max-width: 1400px) {
+    .hero-title {
+        font-size: 3.5rem;
+    }
+
+    .section-header h2 {
+        font-size: 2.5rem;
+    }
+}
+
+/* Large Screens */
+@media (max-width: 1200px) {
     .hero-container {
-        grid-template-columns: 1fr;
+        max-width: 100%;
         gap: 40px;
-        text-align: center;
+        padding: 0 30px;
     }
 
     .hero-title {
         font-size: 3rem;
     }
 
-    .trust-content {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        text-align: center;
+    .floating-elements {
+        display: none;
     }
 
     .trust-stats {
-        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
     }
 }
 
-@media (max-width: 768px) {
+/* Medium Screens / Tablets */
+@media (max-width: 992px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        text-align: center;
+    }
+
+    .hero-left {
+        order: 1;
+    }
+
+    .hero-right {
+        order: 2;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
     .hero-title {
         font-size: 2.5rem;
     }
 
-    .section-header h2 {
-        font-size: 2rem;
+    .hero-subtitle {
+        font-size: 1.1rem;
     }
 
     .benefits-list {
         grid-template-columns: 1fr;
+        gap: 12px;
+        max-width: 400px;
+        margin: 0 auto 40px;
     }
 
     .cta-section {
-        flex-direction: column;
-        align-items: center;
+        justify-content: center;
     }
 
-    .btn-primary, .btn-secondary {
-        width: 100%;
-        max-width: 280px;
-        justify-content: center;
+    .features-carousel {
+        flex-direction: column;
+        gap: 20px;
     }
 
     .carousel-btn {
         display: none;
     }
 
-    .nav-dots {
-        display: none;
+    .section-header h2 {
+        font-size: 2rem;
+    }
+
+    .section-header p {
+        font-size: 1rem;
+    }
+
+    .trust-content {
+        flex-direction: column;
+        gap: 40px;
+        text-align: center;
     }
 
     .trust-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    .nav-dots {
+        right: 15px;
+    }
+
+    .features-section {
+        padding: 60px 0;
+    }
+
+    .trust-section {
+        padding: 60px 0;
+    }
+}
+
+/* Small Screens / Mobile Landscape */
+@media (max-width: 768px) {
+    .hero {
+        padding: 40px 0;
+        min-height: auto;
+    }
+
+    .hero-container {
+        padding: 0 20px;
+        gap: 40px;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 24px;
+    }
+
+    .badge {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .btn-primary, .btn-secondary {
+        padding: 12px 20px;
+        font-size: 14px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .cta-section {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .dashboard-preview {
+        border-radius: 16px;
+    }
+
+    .preview-header {
+        padding: 15px;
+    }
+
+    .preview-content {
+        padding: 20px;
+    }
+
+    .chart-area {
+        height: 100px;
+    }
+
+    .stats-preview {
+        gap: 12px;
+    }
+
+    .stat-card {
+        padding: 12px;
+    }
+
+    .stat-number {
+        font-size: 1.2rem;
+    }
+
+    .feature-card {
+        padding: 30px 20px;
+    }
+
+    .card-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+        font-size: 1.25rem;
+    }
+
+    .section-header {
+        margin-bottom: 40px;
+    }
+
+    .section-header h2 {
+        font-size: 1.75rem;
+    }
+
+    .section-header p {
+        font-size: 0.9rem;
+    }
+
+    .trust-text h3 {
+        font-size: 1.5rem;
+    }
+
+    .trust-number {
+        font-size: 2rem;
+    }
+
+    .shape-1, .shape-2, .shape-3, .shape-4 {
+        width: 150px;
+        height: 150px;
+    }
+
+    .nav-dots {
+        display: none;
+    }
+}
+
+/* Extra Small Screens / Mobile Portrait */
+@media (max-width: 480px) {
+    .modern-home {
+        overflow-x: hidden;
+    }
+
+    .hero-container {
+        padding: 0 15px;
+        gap: 30px;
+    }
+
+    .hero-title {
+        font-size: 1.75rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+
+    .benefits-list {
         grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .benefit-item {
+        font-size: 14px;
+    }
+
+    .benefit-icon {
+        width: 20px;
+        height: 20px;
+        font-size: 10px;
+    }
+
+    .btn-primary, .btn-secondary {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+
+    .dashboard-preview {
+        border-radius: 12px;
+    }
+
+    .preview-header {
+        padding: 12px;
+    }
+
+    .preview-content {
+        padding: 15px;
+    }
+
+    .chart-area {
+        height: 80px;
+        margin-bottom: 16px;
+    }
+
+    .stats-preview {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .stat-card {
+        padding: 8px;
+    }
+
+    .stat-number {
+        font-size: 1rem;
+    }
+
+    .stat-label {
+        font-size: 10px;
+    }
+
+    .feature-card {
+        padding: 20px 15px;
+    }
+
+    .card-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+        margin-bottom: 16px;
+    }
+
+    .feature-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+    }
+
+    .feature-card p {
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
+
+    .section-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .section-header p {
+        font-size: 0.85rem;
+    }
+
+    .trust-stats {
+        grid-template-columns: 1fr 1fr;
         gap: 20px;
     }
 
+    .trust-number {
+        font-size: 1.75rem;
+    }
+
+    .trust-label {
+        font-size: 12px;
+    }
+
+    .features-section {
+        padding: 40px 0;
+    }
+
+    .trust-section {
+        padding: 40px 0;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+
+    .shape {
+        display: none;
+    }
+}
+
+/* Ultra Small Screens */
+@media (max-width: 320px) {
+    .hero-title {
+        font-size: 1.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.8rem;
+    }
+
+    .btn-primary, .btn-secondary {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .preview-content {
+        padding: 10px;
+    }
+
+    .feature-card {
+        padding: 15px 10px;
+    }
+
+    .card-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .feature-card h3 {
+        font-size: 1rem;
+    }
+
+    .feature-card p {
+        font-size: 13px;
+    }
+
+    .section-header h2 {
+        font-size: 1.25rem;
+    }
+
+    .trust-number {
+        font-size: 1.5rem;
+    }
+}
+
+/* Landscape Orientation Adjustments */
+@media (max-height: 600px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: 20px 0;
+    }
+
+    .hero-container {
+        gap: 30px;
+    }
+
+    .hero-title {
+        margin-bottom: 16px;
+    }
+
+    .hero-subtitle {
+        margin-bottom: 20px;
+    }
+
+    .benefits-list {
+        margin-bottom: 24px;
+    }
+
+    .dashboard-preview {
+        max-width: 300px;
+    }
+}
+
+/* High DPI / Retina Display Optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .btn-primary, .btn-secondary {
+        border-width: 0.5px;
+    }
+
+    .dashboard-preview {
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    }
+}
+
+/* Print Styles */
+@media print {
+    .bg-animation,
+    .nav-dots,
     .floating-elements {
         display: none;
+    }
+
+    .hero {
+        page-break-inside: avoid;
+    }
+
+    .modern-home {
+        background: white;
+    }
+}
+
+/* Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .shape {
+        animation: none;
+    }
+
+    .float-item {
+        animation: none;
+    }
+
+    .line {
+        animation: none;
+        height: 60%;
+    }
+
+    .line-2 {
+        height: 80%;
+    }
+
+    .line-3 {
+        height: 40%;
     }
 }
