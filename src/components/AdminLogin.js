@@ -1,245 +1,234 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FaUserShield, FaLock, FaEye, FaEyeSlash, FaShieldAlt, FaCrown, FaChartLine, FaUsers, FaCog } from 'react-icons/fa';
-import { MdSecurity, MdDashboard, MdAnalytics } from 'react-icons/md';
-import { HiSparkles } from 'react-icons/hi';
 import authService from '../services/authService';
-import '../Styles/AdminLogin.css';
+import '../Styles/Login.css';
+import { FaUserTie, FaLock, FaEye, FaEyeSlash, FaHome, FaUserPlus, FaSignInAlt, FaShieldAlt, FaCrown, FaGoogle, FaFacebook, FaGithub, FaWallet, FaServer, FaUsers, FaCog } from 'react-icons/fa';
 
 const AdminLogin = ({ setIsLoggedIn, updateAuthState }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
-    const [formFocus, setFormFocus] = useState(null);
-    const [backgroundShapes, setBackgroundShapes] = useState([]);
     const navigate = useNavigate();
-
-    // Generate random background shapes for animation
-    useEffect(() => {
-        const shapes = Array.from({ length: 8 }, (_, i) => ({
-            id: i,
-            size: Math.random() * 100 + 50,
-            x: Math.random() * 100,
-            y: Math.random() * 100,
-            delay: Math.random() * 5,
-            duration: Math.random() * 10 + 15
-        }));
-        setBackgroundShapes(shapes);
-    }, []);
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        setIsLoading(true);
+        setLoading(true);
         setError('');
-
         try {
             const user = await authService.login(username, password, 'ADMIN');
             console.log('Login response:', user);
-
-            if (setIsLoggedIn) setIsLoggedIn(true);
-            if (updateAuthState) updateAuthState();
-
-            // Add success animation delay
-            setTimeout(() => {
+            if (user && user.role === 'ADMIN') {
+                setIsLoggedIn(true);
+                updateAuthState();
+                console.log('Admin login successful, navigating...');
                 navigate('/admin-dashboard');
-            }, 1000);
-        } catch (error) {
-            console.error('Admin login error:', error);
-            setError('Invalid username or password. Please try again.');
+            } else {
+                setError('Unauthorized. Admin access only.');
+            }
+        } catch (err) {
+            console.error('Login error:', err);
+            setError('Invalid username or password');
         } finally {
-            setIsLoading(false);
+            setLoading(false);
         }
     };
 
-    const togglePasswordVisibility = () => {
-        setShowPassword(!showPassword);
-    };
-
-    const handleInputFocus = (field) => {
-        setFormFocus(field);
-    };
-
-    const handleInputBlur = () => {
-        setFormFocus(null);
-    };
-
     return (
-        <div className="admin-login-container">
-            {/* Animated Background */}
-            <div className="admin-bg-animation">
-                {backgroundShapes.map(shape => (
-                    <div
-                        key={shape.id}
-                        className="admin-shape"
-                        style={{
-                            width: shape.size + 'px',
-                            height: shape.size + 'px',
-                            left: shape.x + '%',
-                            top: shape.y + '%',
-                            animationDelay: shape.delay + 's',
-                            animationDuration: shape.duration + 's'
-                        }}
-                    />
-                ))}
+        <div className="modern-auth-container admin-variant">
+            {/* Dynamic Background with Particles */}
+            <div className="particle-background">
+                <div className="particles">
+                    {[...Array(50)].map((_, i) => (
+                        <div key={i} className={`particle particle-${i % 5} admin-particle`}></div>
+                    ))}
+                </div>
+                <div className="gradient-overlay admin-gradient"></div>
             </div>
 
-            {/* Floating Feature Cards */}
-            <div className="floating-features">
-                <div className="feature-card card-1">
-                    <MdDashboard />
-                    <span>Dashboard Control</span>
+            {/* Floating Navigation */}
+            <nav className="floating-nav admin-nav">
+                <Link to="/" className="nav-brand admin-brand">
+                    <FaWallet className="brand-icon" />
+                    <span>ExpenseTracker</span>
+                    <div className="admin-badge">Admin</div>
+                </Link>
+                <div className="nav-links">
+                    <Link to="/" className="nav-link">
+                        <FaHome />
+                        <span>Home</span>
+                    </Link>
                 </div>
-                <div className="feature-card card-2">
-                    <FaUsers />
-                    <span>User Management</span>
-                </div>
-                <div className="feature-card card-3">
-                    <MdAnalytics />
-                    <span>Analytics</span>
-                </div>
-                <div className="feature-card card-4">
-                    <FaCog />
-                    <span>System Config</span>
-                </div>
-            </div>
+            </nav>
 
-            {/* Main Login Card */}
-            <div className={`admin-login-card ${isLoading ? 'loading' : ''}`}>
-                {/* Header Section */}
-                <div className="login-header">
-                    <div className="admin-icon-container">
-                        <FaCrown className="crown-icon" />
-                        <FaShieldAlt className="shield-icon" />
-                        <HiSparkles className="sparkle-1" />
-                        <HiSparkles className="sparkle-2" />
-                        <HiSparkles className="sparkle-3" />
-                    </div>
-                    <h2>Admin Portal</h2>
-                    <p>Secure Administrative Access</p>
-                    <div className="security-badge">
-                        <MdSecurity />
-                        <span>Enterprise Security</span>
-                    </div>
-                </div>
-
-                {/* Error Message */}
-                {error && (
-                    <div className="error-message">
-                        <div className="error-icon">⚠️</div>
-                        <span>{error}</span>
-                    </div>
-                )}
-
-                {/* Login Form */}
-                <form onSubmit={handleLogin} className="admin-login-form">
-                    {/* Username Field */}
-                    <div className={`input-group ${formFocus === 'username' ? 'focused' : ''}`}>
-                        <div className="input-icon">
-                            <FaUserShield />
+            {/* Main Content */}
+            <div className="auth-layout">
+                {/* Left Panel - Admin Hero Section */}
+                <div className="hero-panel admin-hero">
+                    <div className="hero-content">
+                        <div className="floating-card card-1 admin-card">
+                            <FaUsers className="card-icon" />
+                            <h3>User Management</h3>
+                            <p>Complete control over user accounts and permissions</p>
                         </div>
-                        <input
-                            type="text"
-                            id="username"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            onFocus={() => handleInputFocus('username')}
-                            onBlur={handleInputBlur}
-                            required
-                            placeholder="Administrator Username"
-                            disabled={isLoading}
-                        />
-                        <label htmlFor="username">Username</label>
-                        <div className="input-line"></div>
-                    </div>
 
-                    {/* Password Field */}
-                    <div className={`input-group ${formFocus === 'password' ? 'focused' : ''}`}>
-                        <div className="input-icon">
-                            <FaLock />
+                        <div className="floating-card card-2 admin-card">
+                            <FaServer className="card-icon" />
+                            <h3>System Control</h3>
+                            <p>Monitor and manage system resources and performance</p>
                         </div>
-                        <input
-                            type={showPassword ? 'text' : 'password'}
-                            id="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            onFocus={() => handleInputFocus('password')}
-                            onBlur={handleInputBlur}
-                            required
-                            placeholder="Secure Password"
-                            disabled={isLoading}
-                        />
-                        <label htmlFor="password">Password</label>
-                        <button
-                            type="button"
-                            className="password-toggle"
-                            onClick={togglePasswordVisibility}
-                            disabled={isLoading}
-                        >
-                            {showPassword ? <FaEyeSlash /> : <FaEye />}
-                        </button>
-                        <div className="input-line"></div>
-                    </div>
 
-                    {/* Submit Button */}
-                    <button
-                        type="submit"
-                        className={`admin-login-btn ${isLoading ? 'loading' : ''}`}
-                        disabled={isLoading}
-                    >
-                        {isLoading ? (
-                            <>
-                                <div className="loading-spinner"></div>
-                                <span>Authenticating...</span>
-                            </>
-                        ) : (
-                            <>
+                        <div className="hero-text admin-hero-text">
+                            <div className="admin-crown-icon">
+                                <FaCrown />
+                            </div>
+                            <h1>Administrator Portal</h1>
+                            <p>Secure access to advanced system controls and comprehensive management tools.</p>
+                            <div className="admin-stats-grid">
+                                <div className="stat-item">
+                                    <span className="stat-number">100%</span>
+                                    <span className="stat-label">Secure</span>
+                                </div>
+                                <div className="stat-item">
+                                    <span className="stat-number">24/7</span>
+                                    <span className="stat-label">Monitoring</span>
+                                </div>
+                                <div className="stat-item">
+                                    <span className="stat-number">99.9%</span>
+                                    <span className="stat-label">Uptime</span>
+                                </div>
+                            </div>
+                            <div className="security-features">
+                                <div className="security-item">
+                                    <FaShieldAlt className="security-icon" />
+                                    <span>256-bit Encryption</span>
+                                </div>
+                                <div className="security-item">
+                                    <FaCog className="security-icon" />
+                                    <span>Advanced Controls</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Right Panel - Admin Login Form */}
+                <div className="form-panel">
+                    <div className="glass-card admin-form">
+                        <div className="form-header admin-header">
+                            <div className="pulse-icon admin-pulse-icon">
+                                <FaUserTie />
+                            </div>
+                            <h2>Administrator Access</h2>
+                            <p>Enter your administrative credentials to continue</p>
+                            <div className="security-indicator">
                                 <FaShieldAlt />
-                                <span>Access Admin Portal</span>
-                                <div className="btn-shine"></div>
-                            </>
-                        )}
-                    </button>
-                </form>
+                                <span>Secured Connection</span>
+                            </div>
+                        </div>
 
-                {/* Footer */}
-                <div className="login-footer">
-                    <div className="admin-features">
-                        <div className="feature-item">
-                            <FaChartLine />
-                            <span>Advanced Analytics</span>
-                        </div>
-                        <div className="feature-item">
-                            <FaUsers />
-                            <span>User Management</span>
-                        </div>
-                        <div className="feature-item">
-                            <MdSecurity />
-                            <span>Security Controls</span>
+                        <form onSubmit={handleLogin} className="modern-form">
+                            {error && (
+                                <div className="error-alert admin-error">
+                                    <div className="error-icon">🔒</div>
+                                    <span>{error}</span>
+                                </div>
+                            )}
+
+                            <div className="input-container">
+                                <div className="input-wrapper">
+                                    <FaUserTie className="input-icon admin-icon" />
+                                    <input
+                                        type="text"
+                                        placeholder="Administrator Username"
+                                        value={username}
+                                        onChange={(e) => setUsername(e.target.value)}
+                                        required
+                                        disabled={loading}
+                                        className={`modern-input admin-input ${error ? 'input-error' : ''}`}
+                                    />
+                                    <div className="input-line admin-line"></div>
+                                </div>
+                            </div>
+
+                            <div className="input-container">
+                                <div className="input-wrapper">
+                                    <FaLock className="input-icon admin-icon" />
+                                    <input
+                                        type={showPassword ? 'text' : 'password'}
+                                        placeholder="Administrator Password"
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        required
+                                        disabled={loading}
+                                        className={`modern-input admin-input ${error ? 'input-error' : ''}`}
+                                    />
+                                    <button
+                                        type="button"
+                                        className="password-toggle admin-toggle"
+                                        onClick={() => setShowPassword(!showPassword)}
+                                        disabled={loading}
+                                    >
+                                        {showPassword ? <FaEyeSlash /> : <FaEye />}
+                                    </button>
+                                    <div className="input-line admin-line"></div>
+                                </div>
+                            </div>
+
+                            <div className="form-options admin-options">
+                                <label className="modern-checkbox admin-checkbox">
+                                    <input type="checkbox" />
+                                    <span className="checkmark admin-checkmark"></span>
+                                    <span className="checkbox-label">Keep me signed in</span>
+                                </label>
+                                <div className="admin-help">
+                                    <FaShieldAlt />
+                                    <span>Need help?</span>
+                                </div>
+                            </div>
+
+                            <button
+                                type="submit"
+                                className="modern-submit-btn admin-submit-btn"
+                                disabled={loading || !username || !password}
+                            >
+                                {loading ? (
+                                    <div className="loading-animation">
+                                        <div className="spinner admin-spinner"></div>
+                                        <span>Authenticating...</span>
+                                    </div>
+                                ) : (
+                                    <div className="btn-content">
+                                        <FaSignInAlt />
+                                        <span>Access Admin Portal</span>
+                                        <div className="btn-shine admin-shine"></div>
+                                    </div>
+                                )}
+                            </button>
+                        </form>
+
+                        <div className="admin-footer">
+                            <div className="admin-links">
+                                <Link to="/login" className="user-portal-link">
+                                    <FaUserTie />
+                                    User Portal
+                                </Link>
+                                <Link to="/AdminSignup" className="admin-signup-link">
+                                    <FaUserPlus />
+                                    Admin Signup
+                                </Link>
+                            </div>
+                            <div className="admin-disclaimer">
+                                <p>⚠️ Authorized personnel only. All activities are logged and monitored.</p>
+                            </div>
                         </div>
                     </div>
-                    <p className="security-note">
-                        Protected by enterprise-grade security
-                    </p>
                 </div>
             </div>
-
-            {/* Success Overlay */}
-            {isLoading && (
-                <div className="success-overlay">
-                    <div className="success-animation">
-                        <FaCrown className="success-crown" />
-                        <div className="success-rings">
-                            <div className="ring ring-1"></div>
-                            <div className="ring ring-2"></div>
-                            <div className="ring ring-3"></div>
-                        </div>
-                    </div>
-                </div>
-            )}
         </div>
     );
 };
 
 export default AdminLogin;
+
