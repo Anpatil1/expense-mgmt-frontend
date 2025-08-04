@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../Styles/Slider.css';
-import { FaTachometerAlt, FaMoneyBill, FaWallet, FaFileImport, FaFileExport } from 'react-icons/fa';
+import { FaTachometerAlt, FaMoneyBill, FaWallet, FaFileImport, FaFileExport, FaBars, FaTimes } from 'react-icons/fa';
 
 function Slider() {
     const [isOpen, setIsOpen] = useState(false);
@@ -46,13 +46,8 @@ function Slider() {
                     </ul>
                 </nav>
             </div>
-            {/* This div should be moved to your navbar component */}
             <div className="slider-toggle" onClick={toggleSlider}>
-                <div className={`toggle-button ${isOpen ? 'open' : ''}`}>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+                {isOpen ? <FaTimes /> : <FaBars />}
             </div>
         </>
     );
