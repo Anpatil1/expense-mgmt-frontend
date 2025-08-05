@@ -17,7 +17,7 @@ function Login({ setIsLoggedIn, updateAuthState }) {
         setLoading(true);
         setError('');
         try {
-            const userData = await authService.login(username, password, 'USER');
+            await authService.login(username, password, 'USER');
             setIsLoggedIn(true);
             updateAuthState();
             navigate('/dashboard');
@@ -113,15 +113,15 @@ function Login({ setIsLoggedIn, updateAuthState }) {
 
                         {/* Social Login */}
                         <div className="social-login-grid">
-                            <button className="social-btn google-btn">
+                            <button className="social-btn google-btn" type="button">
                                 <FaGoogle />
                                 <span>Google</span>
                             </button>
-                            <button className="social-btn facebook-btn">
+                            <button className="social-btn facebook-btn" type="button">
                                 <FaFacebook />
                                 <span>Facebook</span>
                             </button>
-                            <button className="social-btn github-btn">
+                            <button className="social-btn github-btn" type="button">
                                 <FaGithub />
                                 <span>GitHub</span>
                             </button>
@@ -237,4 +237,3 @@ function Login({ setIsLoggedIn, updateAuthState }) {
 }
 
 export default Login;
-

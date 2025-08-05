@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import authService from '../services/authService';
 import '../Styles/Login.css';
-import { FaUserTie, FaLock, FaEye, FaEyeSlash, FaHome, FaUserPlus, FaSignInAlt, FaShieldAlt, FaCrown, FaWallet, FaServer, FaUsers, FaCog, FaChartBar, FaDatabase } from 'react-icons/fa';
+import { FaUserTie, FaLock, FaEye, FaEyeSlash, FaHome, FaUserPlus, FaSignInAlt, FaShieldAlt, FaCrown, FaWallet, FaServer, FaUsers, FaCog, FaDatabase } from 'react-icons/fa';
 
 const AdminLogin = ({ setIsLoggedIn, updateAuthState }) => {
     const [username, setUsername] = useState('');
