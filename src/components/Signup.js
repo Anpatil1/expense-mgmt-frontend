@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import authService from '../services/authService';
 import '../Styles/Login.css';
-import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash, FaHome, FaSignInAlt, FaUserPlus, FaGoogle, FaFacebook, FaGithub, FaRocket, FaShieldAlt, FaMobile, FaWallet } from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash, FaHome, FaSignInAlt, FaUserPlus, FaGoogle, FaFacebook, FaGithub, FaRocket, FaShieldAlt, FaMobile, FaWallet, FaCheckCircle } from 'react-icons/fa';
 
 function Signup() {
     const [username, setUsername] = useState('');
@@ -98,16 +98,16 @@ function Signup() {
                             <p>Start your journey to smarter money management with our cutting-edge platform designed for the modern user.</p>
                             <div className="benefits-list">
                                 <div className="benefit-item">
-                                    <div className="benefit-icon">✨</div>
+                                    <FaCheckCircle className="benefit-icon" />
                                     <span>Free forever plan</span>
                                 </div>
                                 <div className="benefit-item">
-                                    <div className="benefit-icon">🔐</div>
-                                    <span>Bank-level security</span>
+                                    <FaCheckCircle className="benefit-icon" />
+                                    <span>Advanced analytics</span>
                                 </div>
                                 <div className="benefit-item">
-                                    <div className="benefit-icon">📊</div>
-                                    <span>Advanced analytics</span>
+                                    <FaCheckCircle className="benefit-icon" />
+                                    <span>Bank-level security</span>
                                 </div>
                             </div>
                         </div>
@@ -123,138 +123,13 @@ function Signup() {
                             </div>
                             <h2>Create Account</h2>
                             <p>Join thousands of users managing their finances smarter</p>
+                            <div className="security-indicator">
+                                <FaShieldAlt />
+                                <span>Secure Registration</span>
+                            </div>
                         </div>
 
-                        <form onSubmit={handleSignup} className="modern-form">
-                            {error && (
-                                <div className="error-alert">
-                                    <div className="error-icon">⚠️</div>
-                                    <span>{error}</span>
-                                </div>
-                            )}
-
-                            <div className="input-row">
-                                <div className="input-container half-width">
-                                    <div className="input-wrapper">
-                                        <FaUser className="input-icon" />
-                                        <input
-                                            type="text"
-                                            placeholder="Username"
-                                            value={username}
-                                            onChange={(e) => setUsername(e.target.value)}
-                                            required
-                                            disabled={loading}
-                                            className={`modern-input ${error ? 'input-error' : ''}`}
-                                        />
-                                        <div className="input-line"></div>
-                                    </div>
-                                </div>
-
-                                <div className="input-container half-width">
-                                    <div className="input-wrapper">
-                                        <FaEnvelope className="input-icon" />
-                                        <input
-                                            type="email"
-                                            placeholder="Email Address"
-                                            value={email}
-                                            onChange={(e) => setEmail(e.target.value)}
-                                            required
-                                            disabled={loading}
-                                            className={`modern-input ${error ? 'input-error' : ''}`}
-                                        />
-                                        <div className="input-line"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="input-container">
-                                <div className="input-wrapper">
-                                    <FaLock className="input-icon" />
-                                    <input
-                                        type={showPassword ? 'text' : 'password'}
-                                        placeholder="Password"
-                                        value={password}
-                                        onChange={(e) => setPassword(e.target.value)}
-                                        required
-                                        disabled={loading}
-                                        className={`modern-input ${error ? 'input-error' : ''}`}
-                                    />
-                                    <button
-                                        type="button"
-                                        className="password-toggle"
-                                        onClick={() => setShowPassword(!showPassword)}
-                                        disabled={loading}
-                                    >
-                                        {showPassword ? <FaEyeSlash /> : <FaEye />}
-                                    </button>
-                                    <div className="input-line"></div>
-                                </div>
-                            </div>
-
-                            <div className="input-container">
-                                <div className="input-wrapper">
-                                    <FaLock className="input-icon" />
-                                    <input
-                                        type={showConfirmPassword ? 'text' : 'password'}
-                                        placeholder="Confirm Password"
-                                        value={confirmPassword}
-                                        onChange={(e) => setConfirmPassword(e.target.value)}
-                                        required
-                                        disabled={loading}
-                                        className={`modern-input ${error ? 'input-error' : ''}`}
-                                    />
-                                    <button
-                                        type="button"
-                                        className="password-toggle"
-                                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                                        disabled={loading}
-                                    >
-                                        {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
-                                    </button>
-                                    <div className="input-line"></div>
-                                </div>
-                            </div>
-
-                            <div className="terms-section">
-                                <label className="modern-checkbox">
-                                    <input
-                                        type="checkbox"
-                                        checked={acceptTerms}
-                                        onChange={(e) => setAcceptTerms(e.target.checked)}
-                                    />
-                                    <span className="checkmark"></span>
-                                    <span className="checkbox-label">
-                                        I agree to the <a href="#" className="terms-link">Terms of Service</a> and <a href="#" className="terms-link">Privacy Policy</a>
-                                    </span>
-                                </label>
-                            </div>
-
-                            <button
-                                type="submit"
-                                className="modern-submit-btn signup-btn"
-                                disabled={loading || !username || !email || !password || !confirmPassword || !acceptTerms}
-                            >
-                                {loading ? (
-                                    <div className="loading-animation">
-                                        <div className="spinner"></div>
-                                        <span>Creating Account...</span>
-                                    </div>
-                                ) : (
-                                    <div className="btn-content">
-                                        <FaUserPlus />
-                                        <span>Create Account</span>
-                                        <div className="btn-shine"></div>
-                                    </div>
-                                )}
-                            </button>
-                        </form>
-
-                        <div className="divider-section">
-                            <div className="divider-line"></div>
-                            <span className="divider-text">or sign up with</span>
-                            <div className="divider-line"></div>
-                        </div>
-
+                        {/* Social Login */}
                         <div className="social-login-grid">
                             <button className="social-btn google-btn">
                                 <FaGoogle />
@@ -270,18 +145,146 @@ function Signup() {
                             </button>
                         </div>
 
+                        <div className="divider-section">
+                            <div className="divider-line"></div>
+                            <span className="divider-text">OR</span>
+                            <div className="divider-line"></div>
+                        </div>
+
+                        {error && (
+                            <div className="error-alert">
+                                <FaLock className="error-icon" />
+                                <span>{error}</span>
+                            </div>
+                        )}
+
+                        <form className="modern-form" onSubmit={handleSignup}>
+                            <div className="input-row">
+                                <div className="input-container">
+                                    <div className="input-wrapper">
+                                        <FaUser className="input-icon" />
+                                        <input
+                                            type="text"
+                                            value={username}
+                                            onChange={(e) => setUsername(e.target.value)}
+                                            placeholder="Username"
+                                            className="modern-input"
+                                            required
+                                        />
+                                        <div className="input-line"></div>
+                                    </div>
+                                </div>
+
+                                <div className="input-container">
+                                    <div className="input-wrapper">
+                                        <FaEnvelope className="input-icon" />
+                                        <input
+                                            type="email"
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            placeholder="Email address"
+                                            className="modern-input"
+                                            required
+                                        />
+                                        <div className="input-line"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="input-container">
+                                <div className="input-wrapper">
+                                    <FaLock className="input-icon" />
+                                    <input
+                                        type={showPassword ? 'text' : 'password'}
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        placeholder="Password"
+                                        className="modern-input"
+                                        required
+                                    />
+                                    <button
+                                        type="button"
+                                        className="password-toggle"
+                                        onClick={() => setShowPassword(!showPassword)}
+                                    >
+                                        {showPassword ? <FaEyeSlash /> : <FaEye />}
+                                    </button>
+                                    <div className="input-line"></div>
+                                </div>
+                            </div>
+
+                            <div className="input-container">
+                                <div className="input-wrapper">
+                                    <FaLock className="input-icon" />
+                                    <input
+                                        type={showConfirmPassword ? 'text' : 'password'}
+                                        value={confirmPassword}
+                                        onChange={(e) => setConfirmPassword(e.target.value)}
+                                        placeholder="Confirm password"
+                                        className="modern-input"
+                                        required
+                                    />
+                                    <button
+                                        type="button"
+                                        className="password-toggle"
+                                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                    >
+                                        {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+                                    </button>
+                                    <div className="input-line"></div>
+                                </div>
+                            </div>
+
+                            <div className="terms-section">
+                                <label className="modern-checkbox">
+                                    <input
+                                        type="checkbox"
+                                        checked={acceptTerms}
+                                        onChange={(e) => setAcceptTerms(e.target.checked)}
+                                    />
+                                    <div className="checkmark"></div>
+                                    <span className="checkbox-label">
+                                        I agree to the{' '}
+                                        <Link to="/terms" className="terms-link">Terms of Service</Link>
+                                        {' '}and{' '}
+                                        <Link to="/privacy" className="terms-link">Privacy Policy</Link>
+                                    </span>
+                                </label>
+                            </div>
+
+                            <button
+                                type="submit"
+                                disabled={loading}
+                                className="modern-submit-btn signup-btn"
+                            >
+                                <div className="btn-content">
+                                    {loading ? (
+                                        <div className="loading-animation">
+                                            <div className="spinner"></div>
+                                            <span>Creating account...</span>
+                                        </div>
+                                    ) : (
+                                        <>
+                                            <FaUserPlus />
+                                            <span>Create Account</span>
+                                        </>
+                                    )}
+                                </div>
+                                <div className="btn-shine"></div>
+                            </button>
+                        </form>
+
                         <div className="auth-footer">
-                            <p>
-                                Already have an account?
-                                <Link to="/login" className="signin-link">
-                                    <FaSignInAlt />
-                                    Sign In
-                                </Link>
-                            </p>
+                            <p>Already have an account?</p>
+                            <Link to="/login" className="signin-link">
+                                <FaSignInAlt />
+                                <span>Sign In</span>
+                            </Link>
+
                             <div className="admin-access">
                                 <Link to="/Adminlogin" className="admin-portal-link">
                                     <FaShieldAlt />
-                                    Admin Portal
+                                    <span>Admin Portal</span>
                                 </Link>
                             </div>
                         </div>
@@ -293,3 +296,4 @@ function Signup() {
 }
 
 export default Signup;
+

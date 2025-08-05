@@ -101,102 +101,17 @@ function Login({ setIsLoggedIn, updateAuthState }) {
                     <div className="glass-card">
                         <div className="form-header">
                             <div className="pulse-icon">
-                                <FaUser />
+                                <FaSignInAlt />
                             </div>
-                            <h2>Sign In</h2>
-                            <p>Welcome back! Please sign in to your account</p>
+                            <h2>Welcome Back</h2>
+                            <p>Sign in to your account</p>
+                            <div className="security-indicator">
+                                <FaShieldAlt />
+                                <span>Secure Login</span>
+                            </div>
                         </div>
 
-                        <form onSubmit={handleLogin} className="modern-form">
-                            {error && (
-                                <div className="error-alert">
-                                    <div className="error-icon">⚠️</div>
-                                    <span>{error}</span>
-                                </div>
-                            )}
-
-                            <div className="input-container">
-                                <div className="input-wrapper">
-                                    <FaUser className="input-icon" />
-                                    <input
-                                        type="text"
-                                        placeholder="Username"
-                                        value={username}
-                                        onChange={(e) => setUsername(e.target.value)}
-                                        required
-                                        disabled={loading}
-                                        className={`modern-input ${error ? 'input-error' : ''}`}
-                                    />
-                                    <div className="input-line"></div>
-                                </div>
-                            </div>
-
-                            <div className="input-container">
-                                <div className="input-wrapper">
-                                    <FaLock className="input-icon" />
-                                    <input
-                                        type={showPassword ? 'text' : 'password'}
-                                        placeholder="Password"
-                                        value={password}
-                                        onChange={(e) => setPassword(e.target.value)}
-                                        required
-                                        disabled={loading}
-                                        className={`modern-input ${error ? 'input-error' : ''}`}
-                                    />
-                                    <button
-                                        type="button"
-                                        className="password-toggle"
-                                        onClick={() => setShowPassword(!showPassword)}
-                                        disabled={loading}
-                                    >
-                                        {showPassword ? <FaEyeSlash /> : <FaEye />}
-                                    </button>
-                                    <div className="input-line"></div>
-                                </div>
-                            </div>
-
-                            <div className="form-options">
-                                <label className="modern-checkbox">
-                                    <input type="checkbox" />
-                                    <span className="checkmark"></span>
-                                    <span className="checkbox-label">Remember me</span>
-                                </label>
-                                <button
-                                    type="button"
-                                    className="forgot-link"
-                                    onClick={handleForgotPassword}
-                                    disabled={loading}
-                                >
-                                    Forgot Password?
-                                </button>
-                            </div>
-
-                            <button
-                                type="submit"
-                                className="modern-submit-btn"
-                                disabled={loading || !username || !password}
-                            >
-                                {loading ? (
-                                    <div className="loading-animation">
-                                        <div className="spinner"></div>
-                                        <span>Signing In...</span>
-                                    </div>
-                                ) : (
-                                    <div className="btn-content">
-                                        <FaSignInAlt />
-                                        <span>Sign In</span>
-                                        <div className="btn-shine"></div>
-                                    </div>
-                                )}
-                            </button>
-                        </form>
-
-                        <div className="divider-section">
-                            <div className="divider-line"></div>
-                            <span className="divider-text">or continue with</span>
-                            <div className="divider-line"></div>
-                        </div>
-
+                        {/* Social Login */}
                         <div className="social-login-grid">
                             <button className="social-btn google-btn">
                                 <FaGoogle />
@@ -212,18 +127,105 @@ function Login({ setIsLoggedIn, updateAuthState }) {
                             </button>
                         </div>
 
+                        <div className="divider-section">
+                            <div className="divider-line"></div>
+                            <span className="divider-text">OR</span>
+                            <div className="divider-line"></div>
+                        </div>
+
+                        {error && (
+                            <div className="error-alert">
+                                <FaLock className="error-icon" />
+                                <span>{error}</span>
+                            </div>
+                        )}
+
+                        <form className="modern-form" onSubmit={handleLogin}>
+                            <div className="input-container">
+                                <div className="input-wrapper">
+                                    <FaUser className="input-icon" />
+                                    <input
+                                        type="text"
+                                        value={username}
+                                        onChange={(e) => setUsername(e.target.value)}
+                                        placeholder="Username or email"
+                                        className="modern-input"
+                                        required
+                                    />
+                                    <div className="input-line"></div>
+                                </div>
+                            </div>
+
+                            <div className="input-container">
+                                <div className="input-wrapper">
+                                    <FaLock className="input-icon" />
+                                    <input
+                                        type={showPassword ? 'text' : 'password'}
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        placeholder="Password"
+                                        className="modern-input"
+                                        required
+                                    />
+                                    <button
+                                        type="button"
+                                        className="password-toggle"
+                                        onClick={() => setShowPassword(!showPassword)}
+                                    >
+                                        {showPassword ? <FaEyeSlash /> : <FaEye />}
+                                    </button>
+                                    <div className="input-line"></div>
+                                </div>
+                            </div>
+
+                            <div className="form-options">
+                                <label className="modern-checkbox">
+                                    <input type="checkbox" />
+                                    <div className="checkmark"></div>
+                                    <span className="checkbox-label">Remember me</span>
+                                </label>
+                                <button
+                                    type="button"
+                                    className="forgot-link"
+                                    onClick={handleForgotPassword}
+                                >
+                                    Forgot Password?
+                                </button>
+                            </div>
+
+                            <button
+                                type="submit"
+                                disabled={loading}
+                                className="modern-submit-btn"
+                            >
+                                <div className="btn-content">
+                                    {loading ? (
+                                        <div className="loading-animation">
+                                            <div className="spinner"></div>
+                                            <span>Signing in...</span>
+                                        </div>
+                                    ) : (
+                                        <>
+                                            <FaSignInAlt />
+                                            <span>Sign In</span>
+                                        </>
+                                    )}
+                                </div>
+                                <div className="btn-shine"></div>
+                            </button>
+                        </form>
+
                         <div className="auth-footer">
-                            <p>
-                                Don't have an account?
-                                <Link to="/signup" className="signup-link">
-                                    <FaUserPlus />
-                                    Sign Up
-                                </Link>
-                            </p>
+                            <p>Don't have an account?</p>
+                            <Link to="/signup" className="signup-link">
+                                <FaUserPlus />
+                                <span>Create Account</span>
+                            </Link>
+
                             <div className="admin-access">
                                 <Link to="/Adminlogin" className="admin-portal-link">
                                     <FaShieldAlt />
-                                    Admin Portal
+                                    <span>Admin Portal</span>
                                 </Link>
                             </div>
                         </div>
@@ -235,3 +237,4 @@ function Login({ setIsLoggedIn, updateAuthState }) {
 }
 
 export default Login;
+

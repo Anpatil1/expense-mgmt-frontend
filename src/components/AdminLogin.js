@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import authService from '../services/authService';
 import '../Styles/Login.css';
-import { FaUserTie, FaLock, FaEye, FaEyeSlash, FaHome, FaUserPlus, FaSignInAlt, FaShieldAlt, FaCrown, FaGoogle, FaFacebook, FaGithub, FaWallet, FaServer, FaUsers, FaCog } from 'react-icons/fa';
+import { FaUserTie, FaLock, FaEye, FaEyeSlash, FaHome, FaUserPlus, FaSignInAlt, FaShieldAlt, FaCrown, FaWallet, FaServer, FaUsers, FaCog, FaChartBar, FaDatabase } from 'react-icons/fa';
 
 const AdminLogin = ({ setIsLoggedIn, updateAuthState }) => {
     const [username, setUsername] = useState('');
@@ -85,7 +85,7 @@ const AdminLogin = ({ setIsLoggedIn, updateAuthState }) => {
                             </div>
                             <h1>Administrator Portal</h1>
                             <p>Secure access to advanced system controls and comprehensive management tools.</p>
-                            <div className="admin-stats-grid">
+                            <div className="stats-grid admin-stats-grid">
                                 <div className="stat-item">
                                     <span className="stat-number">100%</span>
                                     <span className="stat-label">Secure</span>
@@ -99,14 +99,19 @@ const AdminLogin = ({ setIsLoggedIn, updateAuthState }) => {
                                     <span className="stat-label">Uptime</span>
                                 </div>
                             </div>
+
                             <div className="security-features">
                                 <div className="security-item">
                                     <FaShieldAlt className="security-icon" />
-                                    <span>256-bit Encryption</span>
+                                    <span>Multi-Factor Auth</span>
                                 </div>
                                 <div className="security-item">
-                                    <FaCog className="security-icon" />
-                                    <span>Advanced Controls</span>
+                                    <FaDatabase className="security-icon" />
+                                    <span>Encrypted Storage</span>
+                                </div>
+                                <div className="security-item">
+                                    <FaServer className="security-icon" />
+                                    <span>Secure Servers</span>
                                 </div>
                             </div>
                         </div>
@@ -118,35 +123,34 @@ const AdminLogin = ({ setIsLoggedIn, updateAuthState }) => {
                     <div className="glass-card admin-form">
                         <div className="form-header admin-header">
                             <div className="pulse-icon admin-pulse-icon">
-                                <FaUserTie />
+                                <FaCrown />
                             </div>
-                            <h2>Administrator Access</h2>
-                            <p>Enter your administrative credentials to continue</p>
-                            <div className="security-indicator">
+                            <h2>Admin Access</h2>
+                            <p>Secure administrator login portal</p>
+                            <div className="security-indicator admin-security">
                                 <FaShieldAlt />
-                                <span>Secured Connection</span>
+                                <span>High Security Zone</span>
                             </div>
                         </div>
 
-                        <form onSubmit={handleLogin} className="modern-form">
-                            {error && (
-                                <div className="error-alert admin-error">
-                                    <div className="error-icon">🔒</div>
-                                    <span>{error}</span>
-                                </div>
-                            )}
+                        {error && (
+                            <div className="error-alert admin-error">
+                                <FaShieldAlt className="error-icon" />
+                                <span>{error}</span>
+                            </div>
+                        )}
 
+                        <form className="modern-form" onSubmit={handleLogin}>
                             <div className="input-container">
                                 <div className="input-wrapper">
                                     <FaUserTie className="input-icon admin-icon" />
                                     <input
                                         type="text"
-                                        placeholder="Administrator Username"
                                         value={username}
                                         onChange={(e) => setUsername(e.target.value)}
+                                        placeholder="Administrator username"
+                                        className="modern-input admin-input"
                                         required
-                                        disabled={loading}
-                                        className={`modern-input admin-input ${error ? 'input-error' : ''}`}
                                     />
                                     <div className="input-line admin-line"></div>
                                 </div>
@@ -157,18 +161,16 @@ const AdminLogin = ({ setIsLoggedIn, updateAuthState }) => {
                                     <FaLock className="input-icon admin-icon" />
                                     <input
                                         type={showPassword ? 'text' : 'password'}
-                                        placeholder="Administrator Password"
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
+                                        placeholder="Administrator password"
+                                        className="modern-input admin-input"
                                         required
-                                        disabled={loading}
-                                        className={`modern-input admin-input ${error ? 'input-error' : ''}`}
                                     />
                                     <button
                                         type="button"
                                         className="password-toggle admin-toggle"
                                         onClick={() => setShowPassword(!showPassword)}
-                                        disabled={loading}
                                     >
                                         {showPassword ? <FaEyeSlash /> : <FaEye />}
                                     </button>
@@ -176,51 +178,57 @@ const AdminLogin = ({ setIsLoggedIn, updateAuthState }) => {
                                 </div>
                             </div>
 
-                            <div className="form-options admin-options">
+                            <div className="form-options">
                                 <label className="modern-checkbox admin-checkbox">
                                     <input type="checkbox" />
-                                    <span className="checkmark admin-checkmark"></span>
-                                    <span className="checkbox-label">Keep me signed in</span>
+                                    <div className="checkmark admin-checkmark"></div>
+                                    <span className="checkbox-label">Remember this session</span>
                                 </label>
-                                <div className="admin-help">
-                                    <FaShieldAlt />
-                                    <span>Need help?</span>
-                                </div>
+                                <button
+                                    type="button"
+                                    className="admin-help"
+                                >
+                                    <FaCog />
+                                    <span>Need Help?</span>
+                                </button>
                             </div>
 
                             <button
                                 type="submit"
+                                disabled={loading}
                                 className="modern-submit-btn admin-submit-btn"
-                                disabled={loading || !username || !password}
                             >
-                                {loading ? (
-                                    <div className="loading-animation">
-                                        <div className="spinner admin-spinner"></div>
-                                        <span>Authenticating...</span>
-                                    </div>
-                                ) : (
-                                    <div className="btn-content">
-                                        <FaSignInAlt />
-                                        <span>Access Admin Portal</span>
-                                        <div className="btn-shine admin-shine"></div>
-                                    </div>
-                                )}
+                                <div className="btn-content">
+                                    {loading ? (
+                                        <div className="loading-animation">
+                                            <div className="spinner"></div>
+                                            <span>Authenticating...</span>
+                                        </div>
+                                    ) : (
+                                        <>
+                                            <FaSignInAlt />
+                                            <span>Access Admin Portal</span>
+                                        </>
+                                    )}
+                                </div>
+                                <div className="btn-shine"></div>
                             </button>
                         </form>
 
-                        <div className="admin-footer">
+                        <div className="auth-footer admin-footer">
                             <div className="admin-links">
                                 <Link to="/login" className="user-portal-link">
-                                    <FaUserTie />
-                                    User Portal
+                                    <FaUserPlus />
+                                    <span>User Portal</span>
                                 </Link>
                                 <Link to="/AdminSignup" className="admin-signup-link">
-                                    <FaUserPlus />
-                                    Admin Signup
+                                    <FaUserTie />
+                                    <span>Admin Signup</span>
                                 </Link>
                             </div>
+
                             <div className="admin-disclaimer">
-                                <p>⚠️ Authorized personnel only. All activities are logged and monitored.</p>
+                                <p>Restricted access. Administrator credentials required.</p>
                             </div>
                         </div>
                     </div>
@@ -231,4 +239,3 @@ const AdminLogin = ({ setIsLoggedIn, updateAuthState }) => {
 };
 
 export default AdminLogin;
-

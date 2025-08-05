@@ -1,10 +1,10 @@
 /* Theme Variables */
 :root {
-  --primary-bg: #ffffff;
-  --primary-text: #1f2937;
-  --accent-color: #3b82f6;
-  --accent-hover: rgba(59, 130, 246, 0.1);
-  --border-color: #e5e7eb;
+    --primary-bg: #ffffff;
+    --primary-text: #1f2937;
+    --accent-color: #3b82f6;
+    --accent-hover: rgba(59, 130, 246, 0.1);
+    --border-color: #e5e7eb;
 }
 
 .navbar {

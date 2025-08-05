@@ -1,9 +1,9 @@
 :root {
-  --slider-bg: #ffffff;
-  --slider-text: #1f2937;
-  --slider-accent: #3b82f6;
-  --slider-border: #e5e7eb;
-  --slider-hover-bg: rgba(59, 130, 246, 0.1);
+    --slider-bg: #ffffff;
+    --slider-text: #1f2937;
+    --slider-accent: #3b82f6;
+    --slider-border: #e5e7eb;
+    --slider-hover-bg: rgba(59, 130, 246, 0.1);
 }
 
 .slider-container {

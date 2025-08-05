@@ -86,28 +86,28 @@ body {
   width: 100%;
   height: 100%;
   background: linear-gradient(135deg,
-    var(--accent-start) 0%,
-    var(--accent-end) 100%);
+  var(--accent-start) 0%,
+  var(--accent-end) 100%);
   opacity: 0.1;
   z-index: 2;
 }
 
 .signup-gradient {
   background: linear-gradient(135deg,
-    rgba(56, 178, 172, 0.95) 0%,
-    rgba(129, 230, 217, 0.95) 100%);
+  rgba(56, 178, 172, 0.95) 0%,
+  rgba(129, 230, 217, 0.95) 100%);
 }
 
 .admin-gradient {
   background: linear-gradient(135deg,
-    rgba(17, 24, 39, 0.98) 0%,
-    rgba(55, 65, 81, 0.98) 100%);
+  rgba(17, 24, 39, 0.98) 0%,
+  rgba(55, 65, 81, 0.98) 100%);
 }
 
 .admin-signup-gradient {
   background: linear-gradient(135deg,
-    rgba(31, 41, 55, 0.98) 0%,
-    rgba(75, 85, 99, 0.98) 100%);
+  rgba(31, 41, 55, 0.98) 0%,
+  rgba(75, 85, 99, 0.98) 100%);
 }
 
 /* Navigation */
@@ -203,8 +203,8 @@ body {
   color: white;
   position: relative;
   background: linear-gradient(135deg,
-     var(--accent-start) 30%,
-     var(--accent-end) 100%);
+  var(--accent-start) 30%,
+  var(--accent-end) 100%);
 }
 
 .hero-content {
@@ -783,9 +783,9 @@ body {
   width: 100%;
   height: 100%;
   background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.2) 50%,
-    transparent 100%);
+  transparent 0%,
+  rgba(255, 255, 255, 0.2) 50%,
+  transparent 100%);
   transition: left 0.5s ease;
 }
 
@@ -852,9 +852,9 @@ body {
   flex: 1;
   height: 1px;
   background: linear-gradient(90deg,
-    transparent 0%,
-    #e5e7eb 50%,
-    transparent 100%);
+  transparent 0%,
+  #e5e7eb 50%,
+  transparent 100%);
 }
 
 .divider-text {
