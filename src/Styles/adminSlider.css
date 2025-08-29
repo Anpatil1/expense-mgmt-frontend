@@ -1,121 +1,131 @@
 /* src/Styles/adminSlider.css */
+:root {
+  --admin-primary: #1e2a38;
+  --admin-secondary: #2c3e50;
+  --admin-accent: #3498db;
+  --admin-text: #ecf0f1;
+  --admin-hover: #34495e;
+}
+
 .admin-slider {
   position: fixed;
   top: 60px; /* Adjust this value based on the height of your navbar */
-  left: -250px;
+  left: -280px;
   height: calc(100% - 60px); /* Subtract navbar height */
-  width: 250px;
-  background: linear-gradient(135deg, #1e2a38, #2c3e50);
-  color: #ecf0f1;
-  transition: all 0.5s ease;
-  overflow-x: hidden;
+  width: 280px;
+  background: linear-gradient(135deg, var(--admin-primary), var(--admin-secondary));
+  color: var(--admin-text);
+  transition: all 0.3s ease;
+  overflow-y: auto;
   z-index: 1000;
   box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .admin-slider.open {
   left: 0;
 }
 
-.slider-toggle {
+.admin-slider-toggle {
   position: fixed;
-  top: 60px; /* Adjust to align with your navbar */
-  left: 0;
-  transform: translateY(-50%);
-  background-color: #34495e;
-  color: #ecf0f1;
+  top: 70px; /* Adjust to align with your navbar */
+  left: 10px;
+  background-color: var(--admin-secondary);
+  color: var(--admin-text);
   padding: 12px;
   cursor: pointer;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-radius: 50%;
   z-index: 1001;
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 20px;
+  border: 2px solid var(--admin-accent);
 }
 
-.slider-toggle.open {
-  left: 250px;
+.admin-slider-toggle:hover {
+  background-color: var(--admin-accent);
+  transform: rotate(180deg);
 }
 
-.admin-slider h3 {
+.slider-header {
   padding: 20px;
   margin: 0;
   text-align: center;
-  background: #34495e;
-  border-bottom: 1px solid #2c3e50;
+  background: var(--admin-hover);
+  border-bottom: 1px solid var(--admin-secondary);
+  position: relative;
+}
+
+.slider-header h3 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 .admin-slider ul {
   list-style-type: none;
   padding: 0;
-  margin: 0;
+  margin: 20px 0;
 }
 
 .admin-slider li {
-  padding: 15px 20px;
-  border-bottom: 1px solid #2c3e50;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  padding: 0;
+  margin: 8px 15px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .admin-slider li:hover {
-  background-color: #2c3e50;
-  transform: scale(1.05);
+  background-color: var(--admin-hover);
+  transform: translateX(5px);
 }
 
 .admin-slider a {
-  color: #ecf0f1;
+  color: var(--admin-text);
   text-decoration: none;
   display: flex;
   align-items: center;
+  padding: 12px 15px;
+  border-radius: 8px;
   transition: color 0.3s ease;
 }
 
 .admin-slider a:hover {
-  color: #f39c12;
+  color: var(--admin-accent);
 }
 
 .admin-slider a svg {
   margin-right: 15px;
   width: 22px;
+  height: 22px;
   transition: transform 0.3s ease;
 }
 
 .admin-slider a:hover svg {
   transform: scale(1.2);
+  color: var(--admin-accent);
 }
 
-/* Icons only in collapsed state */
-.admin-slider:not(.open) a span {
-  display: none;
-}
-
-/* Responsive design */
+/* Add responsive styles */
 @media (max-width: 768px) {
   .admin-slider {
-    left: -100%;
-    width: 80%; /* Adjust this width as per your requirement */
+    width: 250px;
+    left: -250px;
   }
 
-  .admin-slider.open {
-    left: 0;
-  }
-
-  .slider-toggle {
+  .admin-slider-toggle {
     top: auto;
     bottom: 20px;
     left: 20px;
     transform: none;
-    border-radius: 50%;
-    padding: 15px;
-    font-size: 24px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
   }
 
-  .slider-toggle.open {
-    left: calc(80% + 20px); /* Adjust based on the sidebar width */
+  .admin-slider-toggle.open {
+    left: 260px;
   }
 }

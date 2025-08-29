@@ -136,26 +136,15 @@
 .badge {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 197, 253, 0.15));
-    color: #1e40af;
-    padding: 12px 20px;
+    gap: 8px;
+    background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    color: #1d4ed8;
+    padding: 8px 16px;
     border-radius: 50px;
     font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 32px;
-    border: 2px solid rgba(59, 130, 246, 0.2);
-    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.1);
-}
-
-.badge-symbol {
-    font-size: 16px;
-    animation: badge-pulse 2s infinite ease-in-out;
-}
-
-@keyframes badge-pulse {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.1); opacity: 0.8; }
+    font-weight: 500;
+    margin-bottom: 24px;
+    border: 1px solid rgba(59, 130, 246, 0.2);
 }
 
 .hero-title {
@@ -196,23 +185,15 @@
 }
 
 .benefit-icon {
-    width: 32px;
-    height: 32px;
-    background: linear-gradient(135deg, #3b82f6, #60a5fa);
-    border-radius: 12px;
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 16px;
-    font-weight: bold;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
-    transition: all 0.3s ease;
-}
-
-.benefit-item:hover .benefit-icon {
-    transform: scale(1.1);
-    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.35);
+    font-size: 12px;
 }
 
 .cta-section {
@@ -225,71 +206,63 @@
 .btn-primary, .btn-secondary {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
-    padding: 16px 32px;
-    border-radius: 16px;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 12px;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 16px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    border: 2px solid transparent;
-    min-height: 56px;
-    justify-content: center;
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #3b82f6, #1e40af);
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
     color: white;
-    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.35);
-    border-color: transparent;
-}
-
-.btn-primary::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: left 0.6s ease;
-}
-
-.btn-primary:hover::before {
-    left: 100%;
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.45);
-    background: linear-gradient(135deg, #1e40af, #3b82f6);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.4);
 }
 
-.btn-secondary {
-    background: rgba(255, 255, 255, 0.95);
-    color: #3b82f6;
-    border: 2px solid rgba(59, 130, 246, 0.2);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-.btn-secondary:hover {
-    background: #3b82f6;
-    color: white;
-    border-color: #3b82f6;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.3);
-}
-
-.arrow {
+.btn-primary .arrow {
     transition: transform 0.3s ease;
-    font-size: 18px;
-    font-weight: 900;
 }
 
 .btn-primary:hover .arrow {
     transform: translateX(4px);
+}
+
+.btn-secondary {
+    background: white;
+    color: #374151;
+    border: 2px solid #e5e7eb;
+}
+
+.btn-secondary:hover {
+    border-color: #3b82f6;
+    color: #3b82f6;
+    transform: translateY(-2px);
+}
+
+.signup-prompt {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.signup-link {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.signup-link:hover {
+    border-bottom-color: #3b82f6;
 }
 
 /* Hero Right - Dashboard Preview */
@@ -432,18 +405,16 @@
 
 .float-item {
     position: absolute;
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, #3b82f6, #1e40af);
-    border-radius: 20px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 32px;
-    font-weight: bold;
-    box-shadow: 0 12px 32px rgba(59, 130, 246, 0.3);
-    animation: floatUp 6s ease-in-out infinite;
+    font-size: 24px;
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
 }
 
 .float-1 {
@@ -553,20 +524,13 @@
     width: 80px;
     height: 80px;
     margin: 0 auto 24px;
-    background: linear-gradient(135deg, #3b82f6, #1e40af);
-    border-radius: 24px;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     font-size: 32px;
-    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
-    transition: all 0.3s ease;
-}
-
-.feature-card:hover .card-icon {
-    transform: scale(1.05) rotate(5deg);
-    box-shadow: 0 12px 32px rgba(59, 130, 246, 0.4);
 }
 
 .feature-card h3 {
@@ -827,10 +791,10 @@
     }
 
     .btn-primary, .btn-secondary {
-        padding: 14px 20px;
-        font-size: 15px;
-        min-height: 48px;
-        gap: 8px;
+        padding: 12px 20px;
+        font-size: 14px;
+        width: 100%;
+        justify-content: center;
     }
 
     .cta-section {
@@ -871,10 +835,10 @@
     }
 
     .card-icon {
-        width: 64px;
-        height: 64px;
+        width: 60px;
+        height: 60px;
         font-size: 24px;
-        border-radius: 20px;
+        margin-bottom: 20px;
     }
 
     .feature-card h3 {
@@ -941,16 +905,14 @@
     }
 
     .benefit-icon {
-        width: 24px;
-        height: 24px;
-        font-size: 12px;
-        border-radius: 8px;
+        width: 20px;
+        height: 20px;
+        font-size: 10px;
     }
 
     .btn-primary, .btn-secondary {
-        padding: 12px 16px;
-        font-size: 14px;
-        min-height: 44px;
+        padding: 10px 16px;
+        font-size: 13px;
     }
 
     .dashboard-preview {
@@ -992,27 +954,57 @@
     }
 
     .card-icon {
-        width: 56px;
-        height: 56px;
+        width: 50px;
+        height: 50px;
         font-size: 20px;
-        border-radius: 16px;
+        margin-bottom: 16px;
     }
 
-    .float-item {
-        width: 48px;
-        height: 48px;
-        font-size: 20px;
-        border-radius: 14px;
+    .feature-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
     }
 
-    .badge {
-        padding: 10px 16px;
-        font-size: 12px;
-        gap: 8px;
-    }
-
-    .badge-symbol {
+    .feature-card p {
         font-size: 14px;
+        margin-bottom: 16px;
+    }
+
+    .section-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .section-header p {
+        font-size: 0.85rem;
+    }
+
+    .trust-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .trust-number {
+        font-size: 1.75rem;
+    }
+
+    .trust-label {
+        font-size: 12px;
+    }
+
+    .features-section {
+        padding: 40px 0;
+    }
+
+    .trust-section {
+        padding: 40px 0;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+
+    .shape {
+        display: none;
     }
 }
 
@@ -1027,38 +1019,38 @@
     }
 
     .btn-primary, .btn-secondary {
-        padding: 12px 16px;
-        font-size: 14px;
-        min-height: 44px;
+        padding: 8px 12px;
+        font-size: 12px;
     }
 
-    .arrow {
-        font-size: 16px;
+    .preview-content {
+        padding: 10px;
     }
 
-    .benefit-icon {
-        width: 20px;
-        height: 20px;
-        font-size: 10px;
-        border-radius: 6px;
-    }
-
-    .benefit-item {
-        font-size: 14px;
+    .feature-card {
+        padding: 15px 10px;
     }
 
     .card-icon {
-        width: 48px;
-        height: 48px;
-        font-size: 18px;
-        border-radius: 14px;
-    }
-
-    .float-item {
         width: 40px;
         height: 40px;
         font-size: 16px;
-        border-radius: 12px;
+    }
+
+    .feature-card h3 {
+        font-size: 1rem;
+    }
+
+    .feature-card p {
+        font-size: 13px;
+    }
+
+    .section-header h2 {
+        font-size: 1.25rem;
+    }
+
+    .trust-number {
+        font-size: 1.5rem;
     }
 }
 

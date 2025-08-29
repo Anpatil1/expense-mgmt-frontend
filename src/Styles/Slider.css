@@ -1,55 +1,80 @@
+/* src/Styles/Slider.css */
 :root {
-    --slider-bg: #ffffff;
-    --slider-text: #1f2937;
+    --slider-primary: #ffffff;
+    --slider-secondary: #f8f9fa;
     --slider-accent: #3b82f6;
+    --slider-text: #1f2937;
+    --slider-hover: rgba(59, 130, 246, 0.1);
     --slider-border: #e5e7eb;
-    --slider-hover-bg: rgba(59, 130, 246, 0.1);
+    --slider-shadow: rgba(0, 0, 0, 0.1);
 }
 
 .slider-container {
     position: fixed;
     top: 50px; /* Adjust this value to match your navbar height */
-    left: -250px;
-    width: 250px;
+    left: -280px;
+    width: 280px;
     height: calc(100% - 50px); /* Subtract navbar height */
-    background-color: var(--slider-bg);
+    background: linear-gradient(to right, var(--slider-secondary), var(--slider-primary));
     color: var(--slider-text);
-    transition: left 0.3s ease;
+    transition: all 0.3s ease;
     z-index: 1000;
     overflow-y: auto;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 0 10px var(--slider-shadow);
     border-right: 1px solid var(--slider-border);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .slider-container.open {
     left: 0;
 }
 
-.slider-toggle {
+.user-slider-toggle {
     position: fixed;
-    top: 16px;
-    left: 16px;
+    top: 60px; /* Adjust to align with your navbar */
+    left: 10px;
     z-index: 1100;
-    background: var(--slider-accent);
-    padding: 8px;
-    border-radius: 8px;
+    background-color: var(--slider-accent);
+    color: white;
+    padding: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px var(--slider-shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border: 2px solid white;
 }
 
-.slider-toggle:hover {
+.user-slider-toggle:hover {
     background: #2563eb;
+    transform: rotate(180deg);
 }
 
-.slider-toggle svg {
-    color: #fff;
+.user-slider-toggle svg {
+    font-size: 20px;
+}
+
+.slider-header {
+    padding: 20px;
+    text-align: center;
+    background-color: var(--slider-accent);
+    margin-bottom: 20px;
+    color: white;
+    border-bottom: 1px solid var(--slider-border);
+}
+
+.slider-header h2 {
+    margin: 0;
     font-size: 24px;
-}
-
-.toggle-button {
-    display: none; /* hide custom spans */
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
 .slider-nav {
-    padding-top: 80px;
+    padding: 10px 0;
 }
 
 .slider-nav ul {
@@ -59,7 +84,13 @@
 }
 
 .slider-nav ul li {
-    margin-bottom: 10px;
+    margin: 8px 15px;
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+}
+
+.slider-nav ul li:hover {
+    transform: translateX(5px);
 }
 
 .slider-nav ul li a {
@@ -67,13 +98,14 @@
     text-decoration: none;
     display: flex;
     align-items: center;
-    padding: 12px 20px;
-    transition: background-color 0.3s ease, padding-left 0.3s ease;
+    padding: 12px 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
     border-left: 3px solid transparent;
 }
 
 .slider-nav ul li a:hover {
-    background-color: var(--slider-hover-bg);
+    background-color: var(--slider-hover);
     border-left-color: var(--slider-accent);
     color: var(--slider-accent);
 }
@@ -81,17 +113,28 @@
 .slider-nav ul li a svg {
     margin-right: 15px;
     font-size: 20px;
+    transition: transform 0.3s ease;
 }
 
-.slider-header {
-    padding: 20px;
-    text-align: center;
-    background-color: var(--slider-accent);
-    margin-bottom: 20px;
+.slider-nav ul li a:hover svg {
+    transform: scale(1.2);
+    color: var(--slider-accent);
 }
 
-.slider-header h2 {
-    margin: 0;
-    font-size: 24px;
-    color: #fff;
+/* Add responsive styles */
+@media (max-width: 768px) {
+    .slider-container {
+        width: 250px;
+        left: -250px;
+    }
+
+    .user-slider-toggle {
+        top: auto;
+        bottom: 20px;
+        left: 20px;
+    }
+
+    .user-slider-toggle.open {
+        left: 260px;
+    }
 }
