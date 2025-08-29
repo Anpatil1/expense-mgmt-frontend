@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import authService from '../services/authService';
 import '../Styles/Navbar.css';
 import logo from '../assests/logo.png';
-import { FaBars, FaTimes, FaUser } from 'react-icons/fa';
 
 function NavBar({ setIsLoggedIn, username, photoUrl }) {
     const navigate = useNavigate();
@@ -32,6 +31,29 @@ function NavBar({ setIsLoggedIn, username, photoUrl }) {
         setIsOpen(!isOpen);
     };
 
+    // Generate random user avatar with first letter
+    const getAvatarContent = () => {
+        if (profileImage) {
+            return (
+                <img
+                    src={profileImage}
+                    alt="User Profile"
+                    className="profile-photo"
+                />
+            );
+        }
+
+        if (username) {
+            return (
+                <span className="profile-initial">
+                    {username.charAt(0).toUpperCase()}
+                </span>
+            );
+        }
+
+        return <span className="profile-symbol">👤</span>;
+    };
+
     return (
         <nav className="navbar">
             <div className="navbar-logo">
@@ -40,27 +62,34 @@ function NavBar({ setIsLoggedIn, username, photoUrl }) {
                     <span>Expense Management</span>
                 </Link>
             </div>
+
             <div className={`navbar-links ${isOpen ? 'active' : ''}`}>
-                <Link to="/" onClick={toggleNavbar}>Home</Link>
+                <Link to="/" onClick={toggleNavbar} className="nav-link-item">
+                    <span className="nav-icon">🏠</span>
+                    <span>Home</span>
+                </Link>
+
                 <button onClick={handleLogout} className="logout-button">
-                    Logout
+                    <span className="logout-icon">🚪</span>
+                    <span>Logout</span>
                 </button>
+
                 <div className="profile-circle">
-                    <Link to={`/profile/${username}`} onClick={toggleNavbar}>
-                        {profileImage ? (
-                            <img
-                                src={profileImage}
-                                alt="User Profile"
-                                className="profile-photo"
-                            />
-                        ) : (
-                            <FaUser className="profile-placeholder" />
-                        )}
+                    <Link to={`/profile/${username}`} onClick={toggleNavbar} className="profile-link">
+                        {getAvatarContent()}
                     </Link>
+                    {username && (
+                        <div className="username-display">
+                            {username}
+                        </div>
+                    )}
                 </div>
             </div>
+
             <button className="navbar-toggler" onClick={toggleNavbar}>
-                {isOpen ? <FaTimes /> : <FaBars />}
+                <span className="hamburger-line"></span>
+                <span className="hamburger-line"></span>
+                <span className="hamburger-line"></span>
             </button>
         </nav>
     );

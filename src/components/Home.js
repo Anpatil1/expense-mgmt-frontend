@@ -1,45 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../Styles/Home.css';
-import {
-    FaChartLine, FaUserCog, FaUserTie, FaRegChartBar, FaWallet, FaFileAlt,
-    FaChevronLeft, FaChevronRight, FaArrowRight, FaCheck, FaShieldAlt,
-    FaBolt, FaUsers, FaGlobe, FaChartBar, FaRocket
-} from 'react-icons/fa';
 
 function Home() {
     const [currentCard, setCurrentCard] = useState(0);
     const [isVisible, setIsVisible] = useState(false);
 
-    // Original cards data - keeping the core content
+    // Updated cards data with emoji symbols instead of React Icons
     const cards = [
         {
-            icon: <FaChartLine />,
+            symbol: "📊",
             title: "Track Expenses",
             description: "Easily monitor your spending habits and stay on top of your finances"
         },
         {
-            icon: <FaRegChartBar />,
+            symbol: "📈",
             title: "Analyze Data",
             description: "Gain valuable insights into your financial patterns and make informed decisions"
         },
         {
-            icon: <FaWallet />,
+            symbol: "💰",
             title: "Budget Planning",
             description: "Set and manage your budgets to achieve your financial goals effectively"
         },
         {
-            icon: <FaFileAlt />,
+            symbol: "📋",
             title: "Report Generation",
             description: "Create detailed financial reports to visualize your progress and plan for the future"
         }
     ];
 
     const benefits = [
-        { icon: <FaShieldAlt />, text: "Secure & Private" },
-        { icon: <FaBolt />, text: "Lightning Fast" },
-        { icon: <FaUsers />, text: "Multi-User Support" },
-        { icon: <FaGlobe />, text: "Global Access" }
+        { symbol: "🛡", text: "Secure & Private" },
+        { symbol: "⚡", text: "Lightning Fast" },
+        { symbol: "👥", text: "Multi-User Support" },
+        { symbol: "🌐", text: "Global Access" }
     ];
 
     const stats = [
@@ -50,7 +45,11 @@ function Home() {
     ];
 
     useEffect(() => {
-        setIsVisible(true);
+        const timer = setTimeout(() => setIsVisible(true), 100);
+        return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
         const interval = setInterval(() => {
             setCurrentCard((prev) => (prev + 1) % cards.length);
         }, 4000);
@@ -80,7 +79,6 @@ function Home() {
                 <div className="dot active"></div>
                 <div className="dot"></div>
                 <div className="dot"></div>
-                <div className="dot"></div>
             </div>
 
             {/* Hero Section */}
@@ -88,24 +86,25 @@ function Home() {
                 <div className="hero-container">
                     <div className="hero-left">
                         <div className="badge">
-                            <FaChartBar />
-                            <span>Smart Financial Management</span>
+                            <span className="badge-symbol">✨</span>
+                            <span>New Features Available</span>
                         </div>
 
                         <h1 className="hero-title">
-                            Smart Expense
-                            <span className="highlight">Management</span>
+                            Smart <span className="highlight">Financial</span> Management for Everyone
                         </h1>
 
                         <p className="hero-subtitle">
-                            Take control of your finances with our powerful tools and insights.
-                            Monitor, analyze, and optimize your spending habits effortlessly.
+                            Take control of your finances with our intelligent expense tracking platform.
+                            Monitor spending, analyze patterns, and achieve your financial goals with ease.
                         </p>
 
                         <div className="benefits-list">
                             {benefits.map((benefit, index) => (
                                 <div key={index} className="benefit-item">
-                                    <div className="benefit-icon">{benefit.icon}</div>
+                                    <div className="benefit-icon">
+                                        <span>{benefit.symbol}</span>
+                                    </div>
                                     <span>{benefit.text}</span>
                                 </div>
                             ))}
@@ -113,19 +112,19 @@ function Home() {
 
                         <div className="cta-section">
                             <Link to="/login" className="btn-primary">
-                                <FaUserCog />
-                                User Login
-                                <FaArrowRight className="arrow" />
+                                <span>Get Started</span>
+                                <span className="arrow">→</span>
                             </Link>
-                            <Link to="/Adminlogin" className="btn-secondary">
-                                <FaUserTie />
-                                Admin Login
+                            <Link to="/signup" className="btn-secondary">
+                                <span>Learn More</span>
                             </Link>
                         </div>
 
                         <div className="signup-prompt">
-                            <span>New user? </span>
-                            <Link to="/signup" className="signup-link">Sign up here</Link>
+                            <span>New to ExpenseTracker? </span>
+                            <Link to="/signup" className="signup-link">
+                                Create your free account
+                            </Link>
                         </div>
                     </div>
 
@@ -137,7 +136,7 @@ function Home() {
                                     <span></span>
                                     <span></span>
                                 </div>
-                                <div className="preview-title">Expense Dashboard</div>
+                                <span className="preview-title">Dashboard</span>
                             </div>
                             <div className="preview-content">
                                 <div className="chart-area">
@@ -148,25 +147,28 @@ function Home() {
                                     </div>
                                 </div>
                                 <div className="stats-preview">
-                                    {stats.map((stat, index) => (
-                                        <div key={index} className="stat-card">
-                                            <div className="stat-number">{stat.number}</div>
-                                            <div className="stat-label">{stat.label}</div>
-                                        </div>
-                                    ))}
+                                    <div className="stat-card">
+                                        <div className="stat-number">$2,500</div>
+                                        <div className="stat-label">This Month</div>
+                                    </div>
+                                    <div className="stat-card">
+                                        <div className="stat-number">128</div>
+                                        <div className="stat-label">Transactions</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
+                        {/* Floating Elements */}
                         <div className="floating-elements">
                             <div className="float-item float-1">
-                                <FaWallet />
+                                <span>💰</span>
                             </div>
                             <div className="float-item float-2">
-                                <FaChartLine />
+                                <span>📊</span>
                             </div>
                             <div className="float-item float-3">
-                                <FaRocket />
+                                <span>⚡</span>
                             </div>
                         </div>
                     </div>
@@ -183,24 +185,21 @@ function Home() {
 
                     <div className="features-carousel">
                         <button className="carousel-btn prev-btn" onClick={prevCard}>
-                            <FaChevronLeft />
+                            <span>‹</span>
                         </button>
 
                         <div className="carousel-container">
-                            <div
-                                className="carousel-track"
-                                style={{ transform: `translateX(-${currentCard * 100}%)` }}
-                            >
+                            <div className="carousel-track" style={{ transform: `translateX(-${currentCard * 100}%)` }}>
                                 {cards.map((card, index) => (
                                     <div key={index} className="feature-card">
                                         <div className="card-icon">
-                                            {card.icon}
+                                            <span>{card.symbol}</span>
                                         </div>
                                         <h3>{card.title}</h3>
                                         <p>{card.description}</p>
                                         <div className="card-footer">
-                                            <span>Learn More</span>
-                                            <FaArrowRight />
+                                            <span>Learn more</span>
+                                            <span>→</span>
                                         </div>
                                     </div>
                                 ))}
@@ -208,7 +207,7 @@ function Home() {
                         </div>
 
                         <button className="carousel-btn next-btn" onClick={nextCard}>
-                            <FaChevronRight />
+                            <span>›</span>
                         </button>
                     </div>
 
@@ -229,8 +228,8 @@ function Home() {
                 <div className="container">
                     <div className="trust-content">
                         <div className="trust-text">
-                            <h3>Trusted by thousands of users worldwide</h3>
-                            <p>Join our growing community of smart financial managers</p>
+                            <h3>Trusted by thousands worldwide</h3>
+                            <p>Join our growing community of users who have taken control of their financial future</p>
                         </div>
                         <div className="trust-stats">
                             {stats.map((stat, index) => (
