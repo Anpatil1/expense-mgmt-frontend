@@ -114,13 +114,6 @@ function Login({ setIsLoggedIn, updateAuthState }) {
                 </form>
 
                 <div className="auth-footer">
-                    <button
-                        type="button"
-                        onClick={handleForgotPassword}
-                        className="forgot-password-button"
-                    >
-                        Forgot Password?
-                    </button>
                     <p>
                         Don't have an account?{' '}
                         <Link to="/signup" className="auth-link">
