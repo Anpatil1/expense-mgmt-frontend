@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import authService from '../services/authService';
 import '../Styles/Login.css';
+import { FaHome, FaArrowLeft, FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const AdminLogin = ({ setIsLoggedIn, updateAuthState }) => {
     const [username, setUsername] = useState('');
@@ -36,6 +37,14 @@ const AdminLogin = ({ setIsLoggedIn, updateAuthState }) => {
 
     return (
         <div className="auth-container admin-variant">
+            <div className="auth-navigation">
+                <Link to="/" className="back-button" title="Back to Home">
+                    <FaArrowLeft /> <span>Back</span>
+                </Link>
+                <Link to="/" className="home-button" title="Go to Home">
+                    <FaHome /> <span>Home</span>
+                </Link>
+            </div>
             <div className="auth-card">
                 <div className="auth-header">
                     <div className="auth-logo">
@@ -77,7 +86,7 @@ const AdminLogin = ({ setIsLoggedIn, updateAuthState }) => {
                             className="password-toggle"
                             onClick={() => setShowPassword(!showPassword)}
                         >
-                            {showPassword ? 'Hide' : 'Show'}
+                            {showPassword ? <FaEyeSlash /> : <FaEye />}
                         </button>
                     </div>
 
@@ -98,7 +107,12 @@ const AdminLogin = ({ setIsLoggedIn, updateAuthState }) => {
                 </form>
 
                 <div className="auth-footer">
-                    <p>Not an admin? <Link to="/login">User Login</Link></p>
+                    <p>
+                        Not an admin?{' '}
+                        <Link to="/login" className="auth-link">
+                            User Login
+                        </Link>
+                    </p>
                 </div>
             </div>
         </div>

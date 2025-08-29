@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import authService from '../services/authService';
 import '../Styles/Login.css';
+import { FaHome, FaArrowLeft, FaEye, FaEyeSlash } from 'react-icons/fa';
 
 function Signup() {
     const [username, setUsername] = useState('');
@@ -50,7 +51,15 @@ function Signup() {
     };
 
     return (
-        <div className="auth-container signup-variant">
+        <div className="auth-container">
+            <div className="auth-navigation">
+                <Link to="/" className="back-button" title="Back to Home">
+                    <FaArrowLeft /> <span>Back</span>
+                </Link>
+                <Link to="/" className="home-button" title="Go to Home">
+                    <FaHome /> <span>Home</span>
+                </Link>
+            </div>
             <div className="auth-card">
                 <div className="auth-header">
                     <div className="auth-logo">
@@ -103,7 +112,7 @@ function Signup() {
                             className="password-toggle"
                             onClick={() => setShowPassword(!showPassword)}
                         >
-                            {showPassword ? 'Hide' : 'Show'}
+                            {showPassword ? <FaEyeSlash /> : <FaEye />}
                         </button>
                     </div>
 
@@ -121,7 +130,7 @@ function Signup() {
                             className="password-toggle"
                             onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                         >
-                            {showConfirmPassword ? 'Hide' : 'Show'}
+                            {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
                         </button>
                     </div>
 
@@ -153,7 +162,12 @@ function Signup() {
                 </form>
 
                 <div className="auth-footer">
-                    <p>Already have an account? <Link to="/login">Sign In</Link></p>
+                    <p>
+                        Already have an account?{' '}
+                        <Link to="/login" className="auth-link">
+                            Sign In
+                        </Link>
+                    </p>
                 </div>
             </div>
         </div>

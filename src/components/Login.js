@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import authService from '../services/authService';
 import '../Styles/Login.css';
+import { FaHome, FaArrowLeft, FaEye, FaEyeSlash } from 'react-icons/fa';
 
 function Login({ setIsLoggedIn, updateAuthState }) {
     const [username, setUsername] = useState('');
@@ -33,6 +34,14 @@ function Login({ setIsLoggedIn, updateAuthState }) {
 
     return (
         <div className="auth-container">
+            <div className="auth-navigation">
+                <Link to="/" className="back-button" title="Back to Home">
+                    <FaArrowLeft /> <span>Back</span>
+                </Link>
+                <Link to="/" className="home-button" title="Go to Home">
+                    <FaHome /> <span>Home</span>
+                </Link>
+            </div>
             <div className="auth-card">
                 <div className="auth-header">
                     <div className="auth-logo">
@@ -74,7 +83,7 @@ function Login({ setIsLoggedIn, updateAuthState }) {
                             className="password-toggle"
                             onClick={() => setShowPassword(!showPassword)}
                         >
-                            {showPassword ? 'Hide' : 'Show'}
+                            {showPassword ? <FaEyeSlash /> : <FaEye />}
                         </button>
                     </div>
 
@@ -105,7 +114,19 @@ function Login({ setIsLoggedIn, updateAuthState }) {
                 </form>
 
                 <div className="auth-footer">
-                    <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>
+                    <button
+                        type="button"
+                        onClick={handleForgotPassword}
+                        className="forgot-password-button"
+                    >
+                        Forgot Password?
+                    </button>
+                    <p>
+                        Don't have an account?{' '}
+                        <Link to="/signup" className="auth-link">
+                            Sign Up
+                        </Link>
+                    </p>
                 </div>
             </div>
         </div>

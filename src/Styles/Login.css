@@ -35,10 +35,57 @@ body {
 .auth-container {
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
   background: linear-gradient(135deg, #f0f4ff 0%, #e6f0ff 100%);
+  position: relative;
+}
+
+/* Navigation Elements */
+.auth-navigation {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  gap: 15px;
+  z-index: 10;
+}
+
+.back-button, .home-button {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  background-color: white;
+  color: var(--primary);
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 500;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.back-button:hover, .home-button:hover {
+  background-color: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.back-button svg, .home-button svg {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+/* Admin variant styling */
+.admin-variant .back-button, .admin-variant .home-button {
+  background-color: var(--dark);
+  color: white;
+}
+
+.admin-variant .back-button:hover, .admin-variant .home-button:hover {
+  background-color: var(--primary-dark);
 }
 
 /* Card Styling */

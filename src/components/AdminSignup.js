@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import '../Styles/Login.css';
 import userService from "../services/userService";
+import { FaHome, FaArrowLeft, FaEye, FaEyeSlash } from 'react-icons/fa';
 
 function AdminSignup() {
     const [username, setUsername] = useState('');
@@ -52,13 +53,21 @@ function AdminSignup() {
 
     return (
         <div className="auth-container admin-variant">
+            <div className="auth-navigation">
+                <Link to="/" className="back-button" title="Back to Home">
+                    <FaArrowLeft /> <span>Back</span>
+                </Link>
+                <Link to="/" className="home-button" title="Go to Home">
+                    <FaHome /> <span>Home</span>
+                </Link>
+            </div>
             <div className="auth-card">
                 <div className="auth-header">
                     <div className="auth-logo">
                         <img src="/logo192.png" alt="ExpenseTracker Admin" />
                     </div>
-                    <h2>Admin Registration</h2>
-                    <p>Create an administrator account</p>
+                    <h2>Create Admin Account</h2>
+                    <p>Sign up for admin access</p>
                 </div>
 
                 {error && (
@@ -104,7 +113,7 @@ function AdminSignup() {
                             className="password-toggle"
                             onClick={() => setShowPassword(!showPassword)}
                         >
-                            {showPassword ? 'Hide' : 'Show'}
+                            {showPassword ? <FaEyeSlash /> : <FaEye />}
                         </button>
                     </div>
 
@@ -122,7 +131,7 @@ function AdminSignup() {
                             className="password-toggle"
                             onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                         >
-                            {showConfirmPassword ? 'Hide' : 'Show'}
+                            {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
                         </button>
                     </div>
 
@@ -154,7 +163,12 @@ function AdminSignup() {
                 </form>
 
                 <div className="auth-footer">
-                    <p>Already have an admin account? <Link to="/Adminlogin">Admin Login</Link></p>
+                    <p>
+                        Already have an admin account?{' '}
+                        <Link to="/Adminlogin" className="auth-link">
+                            Admin Sign In
+                        </Link>
+                    </p>
                 </div>
             </div>
         </div>
