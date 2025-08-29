@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import authService from '../services/authService';
 import '../Styles/Login.css';
-import { FaLock, FaEnvelope, FaEye, FaEyeSlash, FaHome, FaWallet, FaShieldAlt, FaKey } from 'react-icons/fa';
 
 function PasswordReset() {
     const [email, setEmail] = useState('');
@@ -46,12 +45,13 @@ function PasswordReset() {
 
     return (
         <div className="modern-auth-container reset-variant">
-            {/* Dynamic Background with Particles */}
+            {/* Advanced Background System */}
             <div className="particle-background">
-                <div className="particles">
-                    {[...Array(50)].map((_, i) => (
-                        <div key={i} className={`particle particle-${i % 5} reset-particle`}></div>
-                    ))}
+                <div className="geometric-shapes">
+                    <div className="shape shape-1"></div>
+                    <div className="shape shape-2"></div>
+                    <div className="shape shape-3"></div>
+                    <div className="shape shape-4"></div>
                 </div>
                 <div className="gradient-overlay reset-gradient"></div>
             </div>
@@ -59,12 +59,10 @@ function PasswordReset() {
             {/* Floating Navigation */}
             <nav className="floating-nav">
                 <Link to="/" className="nav-brand">
-                    <FaWallet className="brand-icon" />
-                    <span>ExpenseTracker</span>
+                    <span className="brand-text">ExpenseTracker</span>
                 </Link>
                 <div className="nav-links">
                     <Link to="/" className="nav-link">
-                        <FaHome />
                         <span>Home</span>
                     </Link>
                 </div>
@@ -76,13 +74,11 @@ function PasswordReset() {
                 <div className="hero-panel reset-hero">
                     <div className="hero-content">
                         <div className="floating-card card-1 reset-card">
-                            <FaShieldAlt className="card-icon" />
                             <h3>Secure Recovery</h3>
                             <p>Bank-level security for password recovery</p>
                         </div>
 
                         <div className="floating-card card-2 reset-card">
-                            <FaKey className="card-icon" />
                             <h3>Instant Access</h3>
                             <p>Regain access to your account in minutes</p>
                         </div>
@@ -104,6 +100,21 @@ function PasswordReset() {
                                     <span className="stat-label">Recovery</span>
                                 </div>
                             </div>
+
+                            <div className="security-features">
+                                <div className="security-item">
+                                    <span className="security-symbol">🛡</span>
+                                    <span>Bank Security</span>
+                                </div>
+                                <div className="security-item">
+                                    <span className="security-symbol">⚡</span>
+                                    <span>Fast Recovery</span>
+                                </div>
+                                <div className="security-item">
+                                    <span className="security-symbol">🔐</span>
+                                    <span>OTP Verified</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -112,20 +123,18 @@ function PasswordReset() {
                 <div className="form-panel">
                     <div className="glass-card">
                         <div className="form-header">
-                            <div className="pulse-icon">
-                                <FaLock />
+                            <div className="pulse-element reset-pulse-icon">
+                                <span>⟲</span>
                             </div>
                             <h2>Reset Password</h2>
                             <p>Enter your email to receive a secure OTP</p>
-                            <div className="security-indicator">
-                                <FaShieldAlt />
+                            <div className="security-badge">
                                 <span>Secure Recovery Process</span>
                             </div>
                         </div>
 
                         {error && (
                             <div className="error-alert">
-                                <FaLock className="error-icon" />
                                 <span>{error}</span>
                             </div>
                         )}
@@ -134,7 +143,6 @@ function PasswordReset() {
                             <form className="modern-form" onSubmit={handleReset}>
                                 <div className="input-container">
                                     <div className="input-wrapper">
-                                        <FaEnvelope className="input-icon" />
                                         <input
                                             type="email"
                                             value={email}
@@ -159,37 +167,29 @@ function PasswordReset() {
                                                 <span>Sending OTP...</span>
                                             </div>
                                         ) : (
-                                            <>
-                                                <FaEnvelope />
-                                                <span>Send Recovery OTP</span>
-                                            </>
+                                            <span>Send Recovery OTP</span>
                                         )}
                                     </div>
-                                    <div className="btn-shine"></div>
                                 </button>
                             </form>
                         ) : (
                             <form className="modern-form" onSubmit={handlePasswordReset}>
-                                <div className="input-row">
-                                    <div className="input-container">
-                                        <div className="input-wrapper">
-                                            <FaKey className="input-icon" />
-                                            <input
-                                                type="text"
-                                                value={otp}
-                                                onChange={(e) => setOtp(e.target.value)}
-                                                placeholder="Enter OTP"
-                                                className="modern-input"
-                                                required
-                                            />
-                                            <div className="input-line"></div>
-                                        </div>
+                                <div className="input-container">
+                                    <div className="input-wrapper">
+                                        <input
+                                            type="text"
+                                            value={otp}
+                                            onChange={(e) => setOtp(e.target.value)}
+                                            placeholder="Enter OTP"
+                                            className="modern-input"
+                                            required
+                                        />
+                                        <div className="input-line"></div>
                                     </div>
                                 </div>
 
                                 <div className="input-container">
                                     <div className="input-wrapper">
-                                        <FaLock className="input-icon" />
                                         <input
                                             type={showPassword ? 'text' : 'password'}
                                             value={newPassword}
@@ -203,7 +203,7 @@ function PasswordReset() {
                                             className="password-toggle"
                                             onClick={() => setShowPassword(!showPassword)}
                                         >
-                                            {showPassword ? <FaEyeSlash /> : <FaEye />}
+                                            {showPassword ? 'Hide' : 'Show'}
                                         </button>
                                         <div className="input-line"></div>
                                     </div>
@@ -221,13 +221,9 @@ function PasswordReset() {
                                                 <span>Resetting...</span>
                                             </div>
                                         ) : (
-                                            <>
-                                                <FaLock />
-                                                <span>Reset Password</span>
-                                            </>
+                                            <span>Reset Password</span>
                                         )}
                                     </div>
-                                    <div className="btn-shine"></div>
                                 </button>
                             </form>
                         )}

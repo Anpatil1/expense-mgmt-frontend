@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import authService from '../services/authService';
 import '../Styles/Login.css';
-import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash, FaHome, FaSignInAlt, FaUserPlus, FaGoogle, FaFacebook, FaGithub, FaRocket, FaShieldAlt, FaMobile, FaWallet, FaCheckCircle } from 'react-icons/fa';
 
 function Signup() {
     const [username, setUsername] = useState('');
@@ -52,12 +51,13 @@ function Signup() {
 
     return (
         <div className="modern-auth-container signup-variant">
-            {/* Dynamic Background with Particles */}
+            {/* Advanced Background System */}
             <div className="particle-background">
-                <div className="particles">
-                    {[...Array(50)].map((_, i) => (
-                        <div key={i} className={`particle particle-${i % 5}`}></div>
-                    ))}
+                <div className="geometric-shapes">
+                    <div className="shape shape-1"></div>
+                    <div className="shape shape-2"></div>
+                    <div className="shape shape-3"></div>
+                    <div className="shape shape-4"></div>
                 </div>
                 <div className="gradient-overlay signup-gradient"></div>
             </div>
@@ -65,12 +65,10 @@ function Signup() {
             {/* Floating Navigation */}
             <nav className="floating-nav">
                 <Link to="/" className="nav-brand">
-                    <FaWallet className="brand-icon" />
-                    <span>ExpenseTracker</span>
+                    <span className="brand-text">ExpenseTracker</span>
                 </Link>
                 <div className="nav-links">
                     <Link to="/" className="nav-link">
-                        <FaHome />
                         <span>Home</span>
                     </Link>
                 </div>
@@ -82,32 +80,46 @@ function Signup() {
                 <div className="hero-panel">
                     <div className="hero-content">
                         <div className="floating-card card-1 signup-card">
-                            <FaRocket className="card-icon" />
                             <h3>Quick Setup</h3>
-                            <p>Get started in under 2 minutes</p>
+                            <p>Get started in under 2 minutes with our streamlined process</p>
                         </div>
 
                         <div className="floating-card card-2 signup-card">
-                            <FaMobile className="card-icon" />
                             <h3>Mobile Ready</h3>
-                            <p>Access anywhere, anytime on any device</p>
+                            <p>Access anywhere, anytime on any device with full sync</p>
                         </div>
 
                         <div className="hero-text">
                             <h1>Join the Financial Revolution</h1>
                             <p>Start your journey to smarter money management with our cutting-edge platform designed for the modern user.</p>
-                            <div className="benefits-list">
-                                <div className="benefit-item">
-                                    <FaCheckCircle className="benefit-icon" />
-                                    <span>Free forever plan</span>
+
+                            <div className="stats-grid">
+                                <div className="stat-item">
+                                    <span className="stat-number">Free</span>
+                                    <span className="stat-label">Forever Plan</span>
                                 </div>
-                                <div className="benefit-item">
-                                    <FaCheckCircle className="benefit-icon" />
-                                    <span>Advanced analytics</span>
+                                <div className="stat-item">
+                                    <span className="stat-number">AI</span>
+                                    <span className="stat-label">Analytics</span>
                                 </div>
-                                <div className="benefit-item">
-                                    <FaCheckCircle className="benefit-icon" />
-                                    <span>Bank-level security</span>
+                                <div className="stat-item">
+                                    <span className="stat-number">Bank</span>
+                                    <span className="stat-label">Security</span>
+                                </div>
+                            </div>
+
+                            <div className="security-features">
+                                <div className="security-item">
+                                    <span className="security-symbol">🚀</span>
+                                    <span>Fast Setup</span>
+                                </div>
+                                <div className="security-item">
+                                    <span className="security-symbol">🔒</span>
+                                    <span>Secure Data</span>
+                                </div>
+                                <div className="security-item">
+                                    <span className="security-symbol">📊</span>
+                                    <span>Smart Insights</span>
                                 </div>
                             </div>
                         </div>
@@ -118,42 +130,18 @@ function Signup() {
                 <div className="form-panel">
                     <div className="glass-card signup-form">
                         <div className="form-header">
-                            <div className="pulse-icon signup-icon">
-                                <FaUserPlus />
+                            <div className="pulse-element signup-icon">
+                                <span>+</span>
                             </div>
                             <h2>Create Account</h2>
                             <p>Join thousands of users managing their finances smarter</p>
-                            <div className="security-indicator">
-                                <FaShieldAlt />
+                            <div className="security-badge">
                                 <span>Secure Registration</span>
                             </div>
                         </div>
 
-                        {/* Social Login */}
-                        <div className="social-login-grid">
-                            <button className="social-btn google-btn" type="button">
-                                <FaGoogle />
-                                <span>Google</span>
-                            </button>
-                            <button className="social-btn facebook-btn" type="button">
-                                <FaFacebook />
-                                <span>Facebook</span>
-                            </button>
-                            <button className="social-btn github-btn" type="button">
-                                <FaGithub />
-                                <span>GitHub</span>
-                            </button>
-                        </div>
-
-                        <div className="divider-section">
-                            <div className="divider-line"></div>
-                            <span className="divider-text">OR</span>
-                            <div className="divider-line"></div>
-                        </div>
-
                         {error && (
                             <div className="error-alert">
-                                <FaLock className="error-icon" />
                                 <span>{error}</span>
                             </div>
                         )}
@@ -162,7 +150,6 @@ function Signup() {
                             <div className="input-row">
                                 <div className="input-container">
                                     <div className="input-wrapper">
-                                        <FaUser className="input-icon" />
                                         <input
                                             type="text"
                                             value={username}
@@ -177,7 +164,6 @@ function Signup() {
 
                                 <div className="input-container">
                                     <div className="input-wrapper">
-                                        <FaEnvelope className="input-icon" />
                                         <input
                                             type="email"
                                             value={email}
@@ -193,12 +179,11 @@ function Signup() {
 
                             <div className="input-container">
                                 <div className="input-wrapper">
-                                    <FaLock className="input-icon" />
                                     <input
                                         type={showPassword ? 'text' : 'password'}
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                        placeholder="Password"
+                                        placeholder="Password (min 6 characters)"
                                         className="modern-input"
                                         required
                                     />
@@ -207,7 +192,7 @@ function Signup() {
                                         className="password-toggle"
                                         onClick={() => setShowPassword(!showPassword)}
                                     >
-                                        {showPassword ? <FaEyeSlash /> : <FaEye />}
+                                        {showPassword ? 'Hide' : 'Show'}
                                     </button>
                                     <div className="input-line"></div>
                                 </div>
@@ -215,7 +200,6 @@ function Signup() {
 
                             <div className="input-container">
                                 <div className="input-wrapper">
-                                    <FaLock className="input-icon" />
                                     <input
                                         type={showConfirmPassword ? 'text' : 'password'}
                                         value={confirmPassword}
@@ -229,20 +213,19 @@ function Signup() {
                                         className="password-toggle"
                                         onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                                     >
-                                        {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+                                        {showConfirmPassword ? 'Hide' : 'Show'}
                                     </button>
                                     <div className="input-line"></div>
                                 </div>
                             </div>
 
-                            <div className="terms-section">
+                            <div className="form-options">
                                 <label className="modern-checkbox">
                                     <input
                                         type="checkbox"
                                         checked={acceptTerms}
                                         onChange={(e) => setAcceptTerms(e.target.checked)}
                                     />
-                                    <div className="checkmark"></div>
                                     <span className="checkbox-label">
                                         I agree to the{' '}
                                         <Link to="/terms" className="terms-link">Terms of Service</Link>
@@ -264,26 +247,20 @@ function Signup() {
                                             <span>Creating account...</span>
                                         </div>
                                     ) : (
-                                        <>
-                                            <FaUserPlus />
-                                            <span>Create Account</span>
-                                        </>
+                                        <span>Create Account</span>
                                     )}
                                 </div>
-                                <div className="btn-shine"></div>
                             </button>
                         </form>
 
                         <div className="auth-footer">
                             <p>Already have an account?</p>
                             <Link to="/login" className="signin-link">
-                                <FaSignInAlt />
                                 <span>Sign In</span>
                             </Link>
 
                             <div className="admin-access">
                                 <Link to="/Adminlogin" className="admin-portal-link">
-                                    <FaShieldAlt />
                                     <span>Admin Portal</span>
                                 </Link>
                             </div>

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import authService from '../services/authService';
 import '../Styles/Login.css';
-import { FaUser, FaLock, FaEye, FaEyeSlash, FaHome, FaUserPlus, FaSignInAlt, FaGoogle, FaFacebook, FaGithub, FaChartLine, FaWallet, FaShieldAlt } from 'react-icons/fa';
 
 function Login({ setIsLoggedIn, updateAuthState }) {
     const [username, setUsername] = useState('');
@@ -17,7 +16,7 @@ function Login({ setIsLoggedIn, updateAuthState }) {
         setLoading(true);
         setError('');
         try {
-            await authService.login(username, password, 'USER');
+            const userData = await authService.login(username, password, 'USER');
             setIsLoggedIn(true);
             updateAuthState();
             navigate('/dashboard');
@@ -34,12 +33,13 @@ function Login({ setIsLoggedIn, updateAuthState }) {
 
     return (
         <div className="modern-auth-container">
-            {/* Dynamic Background with Particles */}
+            {/* Advanced Background System */}
             <div className="particle-background">
-                <div className="particles">
-                    {[...Array(50)].map((_, i) => (
-                        <div key={i} className={`particle particle-${i % 5}`}></div>
-                    ))}
+                <div className="geometric-shapes">
+                    <div className="shape shape-1"></div>
+                    <div className="shape shape-2"></div>
+                    <div className="shape shape-3"></div>
+                    <div className="shape shape-4"></div>
                 </div>
                 <div className="gradient-overlay"></div>
             </div>
@@ -47,12 +47,10 @@ function Login({ setIsLoggedIn, updateAuthState }) {
             {/* Floating Navigation */}
             <nav className="floating-nav">
                 <Link to="/" className="nav-brand">
-                    <FaWallet className="brand-icon" />
-                    <span>ExpenseTracker</span>
+                    <span className="brand-text">ExpenseTracker</span>
                 </Link>
                 <div className="nav-links">
                     <Link to="/" className="nav-link">
-                        <FaHome />
                         <span>Home</span>
                     </Link>
                 </div>
@@ -64,20 +62,19 @@ function Login({ setIsLoggedIn, updateAuthState }) {
                 <div className="hero-panel">
                     <div className="hero-content">
                         <div className="floating-card card-1">
-                            <FaChartLine className="card-icon" />
                             <h3>Smart Analytics</h3>
-                            <p>AI-powered insights for better financial decisions</p>
+                            <p>AI-powered insights for better financial decisions and expense tracking</p>
                         </div>
 
                         <div className="floating-card card-2">
-                            <FaShieldAlt className="card-icon" />
                             <h3>Secure & Safe</h3>
-                            <p>Bank-level security for your financial data</p>
+                            <p>Bank-level security protocols protect your financial data</p>
                         </div>
 
                         <div className="hero-text">
                             <h1>Welcome Back to the Future of Finance</h1>
                             <p>Experience next-generation expense management with intelligent insights and beautiful design.</p>
+
                             <div className="stats-grid">
                                 <div className="stat-item">
                                     <span className="stat-number">50K+</span>
@@ -92,6 +89,21 @@ function Login({ setIsLoggedIn, updateAuthState }) {
                                     <span className="stat-label">Uptime</span>
                                 </div>
                             </div>
+
+                            <div className="security-features">
+                                <div className="security-item">
+                                    <span className="security-symbol">🛡</span>
+                                    <span>Bank Security</span>
+                                </div>
+                                <div className="security-item">
+                                    <span className="security-symbol">⚡</span>
+                                    <span>Fast Access</span>
+                                </div>
+                                <div className="security-item">
+                                    <span className="security-symbol">📱</span>
+                                    <span>Mobile Ready</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -100,42 +112,18 @@ function Login({ setIsLoggedIn, updateAuthState }) {
                 <div className="form-panel">
                     <div className="glass-card">
                         <div className="form-header">
-                            <div className="pulse-icon">
-                                <FaSignInAlt />
+                            <div className="pulse-element">
+                                <span>→</span>
                             </div>
                             <h2>Welcome Back</h2>
                             <p>Sign in to your account</p>
-                            <div className="security-indicator">
-                                <FaShieldAlt />
+                            <div className="security-badge">
                                 <span>Secure Login</span>
                             </div>
                         </div>
 
-                        {/* Social Login */}
-                        <div className="social-login-grid">
-                            <button className="social-btn google-btn" type="button">
-                                <FaGoogle />
-                                <span>Google</span>
-                            </button>
-                            <button className="social-btn facebook-btn" type="button">
-                                <FaFacebook />
-                                <span>Facebook</span>
-                            </button>
-                            <button className="social-btn github-btn" type="button">
-                                <FaGithub />
-                                <span>GitHub</span>
-                            </button>
-                        </div>
-
-                        <div className="divider-section">
-                            <div className="divider-line"></div>
-                            <span className="divider-text">OR</span>
-                            <div className="divider-line"></div>
-                        </div>
-
                         {error && (
                             <div className="error-alert">
-                                <FaLock className="error-icon" />
                                 <span>{error}</span>
                             </div>
                         )}
@@ -143,7 +131,6 @@ function Login({ setIsLoggedIn, updateAuthState }) {
                         <form className="modern-form" onSubmit={handleLogin}>
                             <div className="input-container">
                                 <div className="input-wrapper">
-                                    <FaUser className="input-icon" />
                                     <input
                                         type="text"
                                         value={username}
@@ -158,7 +145,6 @@ function Login({ setIsLoggedIn, updateAuthState }) {
 
                             <div className="input-container">
                                 <div className="input-wrapper">
-                                    <FaLock className="input-icon" />
                                     <input
                                         type={showPassword ? 'text' : 'password'}
                                         value={password}
@@ -172,7 +158,7 @@ function Login({ setIsLoggedIn, updateAuthState }) {
                                         className="password-toggle"
                                         onClick={() => setShowPassword(!showPassword)}
                                     >
-                                        {showPassword ? <FaEyeSlash /> : <FaEye />}
+                                        {showPassword ? 'Hide' : 'Show'}
                                     </button>
                                     <div className="input-line"></div>
                                 </div>
@@ -181,7 +167,6 @@ function Login({ setIsLoggedIn, updateAuthState }) {
                             <div className="form-options">
                                 <label className="modern-checkbox">
                                     <input type="checkbox" />
-                                    <div className="checkmark"></div>
                                     <span className="checkbox-label">Remember me</span>
                                 </label>
                                 <button
@@ -205,26 +190,20 @@ function Login({ setIsLoggedIn, updateAuthState }) {
                                             <span>Signing in...</span>
                                         </div>
                                     ) : (
-                                        <>
-                                            <FaSignInAlt />
-                                            <span>Sign In</span>
-                                        </>
+                                        <span>Sign In</span>
                                     )}
                                 </div>
-                                <div className="btn-shine"></div>
                             </button>
                         </form>
 
                         <div className="auth-footer">
                             <p>Don't have an account?</p>
                             <Link to="/signup" className="signup-link">
-                                <FaUserPlus />
                                 <span>Create Account</span>
                             </Link>
 
                             <div className="admin-access">
                                 <Link to="/Adminlogin" className="admin-portal-link">
-                                    <FaShieldAlt />
                                     <span>Admin Portal</span>
                                 </Link>
                             </div>

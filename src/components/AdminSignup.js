@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import '../Styles/Login.css';
 import userService from "../services/userService";
-import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash, FaHome, FaSignInAlt, FaShieldAlt, FaCrown, FaWallet, FaUserTie, FaServer, FaCog, FaDatabase, FaStar } from 'react-icons/fa';
 
 function AdminSignup() {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState('');
     const [error, setError] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -53,12 +52,13 @@ function AdminSignup() {
 
     return (
         <div className="modern-auth-container admin-variant admin-signup-variant">
-            {/* Dynamic Background with Particles */}
+            {/* Advanced Background System */}
             <div className="particle-background">
-                <div className="particles">
-                    {[...Array(50)].map((_, i) => (
-                        <div key={i} className={`particle particle-${i % 5} admin-particle`}></div>
-                    ))}
+                <div className="geometric-shapes">
+                    <div className="shape shape-1"></div>
+                    <div className="shape shape-2"></div>
+                    <div className="shape shape-3"></div>
+                    <div className="shape shape-4"></div>
                 </div>
                 <div className="gradient-overlay admin-signup-gradient"></div>
             </div>
@@ -66,13 +66,11 @@ function AdminSignup() {
             {/* Floating Navigation */}
             <nav className="floating-nav admin-nav">
                 <Link to="/" className="nav-brand admin-brand">
-                    <FaWallet className="brand-icon" />
-                    <span>ExpenseTracker</span>
+                    <span className="brand-text">ExpenseTracker</span>
                     <div className="admin-badge">Admin</div>
                 </Link>
                 <div className="nav-links">
                     <Link to="/" className="nav-link">
-                        <FaHome />
                         <span>Home</span>
                     </Link>
                 </div>
@@ -84,54 +82,52 @@ function AdminSignup() {
                 <div className="hero-panel admin-hero">
                     <div className="hero-content">
                         <div className="floating-card card-1 admin-card">
-                            <FaShieldAlt className="card-icon" />
                             <h3>Elite Access</h3>
                             <p>Join the exclusive administrator team</p>
                         </div>
 
                         <div className="floating-card card-2 admin-card">
-                            <FaCog className="card-icon" />
                             <h3>Full Control</h3>
                             <p>Complete system management capabilities</p>
                         </div>
 
                         <div className="hero-text admin-hero-text">
-                            <div className="admin-crown-icon signup-crown">
-                                <FaCrown />
+                            <div className="admin-crown-symbol signup-crown">
+                                <span>◆</span>
                             </div>
                             <h1>Join Admin Elite</h1>
                             <p>Create your administrator account with enhanced privileges and comprehensive system access.</p>
 
                             <div className="admin-privileges-list">
                                 <div className="privilege-item">
-                                    <FaServer className="privilege-icon" />
+                                    <span className="privilege-symbol">⚙</span>
                                     <span>Full system administration</span>
                                 </div>
                                 <div className="privilege-item">
-                                    <FaDatabase className="privilege-icon" />
+                                    <span className="privilege-symbol">🗄</span>
                                     <span>Database management</span>
                                 </div>
                                 <div className="privilege-item">
-                                    <FaUserTie className="privilege-icon" />
+                                    <span className="privilege-symbol">👥</span>
                                     <span>User account control</span>
                                 </div>
                                 <div className="privilege-item">
-                                    <FaStar className="privilege-icon" />
+                                    <span className="privilege-symbol">📊</span>
                                     <span>Advanced analytics</span>
                                 </div>
                             </div>
 
                             <div className="security-features">
                                 <div className="security-item">
-                                    <FaShieldAlt className="security-icon" />
+                                    <span className="security-symbol">🛡</span>
                                     <span>Enhanced Security</span>
                                 </div>
                                 <div className="security-item">
-                                    <FaDatabase className="security-icon" />
+                                    <span className="security-symbol">📋</span>
                                     <span>Audit Logging</span>
                                 </div>
                                 <div className="security-item">
-                                    <FaServer className="security-icon" />
+                                    <span className="security-symbol">🎯</span>
                                     <span>Priority Support</span>
                                 </div>
                             </div>
@@ -143,20 +139,18 @@ function AdminSignup() {
                 <div className="form-panel">
                     <div className="glass-card admin-form signup-form">
                         <div className="form-header admin-header">
-                            <div className="pulse-icon admin-pulse-icon">
-                                <FaUserTie />
+                            <div className="pulse-element admin-pulse-icon">
+                                <span>◈</span>
                             </div>
                             <h2>Create Admin Account</h2>
                             <p>Register for administrator privileges</p>
-                            <div className="security-indicator admin-security">
-                                <FaShieldAlt />
+                            <div className="security-badge admin-security">
                                 <span>Secure Admin Registration</span>
                             </div>
                         </div>
 
                         {error && (
                             <div className="error-alert admin-error">
-                                <FaShieldAlt className="error-icon" />
                                 <span>{error}</span>
                             </div>
                         )}
@@ -165,7 +159,6 @@ function AdminSignup() {
                             <div className="input-row">
                                 <div className="input-container">
                                     <div className="input-wrapper">
-                                        <FaUserTie className="input-icon admin-icon" />
                                         <input
                                             type="text"
                                             value={username}
@@ -180,7 +173,6 @@ function AdminSignup() {
 
                                 <div className="input-container">
                                     <div className="input-wrapper">
-                                        <FaEnvelope className="input-icon admin-icon" />
                                         <input
                                             type="email"
                                             value={email}
@@ -196,7 +188,6 @@ function AdminSignup() {
 
                             <div className="input-container">
                                 <div className="input-wrapper">
-                                    <FaLock className="input-icon admin-icon" />
                                     <input
                                         type={showPassword ? 'text' : 'password'}
                                         value={password}
@@ -210,7 +201,7 @@ function AdminSignup() {
                                         className="password-toggle admin-toggle"
                                         onClick={() => setShowPassword(!showPassword)}
                                     >
-                                        {showPassword ? <FaEyeSlash /> : <FaEye />}
+                                        {showPassword ? 'Hide' : 'Show'}
                                     </button>
                                     <div className="input-line admin-line"></div>
                                 </div>
@@ -218,7 +209,6 @@ function AdminSignup() {
 
                             <div className="input-container">
                                 <div className="input-wrapper">
-                                    <FaLock className="input-icon admin-icon" />
                                     <input
                                         type={showConfirmPassword ? 'text' : 'password'}
                                         value={confirmPassword}
@@ -232,7 +222,7 @@ function AdminSignup() {
                                         className="password-toggle admin-toggle"
                                         onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                                     >
-                                        {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+                                        {showConfirmPassword ? 'Hide' : 'Show'}
                                     </button>
                                     <div className="input-line admin-line"></div>
                                 </div>
@@ -245,7 +235,6 @@ function AdminSignup() {
                                         checked={acceptTerms}
                                         onChange={(e) => setAcceptTerms(e.target.checked)}
                                     />
-                                    <div className="checkmark admin-checkmark"></div>
                                     <span className="checkbox-label">
                                         I agree to the{' '}
                                         <Link to="/admin-terms" className="terms-link admin-terms-link">Administrator Terms</Link>
@@ -267,24 +256,18 @@ function AdminSignup() {
                                             <span>Creating admin account...</span>
                                         </div>
                                     ) : (
-                                        <>
-                                            <FaCrown />
-                                            <span>Create Admin Account</span>
-                                        </>
+                                        <span>Create Admin Account</span>
                                     )}
                                 </div>
-                                <div className="btn-shine"></div>
                             </button>
                         </form>
 
                         <div className="auth-footer admin-footer">
                             <div className="admin-links">
                                 <Link to="/Adminlogin" className="admin-signin-link">
-                                    <FaSignInAlt />
                                     <span>Admin Sign In</span>
                                 </Link>
                                 <Link to="/login" className="user-portal-link">
-                                    <FaUser />
                                     <span>User Portal</span>
                                 </Link>
                             </div>
