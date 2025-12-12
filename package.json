@@ -9,7 +9,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "axios": "^1.7.2",
+    "axios": "^1.8.3",
     "bootstrap": "^5.3.3",
     "datatables.net": "^2.1.2",
     "datatables.net-bs4": "^2.1.2",
@@ -62,5 +62,8 @@
     "postcss": "^8.5.6",
     "postcss-loader": "^8.1.1",
     "tailwindcss": "^4.1.11"
+  },
+  "overrides": {
+    "glob": "^10.5.0"
   }
 }
